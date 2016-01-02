@@ -1,0 +1,5 @@
+Bronnen : 
+
+Berichten met php : https://davidwalsh.name/send-text-message
+Carriers voor sms : https://davidwalsh.name/demo/SMS-Carriers.pdf
+Arduino en Processing app : https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing
