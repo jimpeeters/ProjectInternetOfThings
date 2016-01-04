@@ -1,5 +1,11 @@
 <?php namespace App\Http\Controllers;
 
+use App\Area;
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use Validator;
+
 class AreaController extends Controller {
 
   /**
@@ -27,9 +33,24 @@ class AreaController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+    var_dump($request->input('name'));
+    $validator = Validator::make($request->all(),
+        ['name' => 'required',]
+      );
+
+    if($validator->fails())
+    {
+      return redirect()->back()->withErrors($validator);
+    } 
+    $area = new Area;
+
+    $area->name = $request->input('name');
+
+    $area->save();
+
+    return redirect()->back()->withSuccess('area toegevoegd');
   }
 
   /**

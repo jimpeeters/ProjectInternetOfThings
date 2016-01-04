@@ -2,6 +2,11 @@
 
 use App\Waiter;
 
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use Validator;
+
 class WaiterController extends Controller {
 
   /**
@@ -29,9 +34,24 @@ class WaiterController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
+    $validator = Validator::make($request->all(),
+        [ 'name' => 'required|min:6',
+          'email' => 'required|email' ]
+      );
+    if($validator->fails())
+    {
+      return redirect()->back()->withErrors($validator);
+    }
     
+
+    $waiter = new Waiter;
+
+    $waiter->name = $request->input('name');
+    $waiter->email = $request->input('email');
+
+    $waiter->save();
   }
 
   /**
