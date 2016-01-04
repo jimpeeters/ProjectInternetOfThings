@@ -10,6 +10,8 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::group(['middleware' => ['web']], function () {
+    // Add your routes here
 
 Route::get('/', function()
 {
@@ -60,3 +62,5 @@ Route::resource('waiterarea', 'WaiterAreaController');
 
 
 Route::resource('waiterarea', 'WaiterAreaController');
+
+});
