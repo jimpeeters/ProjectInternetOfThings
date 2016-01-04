@@ -13,7 +13,7 @@ class CreateClientsTable extends Migration {
 			$table->integer('FK_client_status_id')->unsigned();
 			$table->integer('FK_table_id')->unsigned();
 			$table->datetime('entertime');
-			$table->datetime('leavetime');
+			$table->datetime('leavetime')->nullable();
 		});
 	}
 

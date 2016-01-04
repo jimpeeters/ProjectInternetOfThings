@@ -24,7 +24,7 @@ class CreateForeignKeys extends Migration {
 						->onUpdate('restrict');
 		});
 		Schema::table('orders', function(Blueprint $table) {
-			$table->foreign('FK_client_id')->references('id')->on('tables')
+			$table->foreign('FK_client_id')->references('id')->on('clients')
 						->onDelete('restrict')
 						->onUpdate('restrict');
 		});
@@ -42,23 +42,23 @@ class CreateForeignKeys extends Migration {
 
 	public function down()
 	{
-		Schema::table('tables', function(Blueprint $table) {
-			$table->dropForeign('tables_FK_area_id_foreign');
-		});
-		Schema::table('clients', function(Blueprint $table) {
-			$table->dropForeign('clients_FK_client_status_id_foreign');
-		});
-		Schema::table('clients', function(Blueprint $table) {
-			$table->dropForeign('clients_FK_table_id_foreign');
-		});
-		Schema::table('orders', function(Blueprint $table) {
-			$table->dropForeign('orders_FK_client_id_foreign');
-		});
-		Schema::table('waiter_area', function(Blueprint $table) {
-			$table->dropForeign('waiter_area_FK_waiter_id_foreign');
-		});
-		Schema::table('waiter_area', function(Blueprint $table) {
-			$table->dropForeign('waiter_area_FK_area_id_foreign');
-		});
+		// Schema::table('tables', function(Blueprint $table) {
+		// 	$table->dropForeign('tables_FK_area_id_foreign');
+		// });
+		// Schema::table('clients', function(Blueprint $table) {
+		// 	$table->dropForeign('clients_FK_client_status_id_foreign');
+		// });
+		// Schema::table('clients', function(Blueprint $table) {
+		// 	$table->dropForeign('clients_FK_table_id_foreign');
+		// });
+		// Schema::table('orders', function(Blueprint $table) {
+		// 	$table->dropForeign('orders_FK_client_id_foreign');
+		// });
+		// Schema::table('waiter_area', function(Blueprint $table) {
+		// 	$table->dropForeign('waiter_area_FK_waiter_id_foreign');
+		// });
+		// Schema::table('waiter_area', function(Blueprint $table) {
+		// 	$table->dropForeign('waiter_area_FK_area_id_foreign');
+		// });
 	}
 }
