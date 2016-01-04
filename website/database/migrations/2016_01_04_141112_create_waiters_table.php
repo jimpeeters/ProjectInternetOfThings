@@ -10,7 +10,7 @@ class CreateWaitersTable extends Migration {
 		Schema::create('waiters', function(Blueprint $table) {
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('naam', 255);
+			$table->string('name', 255);
 			$table->string('email', 255);
 		});
 	}
