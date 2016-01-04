@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Order;
+use App\Table;
+use Carbon\Carbon;
+
 class OrderController extends Controller {
 
   /**
@@ -10,6 +14,36 @@ class OrderController extends Controller {
   public function index()
   {
     
+  }
+
+  public function newOrder($tableId)
+  {
+    echo '<pre>';
+    $table = Table::find($tableId)->first();
+    $client = $table->clients()->orderBy('entertime', 'DESC')->first();
+    $order = new Order;
+
+    $order->starttime = Carbon::now();
+    $order->FK_client_id = $client->id;
+
+    $order->save();
+    return 'created';
+  }
+
+  public function closeOrder($tableId)
+  {
+    $table = Table::find($tableId)->first();
+    $client = $table->clients()->orderBy('entertime', 'DESC')->first();
+
+    $lastOrder = $client->orders()->where('endtime', NULL)->get();
+    foreach($lastOrder as $order)
+    {
+      $order->endtime = Carbon::now();
+      $order->save();
+    }
+    
+    return 'ended';
+
   }
 
   /**

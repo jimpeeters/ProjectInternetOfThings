@@ -12,7 +12,7 @@ class CreateOrdersTable extends Migration {
 			$table->timestamps();
 			$table->integer('FK_client_id')->unsigned();
 			$table->datetime('starttime');
-			$table->datetime('endtime');
+			$table->datetime('endtime')->nullable();
 		});
 	}
 

@@ -14,4 +14,9 @@ class Table extends Model {
 		return $this->belongsTo('Area', 'FK_area_id');
 	}
 
+	public function clients()
+	{
+		return $this->hasMany('App\Client', 'FK_table_id');
+	}
+
 }
