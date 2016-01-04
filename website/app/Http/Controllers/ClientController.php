@@ -1,5 +1,13 @@
 <?php namespace App\Http\Controllers;
 
+use App\Client;
+
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
+use Validator;
+use Carbon\Carbon;
+
 class ClientController extends Controller {
 
   /**
@@ -27,9 +35,27 @@ class ClientController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+    $validator = Validator::make($request->all(),
+      [
+        'FK_client_status_id' => 'required|numeric|exists:client_statuses,id',
+        'FK_table_id' => 'required|numeric|exists:tables,id'
+      ]);
+
+    if($validator->fails())
+    {
+      return redirect()->back()->withInput($request->all())->withErrors($validator);
+    }
+
+    $client = new Client;
+
+    $client->FK_client_status_id = $request->input('FK_client_status_id');
+    $client->FK_table_id = $request->input('FK_table_id');
+    $client->enterTime = Carbon::now();
+
+    $client->save();
+    return redirect()->back()->withSuccess('klant toegevoegd');
   }
 
   /**

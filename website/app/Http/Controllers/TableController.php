@@ -37,9 +37,11 @@ class TableController extends Controller {
   public function store(Request $request)
   {
     $validator = Validator::make($request->all(),
-        ['number' => 'required|numeric|unique:tables,number',
-        'FK_area_id' => 'required|exists:areas,id']
-      );
+        [
+        'number' => 'required|numeric|unique:tables,number',
+        'FK_area_id' => 'required|exists:areas,id'
+        ]);
+
     if($validator->fails())
     {
       return redirect()->back()->withErrors($validator);
