@@ -44,7 +44,7 @@ class WaiterController extends Controller {
     {
       return redirect()->back()->withErrors($validator);
     }
-    
+
 
     $waiter = new Waiter;
 
@@ -52,6 +52,8 @@ class WaiterController extends Controller {
     $waiter->email = $request->input('email');
 
     $waiter->save();
+
+    return redirect()->back()->withSuccess('ober toegevoegd');
   }
 
   /**
