@@ -9,8 +9,8 @@
 {!! Form::open(array('route' => 'waiter.store', 'method' => 'POST')) !!}
 	<ul>
 		<li>
-			{!! Form::label('naam', 'Naam:') !!}
-			{!! Form::text('naam') !!}
+			{!! Form::label('name', 'Naam:') !!}
+			{!! Form::text('name') !!}
 		</li>
 		<li>
 			{!! Form::label('email', 'Email:') !!}
