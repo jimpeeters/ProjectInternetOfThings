@@ -2,7 +2,7 @@
 <div id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <li>
-            <a href="#"><i class="fa fa-tachometer"></i>Dashboard</a>
+            <a href=""><i class="fa fa-tachometer"></i>Dashboard</a>
         </li>
         <li>
             <a href="#"><i class="fa fa-cutlery"></i>Gebieden</a>
