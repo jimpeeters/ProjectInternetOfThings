@@ -1,4 +1,4 @@
-{!! Form::open(array('route' => 'route.name', 'method' => 'POST')) !!}
+{!! Form::open(array('route' => 'waiterarea.store', 'method' => 'POST')) !!}
 	<ul>
 		<li>
 			{!! Form::label('FK_waiter_id', 'FK_waiter_id:') !!}

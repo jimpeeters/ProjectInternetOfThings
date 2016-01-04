@@ -8,7 +8,7 @@
 <div class="row">
 
 
-{!! Form::open(array('route' => 'route.name', 'method' => 'POST')) !!}
+{!! Form::open(array('route' => 'area.store', 'method' => 'POST')) !!}
 	<ul>
 		<li>
 			{!! Form::label('naam', 'Naam:') !!}

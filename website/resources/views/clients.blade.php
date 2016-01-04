@@ -6,7 +6,7 @@
 
 <div class="row">
 
-{!! Form::open(array('route' => 'route.name', 'method' => 'POST')) !!}
+{!! Form::open(array('route' => 'client.store', 'method' => 'POST')) !!}
 	<ul>
 		<li>
 			{!! Form::label('FK_client_status_id', 'FK_client_status_id:') !!}
