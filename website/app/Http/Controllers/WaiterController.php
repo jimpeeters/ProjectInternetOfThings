@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Waiter;
+
 class WaiterController extends Controller {
 
   /**
@@ -19,7 +21,7 @@ class WaiterController extends Controller {
    */
   public function create()
   {
-    
+    return View('waiter.create');
   }
 
   /**
@@ -73,7 +75,8 @@ class WaiterController extends Controller {
    */
   public function destroy($id)
   {
-    
+    $waiter = Waiter::findorfail($id);
+    $waiter->softDelete();
   }
   
 }
