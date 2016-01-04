@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Client;
+use View;
+
 
 
 
@@ -19,6 +21,8 @@ class MainController extends Controller
     	var_dump( $today );
     	$clients = Client::where('entertime', '>', $today)->count();
     	var_dump($clients);
+
+    	return view('dashboard');
 
 
     }

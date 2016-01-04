@@ -1,3 +1,11 @@
+@extends('layouts.master')
+
+@section('title', 'Tafels')
+
+@section('content')
+
+<div class="row">
+
 {!! Form::open(array('route' => 'route.name', 'method' => 'POST')) !!}
 	<ul>
 		<li>
@@ -13,3 +21,8 @@
 		</li>
 	</ul>
 {!! Form::close() !!}
+
+</div>
+
+
+@stop

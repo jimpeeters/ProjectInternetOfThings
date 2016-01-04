@@ -17,11 +17,9 @@
 <div id="topwrapper">
 	<img src="/images/logo.png" alt="logo">
 	<h2>Restaurant naam</h2>
-	
 </div>
 
 <div id="wrapper">
-
 	@include('navigation')
 	    <div class="container-fluid">
 			 @yield('content')

@@ -2,11 +2,11 @@
 
 @section('title', 'Dashboard')
 
+@section('content')
+
 <div class="row">
 	
 </div>
 
 
-@section('content')
-
-@section('stop')
+@stop

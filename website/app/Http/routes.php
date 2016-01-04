@@ -16,10 +16,31 @@ Route::get('/', function()
 	return View::make('home');
 });
 
-Route::get('/dashboard', function()
+Route::get('/gebieden', function()
 {
-	return View::make('dashboard');
+	return View::make('areas');
 });
+
+Route::get('/tafels', function()
+{
+	return View::make('tables');
+});
+
+Route::get('/obers', function()
+{
+	return View::make('waiters');
+});
+
+Route::get('/klanten', function()
+{
+	return View::make('clients');
+});
+
+Route::get('/statistieken', function()
+{
+	return View::make('statistic');
+});
+
 
 
 Route::get('/order/open/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
