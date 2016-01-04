@@ -13,10 +13,8 @@ import processing.serial.*;
 Serial myPort;
 String val;
 InputStream is = null;
-//Client myClient;
 Client c;
-int dataIn; 
-//final WebClient webClient = new WebClient();
+
 
 void setup(){
   String portName = Serial.list()[0];
@@ -33,6 +31,7 @@ void setup(){
 }
 
 void draw(){
+  
   if( myPort.available() > 0 )
   {
     val = myPort.readStringUntil('\n');
@@ -42,14 +41,11 @@ void draw(){
   {
     //surf naar "https://whos-waiting-jeroenvdbkdg.c9users.io/hello-world.php?action=open
 
-  c.write("GET /cursus/test-project/test.php?action=open HTTP/1.1\r\n");
-
       println("poppetje staat erop");
       delay(5000);
   }
   if(val.contains("0") == true)
   {
-    c.write("GET /cursus/test-project/test.php?action=close HTTP/1.1\r\n");
     //surf naar "https://whos-waiting-jeroenvdbkdg.c9users.io/hello-world.php?action=close
      println("poppetje staat eraf");
   }
