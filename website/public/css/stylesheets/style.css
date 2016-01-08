@@ -2,7 +2,7 @@
 /* top wrapper */
 /* line 9, ../sass/style.scss */
 #topwrapper {
-  background: #ffce00;
+  background: #ffdc0d;
 }
 /* line 12, ../sass/style.scss */
 #topwrapper img {
@@ -84,7 +84,7 @@
 }
 /* line 84, ../sass/style.scss */
 .sidebar-nav li:hover {
-  border-left: 3px solid #ffce00;
+  border-left: 3px solid #ffdc0d;
 }
 
 /* line 90, ../sass/style.scss */
@@ -101,7 +101,7 @@
 /* line 102, ../sass/style.scss */
 .sidebar-nav li a:hover {
   text-decoration: none;
-  color: #fff;
+  color: #343434;
   background: rgba(255, 255, 255, 0.2);
 }
 

@@ -1,6 +1,6 @@
 /* main colors */
 $yellow : #ffe33b;
-$yellowdark : #ffce00;
+$yellowdark : darken($yellow, 9);
 $black : #000000;
 
 
@@ -101,7 +101,7 @@ $black : #000000;
 
 .sidebar-nav li a:hover {
     text-decoration: none;
-    color: #fff;
+    color: #343434;
     background: rgba(255,255,255,0.2);
 }
 
