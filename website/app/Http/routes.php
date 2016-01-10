@@ -14,7 +14,7 @@
 Route::group(['middleware' => ['web']], function () {
     // Add your routes here
 
-/*
+
 Route::get('/gebieden', function()
 {
 	return View::make('areas');
@@ -38,20 +38,20 @@ Route::get('/klanten', function()
 Route::get('/statistieken', function()
 {
 	return View::make('statistic');
-});*/
+});
 
 
 /* Home */ 
-Route::get('/',array('as' => 'dashboard','uses' => 'MainController@dashboard'));
+Route::get('/', array('as' => 'dashboard','uses' => 'MainController@dashboard'));
 
 
 
 Route::get('/order/open/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
 Route::get('/order/close/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@closeOrder']);
 
-//Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'MainController@dashboard']);
+Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'MainController@dashboard']);
 
-/*
+
 Route::resource('table', 'TableController');
 Route::resource('waiter', 'WaiterController');
 Route::resource('client', 'ClientController');
@@ -62,6 +62,6 @@ Route::resource('order', 'OrderController');
 Route::resource('waiterarea', 'WaiterAreaController');
 
 
-Route::resource('waiterarea', 'WaiterAreaController');*/
+Route::resource('waiterarea', 'WaiterAreaController');
 
 }); 

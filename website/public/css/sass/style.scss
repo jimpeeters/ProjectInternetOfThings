@@ -1,25 +1,99 @@
 /* main colors */
 $yellow : #ffe33b;
-$yellowdark : darken($yellow, 9);
+$lightblack : #262626;
 $black : #000000;
 
+
+body {
+    background-color: #ecf0f1;
+}
 
 /* top wrapper */
 
 #topwrapper {
-    background: $yellowdark;
+    background: $lightblack;
     
     img {
         width : 170px;
         padding : 10px 5px;
-        margin-right: 70px;
+        margin-right: 75px;
     }
     
     h2 {
         display: inline-block;
         padding-left: 15px;
+        color: white;
+        //text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     }
 }
+
+
+/* forms */ 
+
+.box {
+    background-color: white;
+    border-top: 4px solid $yellow;
+    border-radius: 5px;
+    margin: 15px 0px;
+    padding-bottom: 10px;
+    //padding: 10px;
+    
+    .btn {
+      -webkit-border-radius: 5;
+      -moz-border-radius: 5;
+      border-radius: 5px;
+      font-family: Arial;
+      color: #ffffff;
+      font-size: 14px;
+      background: $lightblack;
+      padding: 8px 18px 8px 18px;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background: lighten($lightblack, 5);
+      text-decoration: none;
+    }
+
+    
+    .box-header {
+        border-bottom: 1px solid #e0e0e0;
+        h4 {
+            padding: 0px 10px;
+        }
+    }
+    
+    form {
+        margin: 20px;
+    }
+    
+    .badge {
+        background-color: $yellow;
+        color: black;
+    }
+}
+
+/* dashboard */ 
+
+.black-bg {
+        background-color: $lightblack;
+}
+
+.info-box i {
+    color: white;
+}
+
+.title {
+    h2 {
+        margin-top: 5px;
+    }
+    
+    hr {
+        border-top: 1px solid lighten($lightblack, 50);
+    }
+}
+
+
 /* sidebar */ 
 
 #wrapper {
@@ -82,7 +156,7 @@ $black : #000000;
     border-left : 3px solid black;
     
     &:hover {
-        border-left : 3px solid $yellowdark;
+        border-left : 3px solid $lightblack;
     }
 
 }
@@ -90,7 +164,7 @@ $black : #000000;
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #000;
+    color: $black;
     
     i{
          padding-right: 10px;
@@ -111,7 +185,7 @@ $black : #000000;
 }
 
 
-@media(min-width:768px) {
+
     #wrapper {
         padding-left: 250px;
     }
@@ -137,13 +211,28 @@ $black : #000000;
         position: relative;
         margin-right: 0;
     }
+
+
+/* bootstrap focus effect */ 
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+  border-color: lighten($lightblack, 20);;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.6);
+  outline: 0 none;
 }
-
-/* container */ 
-
-.container-fluid {
-    background-color: blue;
-}
-
 
 

@@ -7,6 +7,8 @@
     <title>@yield('title')</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="/css/daterangepicker-bs3.css">
+      <link rel="stylesheet" href="/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/css/stylesheets/style.css">
 <!--     <link rel="stylesheet" href="/css/AdminLTE.css">
 <link href="css/ionicons.min.css" rel="stylesheet" type="text/css" /> -->
@@ -42,8 +44,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="/js/daterangepicker.js"></script>
+
 
 @yield('script')
+
 
 </body>
 </html>
