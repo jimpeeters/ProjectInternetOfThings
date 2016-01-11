@@ -11,6 +11,27 @@ class TablesTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('tables')->delete();
+
+		$tables = array(
+
+		array(
+				'number' => '1',
+				'FK_area_id' => '1',
+
+			),
+
+		array(
+				'number' => '2',
+				'FK_area_id' => '1',
+
+			),
+
+
+
+
+		);
+
+		DB::table('tables')->insert($tables);
     }
 }
