@@ -9,6 +9,7 @@ class CreateClientsTable extends Migration {
 	{
 		Schema::create('clients', function(Blueprint $table) {
 			$table->increments('id');
+			$table->integer('amount');
 			$table->timestamps();
 			$table->integer('FK_client_status_id')->unsigned();
 			$table->integer('FK_table_id')->unsigned();
