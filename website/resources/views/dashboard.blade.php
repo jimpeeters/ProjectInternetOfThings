@@ -91,21 +91,21 @@
 		<hr>
 	</div>
 	
-
+  @if(count($clients))
+    @foreach($clients as $client)
     <div class="col-md-3">
+      @if(isset($client->wait_time))
       <div class="info-box bg-yellow">
         <span class="info-box-icon"><i class="fa fa-hourglass-o"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">Tafel 1</span>
           <span class="info-box-number">Afwachtend</span>
           <span class="progress-description">
-            wachttijd : 23 min 2 sec  <!-- time left plugin doen -->
+            wachttijd : {{$client->wait_time}} min <!-- time left plugin doen -->
           </span>
         </div>
       </div>
-    </div>
-
-    <div class="col-md-3">
+      @else
       <div class="info-box bg-green">
         <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
         <div class="info-box-content">
@@ -116,33 +116,12 @@
           </span>
         </div>
       </div>
+      @endif
     </div>
+    @endforeach
+  @endif
 
-    <div class="col-md-3">
-      <div class="info-box bg-green">
-        <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Tafel 3</span>
-          <span class="info-box-number">Bediend</span>
-          <span class="progress-description">
-            
-          </span>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="info-box bg-green">
-        <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Tafel 4</span>
-          <span class="info-box-number">Bediend</span>
-          <span class="progress-description">
-            
-          </span>
-        </div>
-      </div>
-    </div>
 
 </div>
 
