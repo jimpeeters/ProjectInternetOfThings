@@ -18,9 +18,12 @@ class OrderController extends Controller {
 
   public function newOrder($tableId)
   {
+    var_dump($tableId);
     echo '<pre>';
-    $table = Table::find($tableId)->first();
+    $table = Table::find($tableId);
+    var_dump($table);
     $client = $table->clients()->orderBy('entertime', 'DESC')->first();
+    var_dump($client);
     $order = new Order;
 
     $order->starttime = Carbon::now();
@@ -32,9 +35,10 @@ class OrderController extends Controller {
 
   public function closeOrder($tableId)
   {
-    $table = Table::find($tableId)->first();
+    echo '<pre>';
+    $table = Table::find($tableId);
     $client = $table->clients()->orderBy('entertime', 'DESC')->first();
-
+    var_dump($table);
     $lastOrder = $client->orders()->where('endtime', NULL)->get();
     foreach($lastOrder as $order)
     {
