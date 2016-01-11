@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Client;
+use App\Order;
 use View;
 use App\Tables;
 
@@ -54,5 +55,60 @@ class MainController extends Controller
         				->with('clients', $clients);
 
 
+    }
+
+    public function statistics()
+    {
+        // echo '<pre>';
+        $clients = Client::where('entertime', '>', Carbon::today());
+        // var_dump($clients->get());
+        $clientSum = $clients->count();
+        $clientAmount = $clients->sum('amount');
+        $orders = Order::where('starttime', '>', Carbon::today());
+        $ordersCount = $orders->count('id');
+        $longestTime = $shortestTime = null;
+        $ordersGet = $orders->get();
+        foreach( $ordersGet as $order)
+        {
+            // echo '<pre>';
+            // var_dump($order->client->table);
+            $starttime = Carbon::createFromFormat('Y-m-d H:i:s', $order->starttime);
+            $endtime = Carbon::createFromFormat('Y-m-d H:i:s', $order->endtime);
+            $wait_time = $starttime->diffInSeconds($endtime);
+            // var_dump($wait_time);
+            if($longestTime == null || $shortestTime == null)
+            {
+                $longestTime = $shortestTime = [];
+                $longestTime['time'] = $shortestTime['time'] = $wait_time;
+                $longestTime['table'] = $shortestTime['table'] = $order->client->table->number;
+
+            }
+            if($wait_time > $longestTime['time'])
+            {
+                $longestTime['time'] = $wait_time;
+                $longestTime['table'] = $order->client->table->number;
+                // var_dump($longestTime['table']);
+            }
+
+            if($wait_time < $shortestTime['time'])
+            {
+                $shortestTime['time'] = $wait_time;
+                $shortestTime['table'] = $order->client->table->number;
+                // var_dump($shortestTime['table']);
+
+            }
+
+           
+        }
+        // dd($orders);
+
+        $data = [];
+        $data['clientSum'] = $clientSum;
+        $data['clientAmount'] = $clientAmount;
+        $data['orders'] = $ordersCount;
+        $data['shortestTime'] = $shortestTime;
+        $data['longestTime'] = $longestTime;
+
+        return View('statistic')->with($data);
     }
 }

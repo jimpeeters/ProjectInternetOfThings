@@ -11,12 +11,12 @@ class Client extends Model {
 
 	public function status()
 	{
-		return $this->belongsTo('ClientStatus', 'FK_client_status_id');
+		return $this->belongsTo('App\ClientStatus', 'FK_client_status_id');
 	}
 
 	public function table()
 	{
-		return $this->belongsTo('Table', 'FK_table_id');
+		return $this->belongsTo('App\Table', 'FK_table_id');
 	}
 
 	public function orders()
