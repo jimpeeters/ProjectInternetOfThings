@@ -35,7 +35,7 @@ Route::get('/klanten', function()
 	return View::make('clients');
 });
 
-Route::get('/statistieken', ['as' => 'statistics', 'uses' => 'MainController@statistics']);
+Route::get('/statistieken/{date?}', ['as' => 'statistics', 'uses' => 'MainController@statistics']);
 
 
 /* Home */ 

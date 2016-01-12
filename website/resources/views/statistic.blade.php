@@ -9,6 +9,11 @@
 	<div class="col-md-12 title">
 		<h2>Algemene info</h2>
 		<hr>
+		<ul>
+			<li><a href="{{ route('statistics') }}">vandaag</a></li>
+			<li><a href="{{ route('statistics', ['statistics' => 'week']) }}">deze week</a></li>
+			<li><a href="{{ route('statistics', ['statistics' => 'month']) }}">deze maand</a></li>
+		</ul>
 	</div>
 
     <div class="col-md-3">
@@ -58,8 +63,8 @@
  	<div class="col-md-6">
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>{{ $shortestTime['time'] }}</h3>
-          <p>Kortste wachttijd bij tafel {{ $shortestTime['table'] }}</p>
+        	<h3>{{ isset($shortestTime['time']) ? $shortestTime['time'] : '/' }}</h3>
+          <p>Langste wachttijd bij tafel {{ isset($shortestTime['table']) ? $shortestTime['table'] : '/' }}</p>
         </div>
         <div class="icon">
           <i class="fa fa-clock-o"></i>
@@ -72,8 +77,8 @@
     <div class="col-md-6">
       <div class="small-box bg-red">
         <div class="inner">
-          <h3>{{ $longestTime['time'] }}</h3>
-          <p>Langste wachttijd bij tafel {{ $longestTime['table'] }}</p>
+          <h3>{{ isset($longestTime['time']) ? $longestTime['time'] : '/' }}</h3>
+          <p>Langste wachttijd bij tafel {{ isset($longestTime['table']) ? $longestTime['table'] : '/' }}</p>
         </div>
         <div class="icon">
           <i class="fa fa-clock-o"></i>

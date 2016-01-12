@@ -57,14 +57,30 @@ class MainController extends Controller
 
     }
 
-    public function statistics()
+    public function statistics($date = "today")
     {
+        // echo('<pre>');
+        switch($date)
+        {
+            default:
+                $date = Carbon::today();
+                break;
+            case "week":
+                $date = Carbon::today()->subWeek();
+                break;
+            case "month":
+                $date = Carbon::today()->submonth();
+                break;
+        }
+        $clients = Client::where('entertime', '>', $date);
+        // var_dump($clients->orderby('created_at', 'desc')->first()->orders);
+
         // echo '<pre>';
-        $clients = Client::where('entertime', '>', Carbon::today());
+        // $clients = Client::where('entertime', '>', Carbon::today());
         // var_dump($clients->get());
         $clientSum = $clients->count();
         $clientAmount = $clients->sum('amount');
-        $orders = Order::where('starttime', '>', Carbon::today());
+        $orders = Order::where('starttime', '>', $date);
         $ordersCount = $orders->count('id');
         $longestTime = $shortestTime = null;
         $ordersGet = $orders->get();
@@ -108,7 +124,7 @@ class MainController extends Controller
         $data['orders'] = $ordersCount;
         $data['shortestTime'] = $shortestTime;
         $data['longestTime'] = $longestTime;
-
+        // echo('</pre');
         return View('statistic')->with($data);
     }
 }
