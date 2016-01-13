@@ -24,6 +24,7 @@
 <div id="wrapper">
 	@include('navigation')
 	    <div class="container-fluid">
+	    @if(isset($errors))
 	    	@if ( count($errors) > 0)
 			    <div class="alert alert-danger">
 			        <ul>
@@ -33,8 +34,9 @@
 			        </ul>
 			    </div>
 			@endif
+		@endif
 
-			@yield('content')
+		@yield('content')
 			
 	    </div>
 </div>

@@ -10,6 +10,11 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::group(['middleware' => ['api']], function() {
+	Route::get('/order/open/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
+	Route::get('/order/close/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@closeOrder']);
+
+});
 
 Route::group(['middleware' => ['web']], function () {
     // Add your routes here
