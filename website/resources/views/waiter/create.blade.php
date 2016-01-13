@@ -14,7 +14,7 @@
 			<h4>Ober toevoegen</h4>
 		</div>
 
-			{!! Form::open(array('route' => 'waiter.store', 'method' => 'POST')) !!}
+			{!! Form::open(array('route' => 'ober.store', 'method' => 'POST')) !!}
 
 				<div class="form-group">
 					<label for="name">Naam :</label>

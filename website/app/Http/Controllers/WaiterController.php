@@ -16,7 +16,18 @@ class WaiterController extends Controller {
    */
   public function index()
   {
-    
+    $waiters = Waiter::all();
+    $data = [];
+    $data['waiters'] = $waiters;
+    return View('waiter.index')->with($data);
+  }
+
+  protected function validator($data)
+  {
+    return Validator::make($data,
+        [ 'name' => 'required|min:6',
+          'email' => 'required|email' ]
+      );
   }
 
   /**
@@ -36,10 +47,7 @@ class WaiterController extends Controller {
    */
   public function store(Request $request)
   {
-    $validator = Validator::make($request->all(),
-        [ 'name' => 'required|min:6',
-          'email' => 'required|email' ]
-      );
+    $validator = $this->validator($request->all());
     if($validator->fails())
     {
       return redirect()->back()->withErrors($validator);
@@ -75,7 +83,10 @@ class WaiterController extends Controller {
    */
   public function edit($id)
   {
-    
+    $waiter = Waiter::findorfail($id);
+    $data = [];
+    $data['waiter'] = $waiter;
+    return View('waiter.edit')->with($data);
   }
 
   /**
@@ -84,9 +95,26 @@ class WaiterController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request, $id)
   {
+    // return 'test';
+    // dd('oi'); 
+    $validator = $this->validator($request->all());
+
+    if($validator->fails())
+    {
+      return redirect()->back()->withInput()->withErrors($validator);
+    }
     
+    $waiter = Waiter::findorfail($id);
+
+    $waiter->name = $request->input('name');
+    $waiter->email = $request->input('email');
+
+    $waiter->save();
+
+    return redirect()->route('ober.index');
+
   }
 
   /**

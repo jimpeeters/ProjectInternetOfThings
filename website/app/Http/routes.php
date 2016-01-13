@@ -30,7 +30,7 @@ Route::get('/tafels', function()
 	return View::make('tables');
 });
 
-Route::get('/obers', function()
+Route::get('/obers/create', function()
 {
 	return View::make('waiters');
 });
@@ -40,10 +40,7 @@ Route::get('/klanten', function()
 	return View::make('clients');
 });
 
-Route::get('/statistieken', function()
-{
-	return View::make('statistic');
-});
+Route::get('/statistieken/{date?}', ['as' => 'statistics', 'uses' => 'MainController@statistics']);
 
 
 /* Home */ 
@@ -58,7 +55,8 @@ Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'MainController@dashboa
 
 
 Route::resource('table', 'TableController');
-Route::resource('waiter', 'WaiterController');
+// Route::post('/ober/{id}', ['as' => 'ober.update', 'uses' => 'WaiterController@update']);
+Route::resource('ober', 'WaiterController');
 Route::resource('client', 'ClientController');
 Route::resource('clientstatus', 'ClientStatusController');
 Route::resource('area', 'AreaController');
