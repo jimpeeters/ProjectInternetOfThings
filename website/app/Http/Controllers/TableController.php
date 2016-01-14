@@ -36,10 +36,11 @@ class TableController extends Controller {
    */
   public function store(Request $request)
   {
+    // dd($request->all());
     $validator = Validator::make($request->all(),
         [
         'number' => 'required|numeric|unique:tables,number',
-        'FK_area_id' => 'required|exists:areas,id'
+        'area' => 'required|exists:areas,id'
         ]);
 
     if($validator->fails())
@@ -50,7 +51,7 @@ class TableController extends Controller {
     $table = new Table;
 
     $table->number = $request->input('number');
-    $table->FK_area_id = $request->input('FK_area_id');
+    $table->FK_area_id = $request->input('area');
 
     $table->save();
 
