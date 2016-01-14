@@ -10,13 +10,23 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Work Sans', sans-serif;
 }
 
+/*clean button */
+/* line 19, ../sass/style.scss */
+.button-clean {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  font: inherit;
+  cursor: pointer;
+}
+
 /* header */
-/* line 20, ../sass/style.scss */
+/* line 30, ../sass/style.scss */
 .main-header a, .main-header nav {
   background-color: #1A2226 !important;
 }
 
-/* line 25, ../sass/style.scss */
+/* line 35, ../sass/style.scss */
 .skin-black .sidebar-menu > li.header {
   color: black;
   background: #ffe33b;
@@ -26,44 +36,84 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* borders weg */
-/* line 35, ../sass/style.scss */
+/* line 45, ../sass/style.scss */
 .skin-black .main-header > .navbar > .sidebar-toggle {
   color: white;
   border-right: 0px;
 }
 
-/* line 40, ../sass/style.scss */
+/* line 50, ../sass/style.scss */
 .skin-black .main-header > .logo {
   border-right: 0px;
 }
 
 /* overschrijving gele kleur */
-/* line 46, ../sass/style.scss */
+/* line 56, ../sass/style.scss */
 .bg-yellow {
   background-color: #FFAB08 !important;
 }
 
 /* logo's */
-/* line 52, ../sass/style.scss */
+/* line 62, ../sass/style.scss */
 #small-logo, #large-logo {
   height: 40px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-/* line 58, ../sass/style.scss */
+/* line 68, ../sass/style.scss */
 .logo-lg {
   text-align: left;
   color: white;
 }
-/* line 62, ../sass/style.scss */
+/* line 72, ../sass/style.scss */
 .logo-lg .text {
   padding-left: 10px;
   font-family: 'Work Sans', sans-serif;
 }
 
+/* overzicht tafels */
+/* line 80, ../sass/style.scss */
+.info-box {
+  margin-bottom: 13px;
+}
+
+/* line 84, ../sass/style.scss */
+.subtitle-overzicht {
+  font-size: 14px;
+  font-weight: 300;
+}
+/* line 87, ../sass/style.scss */
+.subtitle-overzicht:hover {
+  cursor: pointer;
+}
+
+/* line 95, ../sass/style.scss */
+.button-plus span i {
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  color: #747474;
+}
+/* line 102, ../sass/style.scss */
+.button-plus:hover span i, .button-plus:focus span i {
+  color: white;
+}
+
+/* line 109, ../sass/style.scss */
+.info-box-empty {
+  margin-top: -100px;
+}
+/* line 112, ../sass/style.scss */
+.info-box-empty input:nth-child(1) {
+  margin-top: 9px;
+}
+/* line 116, ../sass/style.scss */
+.info-box-empty input:nth-child(2) {
+  margin-top: 4px;
+}
+
 /* forms */
-/* line 72, ../sass/style.scss */
+/* line 125, ../sass/style.scss */
 .box {
   background-color: white;
   border-top: 4px solid #ffe33b;
@@ -71,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 15px 0px;
   padding-bottom: 10px;
 }
-/* line 80, ../sass/style.scss */
+/* line 133, ../sass/style.scss */
 .box .btn {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
@@ -84,51 +134,51 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 18px 8px 18px;
   text-decoration: none;
 }
-/* line 93, ../sass/style.scss */
+/* line 146, ../sass/style.scss */
 .box .btn:hover {
   background: #333333;
   text-decoration: none;
 }
-/* line 99, ../sass/style.scss */
+/* line 152, ../sass/style.scss */
 .box .box-header {
   border-bottom: 1px solid #e0e0e0;
 }
-/* line 101, ../sass/style.scss */
+/* line 154, ../sass/style.scss */
 .box .box-header h4 {
   padding: 0px 10px;
 }
-/* line 106, ../sass/style.scss */
+/* line 159, ../sass/style.scss */
 .box form {
   margin: 20px;
 }
-/* line 110, ../sass/style.scss */
+/* line 163, ../sass/style.scss */
 .box .badge {
   background-color: #ffe33b;
   color: black;
 }
 
 /* dashboard */
-/* line 118, ../sass/style.scss */
+/* line 171, ../sass/style.scss */
 .black-bg {
   background-color: #262626;
 }
 
-/* line 122, ../sass/style.scss */
+/* line 175, ../sass/style.scss */
 .info-box i {
   color: white;
 }
 
-/* line 127, ../sass/style.scss */
+/* line 180, ../sass/style.scss */
 .title h2 {
   margin-top: 5px;
 }
-/* line 131, ../sass/style.scss */
+/* line 184, ../sass/style.scss */
 .title hr {
   border-top: 1px solid #a6a6a6;
 }
 
 /* bootstrap focus effect */
-/* line 139, ../sass/style.scss */
+/* line 192, ../sass/style.scss */
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,

@@ -9,7 +9,7 @@
 <!-- alle tafels -->
 <div class="row" style="margin-top: 15px;">
 	<div class="col-md-12 title">
-		<h2>Status van de tafels</h2>
+		<h2>Overzicht van de tafels <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Tafels verbergen )</a></span></h2>
 		<hr>
 	</div>
 	
@@ -42,6 +42,316 @@
     </div>
     @endforeach
   @endif
+
+<!-- als er geen tafels meer zijn -->
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+    <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+  <div class="col-md-3">
+
+     <div class="info-box bg-gray empty-box">
+        {!! Form::open(array('route' => 'table.store', 'method' => 'POST')) !!}
+          <button type="submit" class="button-clean button-plus">
+            <span class="info-box-icon"><i class="fa fa-plus-circle"></i></span>
+          </button>
+          <div class="info-box-content info-box-empty">
+              <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
+              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+          </div>
+        {!! Form::close() !!}
+      </div>
+    
+  </div>
+
+
+  @section('script')
+
+  <script>
+    $( document ).ready(function() {
+      
+      $("#toggle-tables").click(function() {
+        $(".empty-box").fadeToggle();
+
+      });
+
+    });
+  </script>
+
+  @stop
+
 
 
 
