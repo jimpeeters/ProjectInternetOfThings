@@ -43,6 +43,10 @@ Route::get('/klanten', function()
 Route::get('/statistieken/{date?}', ['as' => 'statistics', 'uses' => 'MainController@statistics']);
 
 
+/* Overview */ 
+
+Route::get('/overzicht', array('as' => 'overview','uses' => 'OverviewController@index'));
+
 /* Home */ 
 Route::get('/', array('as' => 'dashboard','uses' => 'MainController@dashboard'));
 
