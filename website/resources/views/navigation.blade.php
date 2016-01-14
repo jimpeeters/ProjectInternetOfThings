@@ -40,16 +40,6 @@
     </li>
   </ul>
 
-    <x3d width='500px' height='400px'> 
-    <scene>
-  <Shape>
-  <Appearance>
-  <Material diffuseColor='0.6 0.6 0.6' specularColor='0.8 0.8 0.8' shininess='0.145' />
-  </Appearance>
-  <IndexedFaceSet solid='false' coordIndex='...'> ... </IndexedFaceSet>
-  </Shape>
-    </scene> 
-    </x3d>   
 </section>
 <!-- /.sidebar -->
 </aside>

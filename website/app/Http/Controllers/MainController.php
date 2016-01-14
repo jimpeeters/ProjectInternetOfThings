@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Client;
+use App\Area;
 use App\Order;
 use View;
 use App\Tables;
@@ -47,12 +48,15 @@ class MainController extends Controller
             }
         }
 
+        $areas = ['default'=>'Gebieden'] + Area::orderby('name', 'ASC')->lists('name', 'id')->all(); 
+
 
 
 
     	return View::make('dashboard')
     					->with('today', $today)
-        				->with('clients', $clients);
+        				->with('clients', $clients)
+                        ->with('areas', $areas);
 
 
     }

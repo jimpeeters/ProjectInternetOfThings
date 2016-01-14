@@ -9,7 +9,7 @@
 <!-- alle tafels -->
 <div class="row" style="margin-top: 15px;">
 	<div class="col-md-12 title">
-		<h2>Overzicht van de tafels <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Tafels verbergen )</a></span></h2>
+		<h2>Overzicht van de tafels <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Layout verbergen )</a></span></h2>
 		<hr>
 	</div>
 	
@@ -53,7 +53,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+              {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}      
           </div>
         {!! Form::close() !!}
       </div>
@@ -69,7 +69,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -86,7 +86,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -103,7 +103,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -120,7 +120,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -137,7 +137,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -153,7 +153,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -169,7 +169,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -185,7 +185,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -201,7 +201,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -217,7 +217,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -233,7 +233,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -249,7 +249,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -265,7 +265,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -281,7 +281,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -297,7 +297,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -313,7 +313,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>
@@ -329,7 +329,7 @@
           </button>
           <div class="info-box-content info-box-empty">
               <input type="text" name="number" class="form-control" id="number" placeholder="Nummer" value="{{ old('number') }}" required> 
-              <input type="text" name="FK_area_id" class="form-control" id="area" placeholder="Gebied" value="{{ old('FK_area_id') }}" required>       
+               {!! Form::select('area',$areas,null,array('class' => 'form-group form-control','id' => 'area')) !!}        
           </div>
         {!! Form::close() !!}
       </div>

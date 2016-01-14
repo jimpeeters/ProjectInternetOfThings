@@ -5,6 +5,7 @@ $lightblack : #262626;
 $darkblue : #1A2226;
 
 
+
 body {
     background-color: #ecf0f1;
    font-family: 'Work Sans', sans-serif;
@@ -72,6 +73,7 @@ h1, h2, h3, h4, h5, h6 {
     .text {
         padding-left: 10px;
         font-family: 'Work Sans', sans-serif;
+        font-weight: 500;
     }
 }
 
@@ -109,12 +111,13 @@ h1, h2, h3, h4, h5, h6 {
 .info-box-empty {
     margin-top: -100px;
     
-    input:nth-child(1) {
+    input {
         margin-top: 9px;
     }
     
-    input:nth-child(2) {
+    select {
         margin-top: 4px;
+        margin-bottom: 0px;
     }
 }
 
