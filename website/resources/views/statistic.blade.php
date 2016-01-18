@@ -118,13 +118,20 @@
       },
       axes: {
         xaxis: {
-          min: 11,
-          max: 24
+          // min: 0,
+          // max: 25,
+          pad: 1.1
         },
         yaxis: {
           min: 0
         }
 
+      },
+      grid: {
+        gridLineColor: '#FFF'
+      },
+      gridPadding: {
+        // bottom: 1
       }
     });
   </script>

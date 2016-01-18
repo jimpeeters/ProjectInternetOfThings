@@ -61,10 +61,10 @@ class MainController extends Controller
 
     }
 
-    public function statistics($date = "today")
+    public function statistics($dateString = "today")
     {
         // echo('<pre>');
-        switch($date)
+        switch($dateString)
         {
             default:
                 $date = Carbon::today();
@@ -88,6 +88,7 @@ class MainController extends Controller
         $ordersCount = $orders->count('id');
         $longestTime = $shortestTime = null;
         $ordersGet = $orders->get();
+       
         foreach( $ordersGet as $order)
         {
             // echo '<pre>';
@@ -123,23 +124,24 @@ class MainController extends Controller
 
         $clientsHour = [];
         $time = Carbon::today('Europe/Brussels');
-        // var_dump($clients->get());
-        for($i = env('OPENING_TIME', 0); $i <= env('CLOSING_TIME', 24); $i++)
+        // var_dump($date);
+         switch($dateString)
         {
-            $time->hour = $i;
-            // dd($time);
-            $count = 0;
-            foreach($clients->get() as $client)
-            {
-                // var_dump($client->entertime . ' ' . $client->leavetime);
-                if($client->entertime < $time && ($client->leavetime > $time || $client->leavetime == null))
-                {
-                    $count += $client->amount;
-                }
-            }
-            // var_dump($i . ':' .$count);
-            $clientsHour[$i] = $count;
+            default:
+                $clientsHour = $this->dayGraph(Carbon::today(), $clients->get());
+                break;
+            case "week":
+            // dd('week');
+                $date = Carbon::today()->subWeek();
+                $clientsHour = $this->longGraph($date, $clients->get());
+                break;
+            case "month":
+            // dd('month');
+                $date = Carbon::today()->submonth();
+                break;
         }
+
+        
         // dd($clientsHour);
 
         $data = [];
@@ -151,5 +153,54 @@ class MainController extends Controller
         $data['clientsHour'] = $clientsHour;
         // echo('</pre');
         return View('statistic')->with($data);
+    }
+
+    protected function dayGraph($date, $clients)
+    {
+        // dd('test');
+        $time = Carbon::today('Europe/Brussels');
+
+        for($i = env('OPENING_TIME', 10); $i <= env('CLOSING_TIME', 23); $i++)
+        {
+            $time->hour = $i;
+            // dd($time);
+            $count = 0;
+            foreach($clients as $client)
+            {
+                // var_dump($client->entertime . ' ' . $client->leavetime);
+                if($client->entertime < $time && ($client->leavetime > $time || $client->leavetime == null))
+                {
+                    $count += $client->amount;
+                }
+            }
+            // var_dump($i . ':' .$count);
+            $clientsHour[$i] = $count;
+        }
+
+        return $clientsHour;
+    }
+
+    protected function longGraph($date, $clients)
+    {
+        // dd($date);
+        for($i = 0; $i<7; $i++)
+        {
+            $count = 0;
+            $workingDate = $date->addDay();
+
+            foreach($clients as $client)
+            {
+                // var_dump($client->entertime . ' ' . $client->leavetime);
+                if(Carbon::createFromFormat('Y-m-d H:i:s', $client->entertime)->day == $workingDate->day)
+                {
+                    $count += $client->amount;
+                }
+            }
+            var_dump($workingDate->day);
+            $clientsHour[$workingDate->day] = $count;
+        }
+        // dd();
+        return $clientsHour;
+
     }
 }
