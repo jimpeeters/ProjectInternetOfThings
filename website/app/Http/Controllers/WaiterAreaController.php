@@ -1,5 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use App\Waiter;
+use App\WaiterArea;
+use App\Area;
+
+use Validator;
+use Illuminate\Http\Request;
+
+use Carbon\Carbon;
+
 class WaiterAreaController extends Controller {
 
   /**
@@ -12,6 +21,16 @@ class WaiterAreaController extends Controller {
     
   }
 
+  protected function validator($data)
+  {
+    return Validator::make( $data, [
+        'start_time' => 'required',
+        'end_time' => 'required',
+        'waiter' => 'required|exists:waiters,id',
+        'area' => 'required|array'
+      ]);
+  }
+
   /**
    * Show the form for creating a new resource.
    *
@@ -19,7 +38,12 @@ class WaiterAreaController extends Controller {
    */
   public function create()
   {
-    
+    $waiters = Waiter::all();
+    $areas = Area::all();
+
+    $data['waiters'] = $waiters;
+    $data['areas'] = $areas;
+    return View('waiter.area')->with($data);
   }
 
   /**
@@ -27,9 +51,52 @@ class WaiterAreaController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+    var_dump($request->all());
+    $validator = $this->validator($request->all());
+    $area_not_exist = false;
+    $areasDb = Area::all();
+
+    if($validator->fails())
+    {
+      return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    foreach($request->input('area') as $area)
+    {
+      if(!$areasDb->contains($area))
+      {
+        $area_not_exist = true;
+      }
+    }
+    if($area_not_exist)
+    {
+      return redirect()->back()->withInput()->withErrors(['dit gebied bestaat niet']);
+    }
+    // dd();
+    $today = 
+    $start_time = Carbon::today();
+    $end_time = Carbon::today();
+    $start_time->hour = substr($request->input('start_time'), 0, 2);
+    $start_time->minute = substr($request->input('start_time'), 3, 2);
+    $end_time->hour = substr($request->input('end_time'), 0, 2);
+    $end_time->minute = substr($request->input('end_time'), 3, 2);
+    var_dump($start_time);
+    // dd($end_time);
+    foreach($request->input('area') as $area)
+    {
+      $waiterArea = new WaiterArea;
+
+      $waiterArea->FK_waiter_id = $request->input('waiter');
+      $waiterArea->FK_area_id = $area;
+      $waiterArea->start_time = $start_time;
+      $waiterArea->end_time = $end_time;
+
+      $waiterArea->save();
+    }
+    return redirect()->back()->withSucces('ober sucesvol toegekend');
+
   }
 
   /**
