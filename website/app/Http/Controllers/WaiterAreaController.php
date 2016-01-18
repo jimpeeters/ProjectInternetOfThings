@@ -18,7 +18,11 @@ class WaiterAreaController extends Controller {
    */
   public function index()
   {
-    
+    $today = Carbon::today();
+    $waiterAreas = WaiterArea::where('start_time', '>', $today)->orderBy('start_time', 'ASC')->get();
+    // dd($waiterAreas);
+    $data['waiterAreas'] = $waiterAreas;
+    return View('waiterArea.index')->with($data);
   }
 
   protected function validator($data)
@@ -27,7 +31,7 @@ class WaiterAreaController extends Controller {
         'start_time' => 'required',
         'end_time' => 'required',
         'waiter' => 'required|exists:waiters,id',
-        'area' => 'required|array'
+        'area' => 'required'
       ]);
   }
 
@@ -43,7 +47,7 @@ class WaiterAreaController extends Controller {
 
     $data['waiters'] = $waiters;
     $data['areas'] = $areas;
-    return View('waiter.area')->with($data);
+    return View('waiterArea.create')->with($data);
   }
 
   /**
@@ -118,7 +122,21 @@ class WaiterAreaController extends Controller {
    */
   public function edit($id)
   {
-    
+    try{
+      $waiterArea = WaiterArea::findorfail($id);
+
+      $areas = Area::all();
+      
+      $data['areas'] = $areas;
+      $data['waiterArea'] = $waiterArea;
+      return View('waiterArea.edit')->with($data);
+
+
+
+    }catch(\Illuminate\Database\QueryException $e)
+    {
+      abort(404);
+    }
   }
 
   /**
@@ -127,9 +145,24 @@ class WaiterAreaController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request, $id)
   {
-    
+    $validator = $this->validator($request->all());
+    if($validator->fails())
+    {
+      return redirect()->back()->withErrors($validator);
+    }
+    $waiterArea = WaiterArea::findorfail($id);
+
+    $waiterArea->FK_area_id = $request->input('area');
+    $waiterArea->start_time = $request->input('start_time');
+    $waiterArea->end_time = $request->input('end_time');
+
+    $waiterArea->save();
+
+    return redirect()->route('waiterarea.index');
+
+
   }
 
   /**
