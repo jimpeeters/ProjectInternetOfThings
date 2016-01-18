@@ -120,7 +120,27 @@ class MainController extends Controller
 
            
         }
-        // dd($orders);
+
+        $clientsHour = [];
+        $time = Carbon::today('Europe/Brussels');
+        // var_dump($clients->get());
+        for($i = env('OPENING_TIME', 0); $i <= env('CLOSING_TIME', 24); $i++)
+        {
+            $time->hour = $i;
+            // dd($time);
+            $count = 0;
+            foreach($clients->get() as $client)
+            {
+                // var_dump($client->entertime . ' ' . $client->leavetime);
+                if($client->entertime < $time && ($client->leavetime > $time || $client->leavetime == null))
+                {
+                    $count += $client->amount;
+                }
+            }
+            // var_dump($i . ':' .$count);
+            $clientsHour[$i] = $count;
+        }
+        // dd($clientsHour);
 
         $data = [];
         $data['clientSum'] = $clientSum;
@@ -128,6 +148,7 @@ class MainController extends Controller
         $data['orders'] = $ordersCount;
         $data['shortestTime'] = $shortestTime;
         $data['longestTime'] = $longestTime;
+        $data['clientsHour'] = $clientsHour;
         // echo('</pre');
         return View('statistic')->with($data);
     }

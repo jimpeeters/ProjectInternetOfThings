@@ -89,5 +89,27 @@
       </div>
     </div>
 </div>
+<div class="row">
+  <div id="chartdiv">
+    
+  </div>
+</div>
 
+@stop
+
+@section('script')
+  <script src="/js/jquery.jqplot.js"></script>
+  <script>
+  // console.log('test');
+  var clientsHour = [];
+  @foreach($clientsHour as $key => $clients)
+    clientsHour.push([{{$key}},{{$clients}}]);
+  @endforeach
+    console.log(clientsHour);
+    var clientsArray = [];
+    clientsArray.push(clientsHour);
+    // var clientsHour = <?php print_r(json_encode($clientsHour)); ?>;7
+    // console.log(clientsHour);
+    $.jqplot('chartdiv',  clientsArray);
+  </script>
 @stop
