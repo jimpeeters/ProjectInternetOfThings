@@ -110,6 +110,22 @@
     clientsArray.push(clientsHour);
     // var clientsHour = <?php print_r(json_encode($clientsHour)); ?>;7
     // console.log(clientsHour);
-    $.jqplot('chartdiv',  clientsArray);
+    $.jqplot('chartdiv',  clientsArray,{
+      seriesDefaults: {
+        rendererOptions: {
+          smooth: true
+        }
+      },
+      axes: {
+        xaxis: {
+          min: 11,
+          max: 24
+        },
+        yaxis: {
+          min: 0
+        }
+
+      }
+    });
   </script>
 @stop
