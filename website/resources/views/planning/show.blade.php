@@ -5,8 +5,9 @@
 @stop
 
 @section('content')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.css">
 	<h1>planning {{ $planning->first_day }} - {{ $planning->last_day }}</h1>
-	<table>
+	<table class="footable">
 		<thead>
 			<th></th>
 			<th>maandag</th>
@@ -20,9 +21,9 @@
 		<tbody>
 			@foreach($waiters as $waiter)
 				<tr>
-					<td>{{ $waiter->name }}</td>
+					<th>{{ $waiter->name }}</th>
 					@for($i = 0; $i < 7; $i++)
-						<td data-waiter-id="{{ $waiter->id }}" data-waiter-name="{{ $waiter->name }}" data-date="{{ date('Y-m-d', strtotime($planning->first_day . ' + '.$i. ' days' )) }}" data-edit={{ (isset($waiter->planning[$i])) ? 'true data-start=' . $waiter->planning[$i]->start_hour . ' data-end=' . $waiter->planning[$i]->end_hour : 'false' }}>
+						<td data-waiter-id="{{ $waiter->id }}" data-waiter-name="{{ $waiter->name }}" data-date="{{ date('Y-m-d', strtotime($planning->first_day . ' + '.$i. ' days' )) }}" data-edit={{ (isset($waiter->planning[$i])) ? 'true data-start=' . $waiter->planning[$i]->start_hour . ' data-end=' . $waiter->planning[$i]->end_hour . ' data-planning-waiter-id=' . $waiter->planning[$i]->id  : 'false'}}>
 							@if(isset($waiter->planning[$i]))
 								{{ $waiter->planning[$i]->start_hour . ' - ' . $waiter->planning[$i]->end_hour }}
 							@endif
@@ -55,7 +56,7 @@
 					<option value="{{ $i }}">{{ $i }}</option>
 				@endfor
 			</select></br>
-
+			<a href="#" class="btn btn-danger" id="delete">verwijderen</a>
 	        <button type="button" class="btn btn-default" data-dismiss="modal">sluiten</button>
 	        {!! Form::submit('opslaan', ['class' => 'btn btn-primary']) !!}
 	        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
@@ -67,9 +68,12 @@
 @stop
 
 @section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/js/footable.js"></script>
+
 
 	<script>
 		$(document).ready(function(){
+			$('.footable').footable();
 
 			$('table td').on('dblclick', function(e){
 				console.log(e);
@@ -78,15 +82,23 @@
 				$("#addToPlanning input[name=day]").val(e.target.dataset.date);
 				if(e.target.dataset.edit == "true")
 				{
-					$("#addToPlanning").attr('action', '/planning/edit_waiter');
+					var planningWaiterId = e.target.dataset.planningWaiterId;
+					console.log(planningWaiterId);
+					$("#addToPlanning").attr('action', '/planning/aanpassen/' + planningWaiterId);
 					$('#addToPlanning select[name=start_hour]').val(e.target.dataset.start);
 					$('#addToPlanning select[name=end_hour').val(e.target.dataset.end);
+					$('#addToPlanning #delete').show();
+					$('#addToPlanning #delete').attr('href', '/planning/verwijder/' + planningWaiterId );
+
 
 				} else
 				{
 					$("#addToPlanning").attr('action', '/planning/add');
 					$('#addToPlanning select[name=start_hour]').val(11);
 					$('#addToPlanning select[name=end_hour').val(23);
+					$('#addToPlanning #delete').attr('href', '#' );
+					$('#addToPlanning #delete').hide();
+
 
 				}
 				$('#planningModal').modal('show');

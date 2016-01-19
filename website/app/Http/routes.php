@@ -70,8 +70,9 @@ Route::resource('waiterarea', 'WaiterAreaController');
 
 
 Route::resource('waiterarea', 'WaiterAreaController');
-Route::resource('planning', 'planningController');
-Route::get('planning/{planning_id}/index/', ['as' => 'planning.waiter.index', 'uses' => 'planningWaiterController@index']);
-Route::post('planning/add', ['as' => 'planning.add', 'uses' => 'planningWaiterController@store']);
-
+Route::resource('planning', 'PlanningController');
+Route::get('planning/{planning_id}/index/', ['as' => 'planning.waiter.index', 'uses' => 'PlanningWaiterController@index']);
+Route::post('planning/add', ['as' => 'planning.add', 'uses' => 'PlanningWaiterController@store']);
+Route::get('planning/verwijder/{id}', ['as' => 'planning.delete', 'uses' => 'PlanningWaiterController@destroy']);
+Route::post('planning/aanpassen/{id}', ['as' => 'planning.aanpassen', 'uses' => 'PlanningWaiterController@update']);
 }); 

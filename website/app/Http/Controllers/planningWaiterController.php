@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Planning;
-use App\planningWaiter;
+use App\PlanningWaiter;
 
 use Validator;
 
@@ -27,11 +27,11 @@ class planningWaiterController extends Controller
     protected function validator($data)
 	{
 	    return Validator::make($data,[ 
-	    	'id' => 'required|exists:waiters,id',
-	    	'planning' => 'required|exists:planning,id',
-	    	'day' => 'required|date',
-	    	'start_hour' => 'required|numeric|between:0,23',
-	    	'end_hour' => 'required|numeric|between:0,23'
+	    	'id' 			=> 'required|exists:waiters,id',
+	    	'planning' 		=> 'required|exists:planning,id',
+	    	'day' 			=> 'required|date',
+	    	'start_hour' 	=> 'required|numeric|between:0,23',
+	    	'end_hour' 		=> 'required|numeric|between:0,23'
 	        ]
 	      );
 	}
@@ -44,7 +44,7 @@ class planningWaiterController extends Controller
     	{
     		return redirect()->back()->withErrors($validator);
     	}
-    	$planningWaiter = new planningWaiter;
+    	$planningWaiter = new PlanningWaiter;
     	$planningWaiter->FK_waiter_id = $request->input('id');
     	$planningWaiter->FK_planning_id = $request->input('planning');
     	$planningWaiter->day = $request->input('day');
@@ -66,14 +66,37 @@ class planningWaiterController extends Controller
 
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
+    	$planningWaiter = PlanningWaiter::find($id);
+    	if(!$planningWaiter)
+    	{
+    		return redirect()->back()->withErrors(['er is geen ingeplande ober gevonden met dit id']);
+    	}
+    	$planningWaiter->start_hour = $request->input('start_hour');
+    	$planningWaiter->end_hour = $request->input('end_hour');
+    	$planningWaiter->save();
 
+    	return redirect()->back();
+    	
     }
 
     public function destroy($id)
     {
+    	$idArray = ['id' => $id];
+    	// array_push($idArray, );
+    	$validator = Validator::make($idArray,[
+    		'id' => 'required|exists:planning_waiter,id'
+    		]);
+    	if($validator->fails())
+    	{
+    		return redirect()->back()->withErrors($validator);
+    	}
+    	$planningWaiter = PlanningWaiter::find($id);
+    	$planningWaiter->delete();
+    	// $planningWaiter->save();
 
+    	return redirect()->back();
     }
 
 }
