@@ -15,6 +15,13 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Work Sans', sans-serif;
 }
 
+.invisible {
+  opacity: 0;
+}
+
+.underline {
+  text-decoration: underline;
+}
 /*clean button */
 
 .button-clean {
@@ -76,8 +83,154 @@ h1, h2, h3, h4, h5, h6 {
         font-weight: 500;
     }
 }
+/* overzicht */
 
-/* overzicht tafels */
+.main-sidebar {
+  min-height: 130%;
+}
+
+/* overzicht tafels advanced */ 
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#locationText{
+    font-size: 0.8em;
+}
+
+#decorationModal {
+
+  .modal-footer-table{
+      padding-top: 15px;
+
+      input, select {
+        margin-bottom: 15px;
+        width: 50%;
+      }
+  }
+
+.choiseWindow {
+
+    .choise-block {
+      position: relative;
+      width: 80%;
+      height: 0;
+      padding-bottom: 80%;
+      border-radius: 5px;
+    }
+
+    .block-text {
+      margin-bottom: 15px;
+
+    }
+
+  }
+}
+
+.dashboard-advanced {
+    margin: 0px 15px 0px 15px;
+}
+
+.pointer{
+    cursor: pointer !important;
+}
+.empty-block-advanced {
+
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-color: #d2d6de;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+    opacity: 1;
+
+
+    &:hover, &:focus {
+      opacity: 0.5;
+      cursor: pointer;
+
+        .button-clean i {
+           color: white;
+        }
+    }
+
+    .button-clean {
+
+        i {
+          transition:all 0.5s ease;
+          -webkit-transition:all 0.5s ease;
+          color: #747474;
+
+          width: 50%;
+          height: 50%;
+          overflow: auto;
+          margin: auto;
+          position: absolute;
+          top: 0; left: 0; bottom: 0; right: 0;
+          font-size : 45px;
+        }
+
+    }
+
+}
+
+.filled-block-advanced {
+
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-color: #d2d6de;
+    transition:all 0.5s ease;
+    -webkit-transition:all 0.5s ease;
+
+    &:hover, &:focus {
+        opacity : 0.8;
+    }
+}
+
+
+
+/* block achtergronden */ 
+
+.wood {
+  background: #e5a76e;
+  background-image: url("/images/wood.png");
+}
+
+.food {
+  background: #a3b66c;
+  background-image: url("/images/food.png");
+}
+
+.wall-horizontal {
+    margin-top: 30%;
+    margin-bottom: 30%;
+    background-color: #37281b;
+    padding-bottom: 40% !important; 
+}    
+
+
+#decorationModal {
+
+  .wall-horizontal {
+    margin-bottom: 20%;
+    background-color: #37281b;
+    padding-bottom: 40% !important; 
+  }  
+
+}
+
+.wall-vertical {
+    width : 40% !important; 
+    margin: 0px auto;
+    background-color: #37281b;
+}
+
+/* overzicht tafels  simple */
 
 .info-box {
     margin-bottom: 13px;
@@ -212,5 +365,6 @@ input[type="color"]:focus,
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 0, 0, 0.6);
   outline: 0 none;
 }
+
 
 
