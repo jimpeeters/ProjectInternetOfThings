@@ -71,5 +71,7 @@ Route::resource('waiterarea', 'WaiterAreaController');
 
 Route::resource('waiterarea', 'WaiterAreaController');
 Route::resource('planning', 'planningController');
+Route::get('planning/{planning_id}/index/', ['as' => 'planning.waiter.index', 'uses' => 'planningWaiterController@index']);
+Route::post('planning/add', ['as' => 'planning.add', 'uses' => 'planningWaiterController@store']);
 
 }); 
