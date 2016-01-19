@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Area;
+use App\Waiter;
+
 use Illuminate\Database\Eloquent\Model;
 
 class WaiterArea extends Model {
@@ -11,12 +14,12 @@ class WaiterArea extends Model {
 
 	public function waiter()
 	{
-		return $this->belongsTo('Waiter', 'FK_waiter_id');
+		return $this->belongsTo('App\Waiter', 'FK_waiter_id');
 	}
 
 	public function area()
 	{
-		return $this->belongsTo('Area', 'FK_area_id');
+		return $this->belongsTo('App\Area', 'FK_area_id');
 	}
 
 }

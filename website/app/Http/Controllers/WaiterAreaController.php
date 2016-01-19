@@ -1,5 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use App\Waiter;
+use App\WaiterArea;
+use App\Area;
+
+use Validator;
+use Illuminate\Http\Request;
+
+use Carbon\Carbon;
+
 class WaiterAreaController extends Controller {
 
   /**
@@ -9,7 +18,21 @@ class WaiterAreaController extends Controller {
    */
   public function index()
   {
-    
+    $today = Carbon::today();
+    $waiterAreas = WaiterArea::where('start_time', '>', $today)->orderBy('start_time', 'ASC')->get();
+    // dd($waiterAreas);
+    $data['waiterAreas'] = $waiterAreas;
+    return View('waiterArea.index')->with($data);
+  }
+
+  protected function validator($data)
+  {
+    return Validator::make( $data, [
+        'start_time' => 'required',
+        'end_time' => 'required',
+        'waiter' => 'required|exists:waiters,id',
+        'area' => 'required'
+      ]);
   }
 
   /**
@@ -19,7 +42,12 @@ class WaiterAreaController extends Controller {
    */
   public function create()
   {
-    
+    $waiters = Waiter::all();
+    $areas = Area::all();
+
+    $data['waiters'] = $waiters;
+    $data['areas'] = $areas;
+    return View('waiterArea.create')->with($data);
   }
 
   /**
@@ -27,9 +55,52 @@ class WaiterAreaController extends Controller {
    *
    * @return Response
    */
-  public function store()
+  public function store(Request $request)
   {
-    
+    var_dump($request->all());
+    $validator = $this->validator($request->all());
+    $area_not_exist = false;
+    $areasDb = Area::all();
+
+    if($validator->fails())
+    {
+      return redirect()->back()->withInput()->withErrors($validator);
+    }
+
+    foreach($request->input('area') as $area)
+    {
+      if(!$areasDb->contains($area))
+      {
+        $area_not_exist = true;
+      }
+    }
+    if($area_not_exist)
+    {
+      return redirect()->back()->withInput()->withErrors(['dit gebied bestaat niet']);
+    }
+    // dd();
+    $today = 
+    $start_time = Carbon::today();
+    $end_time = Carbon::today();
+    $start_time->hour = substr($request->input('start_time'), 0, 2);
+    $start_time->minute = substr($request->input('start_time'), 3, 2);
+    $end_time->hour = substr($request->input('end_time'), 0, 2);
+    $end_time->minute = substr($request->input('end_time'), 3, 2);
+    var_dump($start_time);
+    // dd($end_time);
+    foreach($request->input('area') as $area)
+    {
+      $waiterArea = new WaiterArea;
+
+      $waiterArea->FK_waiter_id = $request->input('waiter');
+      $waiterArea->FK_area_id = $area;
+      $waiterArea->start_time = $start_time;
+      $waiterArea->end_time = $end_time;
+
+      $waiterArea->save();
+    }
+    return redirect()->back()->withSucces('ober sucesvol toegekend');
+
   }
 
   /**
@@ -51,7 +122,21 @@ class WaiterAreaController extends Controller {
    */
   public function edit($id)
   {
-    
+    try{
+      $waiterArea = WaiterArea::findorfail($id);
+
+      $areas = Area::all();
+      
+      $data['areas'] = $areas;
+      $data['waiterArea'] = $waiterArea;
+      return View('waiterArea.edit')->with($data);
+
+
+
+    }catch(\Illuminate\Database\QueryException $e)
+    {
+      abort(404);
+    }
   }
 
   /**
@@ -60,9 +145,24 @@ class WaiterAreaController extends Controller {
    * @param  int  $id
    * @return Response
    */
-  public function update($id)
+  public function update(Request $request, $id)
   {
-    
+    $validator = $this->validator($request->all());
+    if($validator->fails())
+    {
+      return redirect()->back()->withErrors($validator);
+    }
+    $waiterArea = WaiterArea::findorfail($id);
+
+    $waiterArea->FK_area_id = $request->input('area');
+    $waiterArea->start_time = $request->input('start_time');
+    $waiterArea->end_time = $request->input('end_time');
+
+    $waiterArea->save();
+
+    return redirect()->route('waiterarea.index');
+
+
   }
 
   /**

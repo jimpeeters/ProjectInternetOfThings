@@ -70,5 +70,6 @@ Route::resource('waiterarea', 'WaiterAreaController');
 
 
 Route::resource('waiterarea', 'WaiterAreaController');
+Route::resource('planning', 'planningController');
 
 }); 
