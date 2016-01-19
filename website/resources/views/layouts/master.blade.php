@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/css/daterangepicker-bs3.css">
     <link rel="stylesheet" href="/css/AdminLTE.min.css">
     <link rel="stylesheet" href="/css/skin-black.css">
-    <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/download/x3dom.css'/>
     <link rel="stylesheet" href="/css/stylesheets/style.css">
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700,500,900' rel='stylesheet' type='text/css'>
 
@@ -43,7 +42,6 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script type='text/javascript' src='http://www.x3dom.org/download/x3dom.js'> </script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/app.js"></script>
 
