@@ -20,7 +20,7 @@ class WaiterAreaController extends Controller {
   {
     $today = Carbon::today();
     $waiterAreas = WaiterArea::where('start_time', '>', $today)->orderBy('start_time', 'ASC')->get();
-    // dd($waiterAreas);
+
     $data['waiterAreas'] = $waiterAreas;
     return View('waiterArea.index')->with($data);
   }
@@ -69,6 +69,7 @@ class WaiterAreaController extends Controller {
 
     foreach($request->input('area') as $area)
     {
+      //check if all added areas exist
       if(!$areasDb->contains($area))
       {
         $area_not_exist = true;
@@ -76,18 +77,18 @@ class WaiterAreaController extends Controller {
     }
     if($area_not_exist)
     {
+      //if one area doesn't exist, raise exception
       return redirect()->back()->withInput()->withErrors(['dit gebied bestaat niet']);
     }
-    // dd();
-    $today = 
+
     $start_time = Carbon::today();
     $end_time = Carbon::today();
     $start_time->hour = substr($request->input('start_time'), 0, 2);
     $start_time->minute = substr($request->input('start_time'), 3, 2);
     $end_time->hour = substr($request->input('end_time'), 0, 2);
     $end_time->minute = substr($request->input('end_time'), 3, 2);
-    var_dump($start_time);
-    // dd($end_time);
+
+    //add all waiterareas
     foreach($request->input('area') as $area)
     {
       $waiterArea = new WaiterArea;
@@ -99,7 +100,7 @@ class WaiterAreaController extends Controller {
 
       $waiterArea->save();
     }
-    return redirect()->back()->withSucces('ober sucesvol toegekend');
+    return redirect()->back()->withSucces('ober succesvol toegekend');
 
   }
 
@@ -122,21 +123,12 @@ class WaiterAreaController extends Controller {
    */
   public function edit($id)
   {
-    try{
-      $waiterArea = WaiterArea::findorfail($id);
-
-      $areas = Area::all();
-      
-      $data['areas'] = $areas;
-      $data['waiterArea'] = $waiterArea;
-      return View('waiterArea.edit')->with($data);
-
-
-
-    }catch(\Illuminate\Database\QueryException $e)
-    {
-      abort(404);
-    }
+    $waiterArea = WaiterArea::findorfail($id);
+    $areas = Area::all();
+    
+    $data['areas'] = $areas;
+    $data['waiterArea'] = $waiterArea;
+    return View('waiterArea.edit')->with($data);
   }
 
   /**
@@ -148,10 +140,12 @@ class WaiterAreaController extends Controller {
   public function update(Request $request, $id)
   {
     $validator = $this->validator($request->all());
+
     if($validator->fails())
     {
       return redirect()->back()->withErrors($validator);
     }
+
     $waiterArea = WaiterArea::findorfail($id);
 
     $waiterArea->FK_area_id = $request->input('area');

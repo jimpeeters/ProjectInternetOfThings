@@ -25,26 +25,20 @@ class MainController extends Controller
 
     public function dashboard()
     {
-    	$today  = date('Y-m-d H:i:s', mktime(0, 0, 0, date("m")  , date("d"), date("Y")));
-    	//var_dump( $today );
-    	//$clients = Client::where('entertime', '>', $today)->count();
-
+        $today = Carbon::today('Europe/Brussels');
+        $now = Carbon::now('Europe/Brussels');
         $clients = Client::where('leavetime', '=', null)->get();
-        // dd($clients);
+
         foreach($clients as $client)
         {
-            // dd($client->orders);
             if(count($client->orders) > 0)
             {
-                $now = Carbon::now();
                 $order = $client->orders()
                                 ->where('endtime', '=', null)
                                 ->first();
                 if( $order )
                 {
-                    // $startTime = Carbon::createFromFormat('Y-m-d h:i:s', $order->starttime);
                     $client->wait_time = $now->diffInMinutes(Carbon::createFromFormat('Y-m-d H:i:s',$order->starttime));
-                    // dd($client);
                 }
                 
             }
@@ -78,26 +72,24 @@ class MainController extends Controller
                 break;
         }
         $clients = Client::where('entertime', '>', $date);
-        // var_dump($clients->orderby('created_at', 'desc')->first()->orders);
 
-        // echo '<pre>';
-        // $clients = Client::where('entertime', '>', Carbon::today());
-        // var_dump($clients->get());
+        //get number of booked tables
         $clientSum = $clients->count();
+        //get total amount of clients
         $clientAmount = $clients->sum('amount');
+        //get number of orders
         $orders = Order::where('starttime', '>', $date);
         $ordersCount = $orders->count('id');
         $longestTime = $shortestTime = null;
         $ordersGet = $orders->get();
        
+        //check all orders to set longest and shortest wait time
         foreach( $ordersGet as $order)
         {
-            // echo '<pre>';
-            // var_dump($order->client->table);
             $starttime = Carbon::createFromFormat('Y-m-d H:i:s', $order->starttime);
             $endtime = Carbon::createFromFormat('Y-m-d H:i:s', $order->endtime);
             $wait_time = $endtime->diffInSeconds($starttime);
-            // var_dump($wait_time);
+            //if longesTime or shortestTime is null, set equal to first wait time
             if($longestTime == null || $shortestTime == null)
             {
                 $longestTime = $shortestTime = [];
@@ -105,19 +97,17 @@ class MainController extends Controller
                 $longestTime['table'] = $shortestTime['table'] = $order->client->table->number;
 
             }
+            //if wait time is longer than old longest time, change longest time
             if($wait_time > $longestTime['time'])
             {
                 $longestTime['time'] = $wait_time;
                 $longestTime['table'] = $order->client->table->number;
-                // var_dump($longestTime['table']);
             }
-
+            //if wait time is shorter than old shortest time, change shortest time
             if($wait_time < $shortestTime['time'])
             {
                 $shortestTime['time'] = $wait_time;
                 $shortestTime['table'] = $order->client->table->number;
-                // var_dump($shortestTime['table']);
-
             }
 
            
@@ -125,57 +115,47 @@ class MainController extends Controller
 
         $clientsHour = [];
         $time = Carbon::today('Europe/Brussels');
-        // var_dump($date);
-         switch($dateString)
+        //make graph
+        switch($dateString)
         {
             default:
                 $clientsHour = $this->dayGraph(Carbon::today(), $clients->get());
                 break;
             case "week":
-            // dd('week');
-                $date = Carbon::today()->subWeek();
+                $date = Carbon::today('Europe/Brussels')->subWeek();
                 $clientsHour = $this->longGraph($date, $clients->get(), 'week');
                 break;
             case "month":
-            // dd('month');
-                $date = Carbon::today()->submonth();
+                $date = Carbon::today('Europe/Brussels')->submonth();
                 $clientsHour = $this->longGraph($date, $clients->get(), 'maand');
                 break;
         }
 
-        
-        // dd($clientsHour);
-
         $data = [];
-        $data['clientSum'] = $clientSum;
-        $data['clientAmount'] = $clientAmount;
-        $data['orders'] = $ordersCount;
-        $data['shortestTime'] = $shortestTime;
-        $data['longestTime'] = $longestTime;
-        $data['clientsHour'] = $clientsHour;
-        // echo('</pre');
+        $data['clientSum']      = $clientSum;
+        $data['clientAmount']   = $clientAmount;
+        $data['orders']         = $ordersCount;
+        $data['shortestTime']   = $shortestTime;
+        $data['longestTime']    = $longestTime;
+        $data['clientsHour']    = $clientsHour;
         return View('statistic')->with($data);
     }
 
     protected function dayGraph($date, $clients)
     {
-        // dd('test');
         $time = Carbon::today('Europe/Brussels');
-
+        //set graph points from opening time till closing time
         for($i = env('OPENING_TIME', 10); $i <= env('CLOSING_TIME', 23); $i++)
         {
             $time->hour = $i;
-            // dd($time);
             $count = 0;
             foreach($clients as $client)
             {
-                // var_dump($client->entertime . ' ' . $client->leavetime);
                 if($client->entertime < $time && ($client->leavetime > $time || $client->leavetime == null))
                 {
                     $count += $client->amount;
                 }
             }
-            // var_dump($i . ':' .$count);
             $clientsHour[$i] = $count;
         }
 
@@ -194,6 +174,7 @@ class MainController extends Controller
                 $length = 7;
                 break;
         }
+        //set graph point for last month/last week
         for($i = 0; $i<$length; $i++)
         {
             $count = 0;
@@ -201,16 +182,13 @@ class MainController extends Controller
 
             foreach($clients as $client)
             {
-                // var_dump($client->entertime . ' ' . $client->leavetime);
                 if(Carbon::createFromFormat('Y-m-d H:i:s', $client->entertime)->day == $workingDate->day)
                 {
                     $count += $client->amount;
                 }
             }
-            // var_dump($workingDate->day);
             $clientsHour[$workingDate->day] = $count;
         }
-        // dd();
         return $clientsHour;
 
     }

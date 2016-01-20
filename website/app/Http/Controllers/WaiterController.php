@@ -16,6 +16,7 @@ class WaiterController extends Controller {
    */
   public function index()
   {
+    //get all waiters
     $waiters = Waiter::all();
     $data = [];
     $data['waiters'] = $waiters;
@@ -53,7 +54,7 @@ class WaiterController extends Controller {
       return redirect()->back()->withErrors($validator);
     }
 
-
+    //add new waiter
     $waiter = new Waiter;
 
     $waiter->name = $request->input('name');
@@ -83,6 +84,7 @@ class WaiterController extends Controller {
    */
   public function edit($id)
   {
+    //get waiter on id or throw exception
     $waiter = Waiter::findorfail($id);
     $data = [];
     $data['waiter'] = $waiter;
@@ -97,19 +99,17 @@ class WaiterController extends Controller {
    */
   public function update(Request $request, $id)
   {
-    // return 'test';
-    // dd('oi'); 
     $validator = $this->validator($request->all());
 
     if($validator->fails())
     {
       return redirect()->back()->withInput()->withErrors($validator);
     }
-    
+    //get waiter on id or throw exception
     $waiter = Waiter::findorfail($id);
 
-    $waiter->name = $request->input('name');
-    $waiter->email = $request->input('email');
+      $waiter->name = $request->input('name');
+      $waiter->email = $request->input('email');
 
     $waiter->save();
 
@@ -125,8 +125,10 @@ class WaiterController extends Controller {
    */
   public function destroy($id)
   {
+    //get waiter on id or throw exception
     $waiter = Waiter::findorfail($id);
     $waiter->softDelete();
+    return redirect()->back()->withSuccess('ober verwijderd');
   }
   
 }

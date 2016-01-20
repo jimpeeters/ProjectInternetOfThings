@@ -47,7 +47,7 @@ class ClientController extends Controller {
     {
       return redirect()->back()->withInput($request->all())->withErrors($validator);
     }
-
+    //add new client
     $client = new Client;
 
     $client->FK_client_status_id = $request->input('FK_client_status_id');

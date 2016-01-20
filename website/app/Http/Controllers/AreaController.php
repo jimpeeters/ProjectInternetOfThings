@@ -35,7 +35,6 @@ class AreaController extends Controller {
    */
   public function store(Request $request)
   {
-    var_dump($request->input('name'));
     $validator = Validator::make($request->all(),
         ['name' => 'required',]
       );
@@ -44,6 +43,7 @@ class AreaController extends Controller {
     {
       return redirect()->back()->withErrors($validator);
     } 
+    //add new area
     $area = new Area;
 
     $area->name = $request->input('name');

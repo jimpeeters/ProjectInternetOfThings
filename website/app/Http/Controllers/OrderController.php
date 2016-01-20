@@ -21,12 +21,10 @@ class OrderController extends Controller {
 
   public function newOrder($tableId)
   {
-    // var_dump($tableId);
-    // echo '<pre>';
     $table = Table::find($tableId);
-    // var_dump($table);
+    // get last client sitting at this table
     $client = $table->clients()->orderBy('entertime', 'DESC')->first();
-    // var_dump($client);
+    //make new order
     $order = new Order;
 
     $order->starttime = Carbon::now();
@@ -36,16 +34,15 @@ class OrderController extends Controller {
 
     $area = $table->area;
     $waiterAreas = $area->waiter_area()->where('start_time', '<', Carbon::now())->where('end_time', '>', Carbon::now())->get();
-    // var_dump($waiterAreas);
     $waiters = collect([]);
+    //push all waiters with this waiterArea to array
     foreach($waiterAreas as $waiterArea)
     {
       $waiters->push($waiterArea->waiter);
     }
-    // var_dump($waiters);
+    //send mail to all waiters in this area
     foreach($waiters as $waiter)
     {
-      // echo $waiter->email; echo '<br>';
       Mail::send('emails.waiting', ['user' => $waiter, 'table' => $table], function ($m) use ($waiter, $table) {
                     $m->from(env('MAIL_FROM'), env('MAIL_NAME'));
 

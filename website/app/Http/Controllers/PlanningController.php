@@ -33,8 +33,6 @@ class PlanningController extends Controller
 
     public function show($id)
     {
-        // echo $planning_id;
-        // try{
             $planning = Planning::findorfail($id);
             $waiters = Waiter::all();
             $waiters = $this->planningWaiters($waiters, $id, $planning);
@@ -42,39 +40,25 @@ class PlanningController extends Controller
             $data['planning'] = $planning;
             $data['waiters'] = $waiters;
             return View('planning.show')->with($data);
-        // }
-        // catch(\Illuminate\Database\QueryException $e)
-        // {
-            // abort(404);
-        // }
     }
 
     protected function planningWaiters($waiters, $id, $planning)
     {
         foreach($waiters as $waiter)
         {
-            // echo 'waiter: ' . $waiter->name . '</br>';
+            //get all planningWaiters from this planning
             $planningWaiter = $waiter->planningWaiter()->where('FK_planning_id', $id);
-            // var_dump($planningWaiter->get());
-            // echo '<br>';
-            // dd($planningWaiter->get());
             $startDate = Carbon::createFromFormat('Y-m-d h:i:s', $planning->first_day . ' 00:00:00');
-
-            // var_dump($startDate);
-            // var_dump($startDate->addDay());
-            // echo '<br>';
             $waiter->planning = collect([]);
             for($i = 0; $i < 7; $i++)
             {
+                //if planned in this day, add hours to this position
                 if(count($planningWaiter->where('day', $startDate)->get()))
                 {
-                    // var_dump($planningWaiter->where('day', '=', $startDate)->get());
-                    // echo '</br> deze:';
                     array_add($waiter->planning, $i, $planningWaiter->where('day', $startDate)->first());
                 }
                 $startDate->addDay();
             }
-            // var_dump($waiter->planning); 
         }
         return $waiters;
     }
@@ -104,10 +88,8 @@ class PlanningController extends Controller
         $waiters = Waiter::all();
         $planning = Planning::find($id);
         $waiters = $this->planningWaiters($waiters, $id, $planning);
-        // var_dump($waiters);
-        // foreach($waiters as $waiter)
-        // {
-        // $waiter = Waiter::first();
+       
+        //mail to all waiters
         foreach($waiters as $waiter)
         {
                 Mail::send('emails.planning', ['user' => $waiter, 'waiters' => $waiters, 'planning' => $planning], function ($m) use ($waiter) {

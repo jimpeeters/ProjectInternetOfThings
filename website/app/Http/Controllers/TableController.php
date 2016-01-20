@@ -36,7 +36,6 @@ class TableController extends Controller {
    */
   public function store(Request $request)
   {
-    // dd($request->all());
     $validator = Validator::make($request->all(),
         [
         'number' => 'required|numeric|unique:tables,number',
