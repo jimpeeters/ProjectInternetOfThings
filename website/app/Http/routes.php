@@ -61,7 +61,7 @@ Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'MainController@dashboa
 Route::resource('table', 'TableController');
 // Route::post('/ober/{id}', ['as' => 'ober.update', 'uses' => 'WaiterController@update']);
 Route::resource('ober', 'WaiterController');
-Route::resource('client', 'ClientController');
+Route::resource('klanten', 'ClientController');
 Route::resource('clientstatus', 'ClientStatusController');
 Route::resource('area', 'AreaController');
 
@@ -75,4 +75,7 @@ Route::get('planning/{planning_id}/index/', ['as' => 'planning.waiter.index', 'u
 Route::post('planning/add', ['as' => 'planning.add', 'uses' => 'PlanningWaiterController@store']);
 Route::get('planning/verwijder/{id}', ['as' => 'planning.delete', 'uses' => 'PlanningWaiterController@destroy']);
 Route::post('planning/aanpassen/{id}', ['as' => 'planning.aanpassen', 'uses' => 'PlanningWaiterController@update']);
+Route::get('planning/{id}/mail', ['as' => 'planning.mail', 'uses' => 'PlanningController@mailPlanning']);
+
+
 }); 

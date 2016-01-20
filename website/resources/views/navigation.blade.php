@@ -5,7 +5,7 @@
   <ul class="sidebar-menu">
     <li class="header">Restaurant Colmar</li>
     <li>
-      <a href="/dashboard">
+      <a href="{{ route('dashboard') }}">
         <i class="fa fa-tachometer"></i> <span>Dashboard</span>
       </a>
     </li>
@@ -20,12 +20,12 @@
       </a>
     </li>
     <li>
-      <a href="/obers">
+      <a href="{{ route('ober.index') }}">
         <i class="fa fa-glass"></i> <span>Obers</span>
       </a>
     </li>
     <li>
-      <a href="/klanten">
+      <a href="{{ route('klanten.index') }}">
         <i class="fa fa-male"></i> <span>Klanten</span>
       </a>
     </li>
@@ -34,7 +34,7 @@
         <i class="fa fa-bar-chart"></i> <span>Statistieken</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li><a href="/overzicht"><i class="fa fa-circle-o"></i>Overzicht</a></li>
+        <li><a href="{{ route('statistics') }}"><i class="fa fa-circle-o"></i>Overzicht</a></li>
         <li><a href="#"><i class="fa fa-circle-o"></i>Data</a></li>
       </ul>
     </li>

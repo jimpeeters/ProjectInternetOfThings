@@ -33,7 +33,7 @@
 			@endforeach
 		</tbody>
 	</table>
-	<div class="modal fade" id="planningModal" tabindex="-1" role="dialog">
+	<div class="modal fade" id="planningModal" >
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -41,11 +41,18 @@
 	        <h4 class="modal-title">Modal title</h4>
 	      </div>
 	      {!! Form::open(['route' => 'planning.add', 'id' => 'addToPlanning']) !!}
-	      <div class="modal-footer">
-	      	{!! Form::hidden('planning', $planning->id) !!}
+
+      		{!! Form::hidden('planning', $planning->id, ['class' => 'form-control']) !!}
+
 			{!! Form::hidden('id') !!}
-			{!! Form::text('name') !!}</br>
-			{!! Form::input('date', 'day') !!}</br>
+			<div class="form-group">
+	      		{!! Form::label('name', 'naam: ') !!}
+				{!! Form::text('name') !!}</br>
+	      	</div>
+	      	<div class="form-group">
+	      		{!! Form::label('date', 'datum: ') !!}
+				{!! Form::input('date', 'day') !!}</br>
+	      	</div>
 			<select name="start_hour" id="start_hour">
 				@for($i = 0; $i<24; $i++)
 					<option value="{{ $i }}">{{ $i }}</option>
@@ -57,11 +64,12 @@
 				@endfor
 			</select></br>
 			<a href="#" class="btn btn-danger" id="delete">verwijderen</a>
-	        <button type="button" class="btn btn-default" data-dismiss="modal">sluiten</button>
 	        {!! Form::submit('opslaan', ['class' => 'btn btn-primary']) !!}
 	        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-	      </div>
 	      {!! Form::close() !!}
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">sluiten</button>
+	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!--  /.modal-dialog -->
 	</div><!-- /.modal -->

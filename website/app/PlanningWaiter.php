@@ -18,4 +18,9 @@ class PlanningWaiter extends Model
 	{
 		return $this->belongsTo('App\Waiter', 'FK_waiter_id', 'id');
 	}
+
+	public function planning()
+	{
+		return $this->hasOne('App\Planning', 'FK_planning_id', 'id');
+	}
 }
