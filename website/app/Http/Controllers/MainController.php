@@ -134,11 +134,12 @@ class MainController extends Controller
             case "week":
             // dd('week');
                 $date = Carbon::today()->subWeek();
-                $clientsHour = $this->longGraph($date, $clients->get());
+                $clientsHour = $this->longGraph($date, $clients->get(), 'week');
                 break;
             case "month":
             // dd('month');
                 $date = Carbon::today()->submonth();
+                $clientsHour = $this->longGraph($date, $clients->get(), 'maand');
                 break;
         }
 
@@ -181,10 +182,19 @@ class MainController extends Controller
         return $clientsHour;
     }
 
-    protected function longGraph($date, $clients)
+    protected function longGraph($date, $clients, $processingLength)
     {
         // dd($date);
-        for($i = 0; $i<7; $i++)
+        switch($processingLength)
+        {
+            case 'maand':
+                $length = 31;
+                break;
+            case 'week':
+                $length = 7;
+                break;
+        }
+        for($i = 0; $i<$length; $i++)
         {
             $count = 0;
             $workingDate = $date->addDay();
@@ -197,7 +207,7 @@ class MainController extends Controller
                     $count += $client->amount;
                 }
             }
-            var_dump($workingDate->day);
+            // var_dump($workingDate->day);
             $clientsHour[$workingDate->day] = $count;
         }
         // dd();

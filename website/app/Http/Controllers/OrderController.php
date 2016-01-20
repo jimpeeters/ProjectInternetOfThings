@@ -3,6 +3,9 @@
 use App\Order;
 use App\Table;
 use Carbon\Carbon;
+use App\Waiter;
+
+use Mail;
 
 class OrderController extends Controller {
 
@@ -18,18 +21,37 @@ class OrderController extends Controller {
 
   public function newOrder($tableId)
   {
-    var_dump($tableId);
-    echo '<pre>';
+    // var_dump($tableId);
+    // echo '<pre>';
     $table = Table::find($tableId);
-    var_dump($table);
+    // var_dump($table);
     $client = $table->clients()->orderBy('entertime', 'DESC')->first();
-    var_dump($client);
+    // var_dump($client);
     $order = new Order;
 
     $order->starttime = Carbon::now();
     $order->FK_client_id = $client->id;
 
     $order->save();
+
+    $area = $table->area;
+    $waiterAreas = $area->waiter_area()->where('start_time', '<', Carbon::now())->where('end_time', '>', Carbon::now())->get();
+    // var_dump($waiterAreas);
+    $waiters = collect([]);
+    foreach($waiterAreas as $waiterArea)
+    {
+      $waiters->push($waiterArea->waiter);
+    }
+    // var_dump($waiters);
+    foreach($waiters as $waiter)
+    {
+      // echo $waiter->email; echo '<br>';
+      Mail::send('emails.waiting', ['user' => $waiter, 'table' => $table], function ($m) use ($waiter, $table) {
+                    $m->from(env('MAIL_FROM'), env('MAIL_NAME'));
+
+                    $m->to($waiter->email, $waiter->name)->subject($table->number . ' is aan het wachten');
+                });
+    }
     return 'created';
   }
 
