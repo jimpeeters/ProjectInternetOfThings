@@ -166,7 +166,7 @@ h1, h2, h3, h4, h5, h6 {
 
           width: 50%;
           height: 50%;
-          overflow: auto;
+          overflow: hidden;
           margin: auto;
           position: absolute;
           top: 0; left: 0; bottom: 0; right: 0;
@@ -368,3 +368,23 @@ input[type="color"]:focus,
 
 
 
+/* BUTTON */
+
+  .custom-button {
+      -webkit-border-radius: 5;
+      -moz-border-radius: 5;
+      border-radius: 5px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400; 
+      color: #ffffff;
+      font-size: 14px;
+      background: $lightblack;
+      padding: 8px 18px 8px 18px;
+      text-decoration: none;
+  }
+
+  .custom-button:hover {
+      background: lighten($lightblack, 5);
+      text-decoration: none;
+      color: #ffffff;
+  }

@@ -11,7 +11,12 @@ class Table extends Model {
 
 	public function area()
 	{
-		return $this->belongsTo('Area', 'FK_area_id');
+		return $this->belongsTo('App\Area', 'FK_area_id');
+	}
+
+	public function location()
+	{
+		return $this->belongsTo('App\Location', 'FK_location_id');
 	}
 
 	public function clients()

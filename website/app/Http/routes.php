@@ -1,15 +1,6 @@
 <?php 
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
+
 Route::group(['middleware' => ['api']], function() {
 	Route::get('/order/open/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
 	Route::get('/order/close/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@closeOrder']);
@@ -48,16 +39,27 @@ Route::get('/statistieken/{date?}', ['as' => 'statistics', 'uses' => 'MainContro
 Route::get('/overzicht', array('as' => 'overview','uses' => 'OverviewController@index'));
 
 /* Home */ 
+
 Route::get('/', array('as' => 'dashboard','uses' => 'MainController@dashboard'));
 
 
+/* Order functies (poppetje) */
 
 Route::get('/order/open/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
 Route::get('/order/close/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@closeOrder']);
 
+
+
+/* Decoration */
+
+Route::resource('decoration', 'DecorationController');
+
+
+
+
+
+
 Route::get('/dashboard', ['as' => 'dashboard', 'uses' => 'MainController@dashboard']);
-
-
 Route::resource('table', 'TableController');
 // Route::post('/ober/{id}', ['as' => 'ober.update', 'uses' => 'WaiterController@update']);
 Route::resource('ober', 'WaiterController');

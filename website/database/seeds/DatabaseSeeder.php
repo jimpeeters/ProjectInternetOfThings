@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('StatusesTableSeeder');
 		$this->call('ClientsTableSeeder');
 		$this->call('WaitersTableSeeder');
+		$this->call('LocationTableSeeder');
 
         Model::reguard();
 	}
