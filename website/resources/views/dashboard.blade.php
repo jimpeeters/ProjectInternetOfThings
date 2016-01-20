@@ -46,9 +46,10 @@
 
     $( document ).ready(function() {
       
-      /* de lege tables weghalen */
+      /* de lege tables weghalen  + delete buttons weghalen*/
       $( "#toggle-tables" ).click(function() {
         $( ".empty-box" ).toggleClass( "invisible" );
+        $( ".delete-button" ).toggleClass( "invisible" );
       });
 
 
@@ -116,7 +117,12 @@
     });
 
 
-    $('#decorationModal').on('show.bs.modal', function(event) {
+    $('#new-piece-modal').on('show.bs.modal', function(event) {
+        $("#location-table, #location-decoration").val($(event.relatedTarget).data('id'));
+        $("#locationText").text('( Locatie : ' + $(event.relatedTarget).data('id') + ' )');
+    });
+
+    $('#add-client-modal').on('show.bs.modal', function(event) {
         $("#location-table, #location-decoration").val($(event.relatedTarget).data('id'));
         $("#locationText").text('( Locatie : ' + $(event.relatedTarget).data('id') + ' )');
     });
