@@ -89,6 +89,25 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 130%;
 }
 
+.delete-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #dd4b39;
+  z-index: 1000;
+  padding-right: 4px;
+  transition:all 0.5s ease;
+  -webkit-transition:all 0.5s ease;
+
+  &:hover , &:focus{
+    color : red;
+  }
+
+  i{
+    font-size: 16px;
+  }
+}
+
 /* overzicht tafels advanced */ 
 
 .nopadding {
@@ -100,7 +119,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.8em;
 }
 
-#decorationModal {
+.modal {
 
   .modal-footer-table{
       padding-top: 15px;
@@ -184,6 +203,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 0;
     padding-bottom: 100%;
     background-color: #d2d6de;
+}
+
+
+.table-block-advanced {
     transition:all 0.5s ease;
     -webkit-transition:all 0.5s ease;
 

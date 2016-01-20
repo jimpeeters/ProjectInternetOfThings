@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Table extends Model {
 
 	protected $table = 'tables';
 	public $timestamps = true;
+	protected $dates = ['deleted_at'];
+
+	use SoftDeletes;
 
 	public function area()
 	{
@@ -23,6 +27,11 @@ class Table extends Model {
 	public function clients()
 	{
 		return $this->hasMany('App\Client', 'FK_table_id');
+	}
+
+	public function client()
+	{
+		return $this->hasOne('App\Client', 'FK_table_id');
 	}
 
 }

@@ -13,6 +13,7 @@ class CreateTablesTable extends Migration {
 			$table->integer('number');
 			$table->integer('FK_area_id')->unsigned();
 			$table->integer('FK_location_id')->unsigned();
+			$table->softDeletes();
 		});
 	}
 

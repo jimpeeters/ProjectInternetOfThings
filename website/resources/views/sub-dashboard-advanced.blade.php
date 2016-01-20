@@ -4,28 +4,29 @@
 @foreach($locations as $location)
 	@if($location->table != null)
 		<div class="col-md-1 nopadding pointer">
-			<div class="filled-block-advanced wood" data-toggle="modal" data-target="#decorationModal" data-id="{{$location->id}}">
+			<a class="delete-button" href="/table/delete/{{$location->table->id}}"><i class="fa fa-times"></i></a>
+			<div class="filled-block-advanced table-block-advanced wood" data-tableid="{{$location->table->id}}" data-toggle="modal" data-target="#add-client-modal" data-id="{{$location->id}}">
 			</div>
 		</div>
 	@elseif($location->decoration != null)
 		@if($location->decoration->name == 'buffet')
 
 			 <div class="col-md-1 nopadding pointer">
-				<div class="filled-block-advanced food" data-toggle="modal" data-target="#decorationModal" data-id="{{$location->id}}">
+				<div class="filled-block-advanced food">
 				</div>
 			</div>
 
 		@elseif($location->decoration->name == 'wallv')
 
 			<div class="col-md-1 nopadding pointer">
-				<div class="filled-block-advanced wall-vertical" data-toggle="modal" data-target="#decorationModal" data-id="{{$location->id}}">
+				<div class="filled-block-advanced wall-vertical">
 				</div>
 			</div>
 
 		@elseif($location->decoration->name == 'wallh')
 
 		<div class="col-md-1 nopadding pointer">
-			<div class="filled-block-advanced wall-horizontal" data-toggle="modal" data-target="#decorationModal" data-id="{{$location->id}}">
+			<div class="filled-block-advanced wall-horizontal">
 			</div>
 		</div>
 
@@ -33,7 +34,7 @@
 	@else
 
 		<div class="col-md-1 nopadding pointer">
-			<div class="empty-block-advanced empty-box" data-toggle="modal" data-target="#decorationModal" data-id="{{$location->id}}">
+			<div class="empty-block-advanced empty-box" data-toggle="modal" data-target="#new-piece-modal" data-id="{{$location->id}}">
 			  <button type="submit" class="button-clean">
 			    <i class="fa fa-plus-circle"></i>
 			  </button>	
@@ -42,8 +43,8 @@
 	@endif
 @endforeach
 
-<!-- Modal -->
-<div id="decorationModal" class="modal fade" role="dialog">
+<!-- Modal  Nieuw stuk toevoegen -->
+<div id="new-piece-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -97,6 +98,25 @@
 	          <button type="submit" class="btn custom-button">Toevoegen</button>
         	{!! Form::close() !!}
         </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Modal client toevoegen aan tafel -->
+<div id="add-client-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Klant toevoegen <span id="locationText"></span></h4>
+      </div>
+      <div class="modal-body">
 
       </div>
     </div>

@@ -6,6 +6,9 @@
 
 <div class="row">
 
+	@include('messages.success-log')
+	@include('messages.error-log')
+
 	<div class="col-md-6">
 
 		<div class="box">
@@ -14,33 +17,29 @@
 			<h4>Klant toevoegen</h4>
 		</div>
 
-			{!! Form::open(array('route' => 'client.store', 'method' => 'POST')) !!}
+		@if(count($tableNoClients) > 0)
 
+			{!! Form::open(array('route' => 'klanten.store', 'method' => 'POST')) !!}
 				<div class="form-group">
-					status dropdown
-					<!-- Form::select('status',$statuses,null,array('class' => 'form-group form-control','id' => 'status')) -->
+					<input type="text" name="amount" class="form-control" id="amount" placeholder="Aantal klanten" value="{{ old('amount') }}" required> 
 				</div>
 
-				<div class="form-group">
-					table dropdown
-					<!-- Form::select('table',$tables,null,array('class' => 'form-group form-control','id' => 'tables')) -->
-				</div>
-
-
-                  <!-- Date and time range -->
-                  <div class="form-group">
-                    <label>Aankomst en vertrek:</label>
-                    <div class="input-group">
-                      <div class="input-group-addon">
-                        <i class="fa fa-clock-o"></i>
-                      </div>
-                      <input type="text" class="form-control pull-right" id="reservationtime">
-                    </div><!-- /.input group -->
-                  </div><!-- /.form group -->
+				<select class="form-group form-control" id="tables" name="tables">
+					<option value="" selected="selected">Tafels</option>
+					@foreach($tableNoClients as $table)
+						<option value="{{$table->id}}">Tafel : {{$table->number}}</option>
+					@endforeach
+				</select>
 
 				<button type="submit" class="btn">Toevoegen</button>
 
 			{!! Form::close() !!}
+
+		@else
+
+		 	<p style="margin-top:15px; padding-left:15px;">Er zijn geen tafels meer zonder klanten!</p>
+
+		@endif
 
 		</div>
 

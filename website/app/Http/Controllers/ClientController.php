@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Validator;
 use Carbon\Carbon;
+use App\Table;
+
 
 class ClientController extends Controller {
 
@@ -17,7 +19,18 @@ class ClientController extends Controller {
    */
   public function index()
   {
-    
+
+    $tables = Table::all();
+    $tableNoClients = collect([]);
+    foreach($tables as $table)
+    {
+      if(!count($table->clients))
+      {
+        $tableNoClients->push($table);
+      }
+    }
+
+    return view('clients')->with('tableNoClients' , $tableNoClients);
   }
 
   /**
@@ -39,8 +52,8 @@ class ClientController extends Controller {
   {
     $validator = Validator::make($request->all(),
       [
-        'FK_client_status_id' => 'required|numeric|exists:client_statuses,id',
-        'FK_table_id' => 'required|numeric|exists:tables,id'
+        'tables' => 'required|numeric|not_in:0',
+        'amount' => 'required|numeric'
       ]);
 
     if($validator->fails())
@@ -50,8 +63,19 @@ class ClientController extends Controller {
     //add new client
     $client = new Client;
 
-    $client->FK_client_status_id = $request->input('FK_client_status_id');
-    $client->FK_table_id = $request->input('FK_table_id');
+    //afwachtend
+    $client->FK_client_status_id = '1'; 
+
+    $input = $request->all(); //alle input requesten
+
+    //aantal klanten
+    $client->amount = $input['amount'];
+
+    //tafel uit dropdown halen
+    $tables = explode(',', $input['tables']);
+    $client->FK_table_id     = $tables[0];
+
+    //entertime = nu
     $client->enterTime = Carbon::now();
 
     $client->save();

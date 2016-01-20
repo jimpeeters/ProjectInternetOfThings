@@ -77,7 +77,7 @@ class TableController extends Controller {
    */
   public function edit($id)
   {
-    
+    dd('test');
   }
 
   /**
@@ -99,7 +99,14 @@ class TableController extends Controller {
    */
   public function destroy($id)
   {
-    
+    $table = Table::find($id);
+
+    $table->number = '';
+    $table->save();
+
+    $table->delete();
+
+    return redirect()->back()->withSuccess('Tafel verwijderd');
   }
   
 }

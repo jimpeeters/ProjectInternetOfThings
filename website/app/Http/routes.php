@@ -48,7 +48,9 @@ Route::get('/', array('as' => 'dashboard','uses' => 'MainController@dashboard'))
 Route::get('/order/open/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
 Route::get('/order/close/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@closeOrder']);
 
+/* Tafel verwijderen */
 
+Route::get('/table/delete/{id}', 'TableController@destroy');
 
 /* Decoration */
 
