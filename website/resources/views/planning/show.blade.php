@@ -40,33 +40,41 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title">Modal title</h4>
 	      </div>
-	      {!! Form::open(['route' => 'planning.add', 'id' => 'addToPlanning']) !!}
+	      <div>
+		      {!! Form::open(['route' => 'planning.add', 'id' => 'addToPlanning']) !!}
 
-      		{!! Form::hidden('planning', $planning->id, ['class' => 'form-control']) !!}
+	      		{!! Form::hidden('planning', $planning->id, ['class' => 'form-control']) !!}
 
-			{!! Form::hidden('id') !!}
-			<div class="form-group">
-	      		{!! Form::label('name', 'naam: ') !!}
-				{!! Form::text('name') !!}</br>
-	      	</div>
-	      	<div class="form-group">
-	      		{!! Form::label('date', 'datum: ') !!}
-				{!! Form::input('date', 'day') !!}</br>
-	      	</div>
-			<select name="start_hour" id="start_hour">
-				@for($i = 0; $i<24; $i++)
-					<option value="{{ $i }}">{{ $i }}</option>
-				@endfor
-			</select></br>
-			<select name="end_hour" id="end_hour">
-				@for($i = 0; $i<24; $i++)
-					<option value="{{ $i }}">{{ $i }}</option>
-				@endfor
-			</select></br>
-			<a href="#" class="btn btn-danger" id="delete">verwijderen</a>
-	        {!! Form::submit('opslaan', ['class' => 'btn btn-primary']) !!}
-	        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
-	      {!! Form::close() !!}
+				{!! Form::hidden('id') !!}
+				<div class="form-group">
+		      		{!! Form::label('name', 'naam: ') !!}
+					{!! Form::text('name', '', ['class' => 'form-control']) !!}</br>
+		      	</div>
+		      	<div class="form-group">
+		      		{!! Form::label('date', 'datum: ') !!}
+					{!! Form::input('date', 'day') !!}</br>
+		      	</div>
+		      	<div class="form-group">
+		      		{!! Form::label('start_hour', 'begin tijdstip') !!}
+					<select name="start_hour" id="start_hour">
+						@for($i = 0; $i<24; $i++)
+							<option value="{{ $i }}">{{ $i }}</option>
+						@endfor
+					</select></br>
+		      	</div>
+		      	<div class="form-group">
+		      		{!! Form::label('end_hour', 'eind tijdstip') !!}
+					<select name="end_hour" id="end_hour">
+						@for($i = 0; $i<24; $i++)
+							<option value="{{ $i }}">{{ $i }}</option>
+						@endfor
+					</select></br>
+		      	</div>
+				<a href="#" class="btn btn-danger" id="delete">verwijderen</a>
+		        {!! Form::submit('opslaan', ['class' => 'btn btn-primary']) !!}
+		        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+		      {!! Form::close() !!}
+	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">sluiten</button>
 	      </div>
