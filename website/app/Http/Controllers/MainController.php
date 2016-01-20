@@ -11,7 +11,9 @@ use App\Client;
 use App\Area;
 use App\Order;
 use View;
-use App\Tables;
+use App\Table;
+use App\Location;
+use App\Decoration;
 
 use Carbon\Carbon;
 
@@ -48,16 +50,15 @@ class MainController extends Controller
             }
         }
 
-        $areas = ['default'=>'Gebieden'] + Area::orderby('name', 'ASC')->lists('name', 'id')->all(); 
+        $areas = [''=>'Gebieden'] + Area::orderby('name', 'ASC')->lists('name', 'id')->all(); 
 
-
-
+        $locations = Location::with('table')->with('decoration')->get();
 
     	return View::make('dashboard')
     					->with('today', $today)
         				->with('clients', $clients)
-                        ->with('areas', $areas);
-
+                        ->with('areas', $areas)
+                        ->with('locations', $locations);
 
     }
 

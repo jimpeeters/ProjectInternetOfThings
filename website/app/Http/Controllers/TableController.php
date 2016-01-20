@@ -50,6 +50,7 @@ class TableController extends Controller {
 
     $table = new Table;
 
+    $table->FK_location_id = $request->input('location');
     $table->number = $request->input('number');
     $table->FK_area_id = $request->input('area');
 
