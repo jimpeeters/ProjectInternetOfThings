@@ -95,7 +95,7 @@ class MainController extends Controller
             // var_dump($order->client->table);
             $starttime = Carbon::createFromFormat('Y-m-d H:i:s', $order->starttime);
             $endtime = Carbon::createFromFormat('Y-m-d H:i:s', $order->endtime);
-            $wait_time = $starttime->diffInSeconds($endtime);
+            $wait_time = $endtime->diffInSeconds($starttime);
             // var_dump($wait_time);
             if($longestTime == null || $shortestTime == null)
             {
