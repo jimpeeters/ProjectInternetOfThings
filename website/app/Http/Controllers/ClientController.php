@@ -76,7 +76,7 @@ class ClientController extends Controller {
     $client->FK_table_id     = $tables[0];
 
     //entertime = nu
-    $client->enterTime = Carbon::now();
+    $client->enterTime = Carbon::now('Europe/Brussels');
 
     $client->save();
     return redirect()->back()->withSuccess('Klant succesvol toegevoegd.');
@@ -109,7 +109,7 @@ class ClientController extends Controller {
     $client->FK_table_id = $input['FK_table_id'];
 
     //entertime = nu
-    $client->enterTime = Carbon::now();
+    $client->enterTime = Carbon::now('Europe/Brussels');
 
     $client->save();
     return redirect()->back()->withSuccess('Klant succesvol toegevoegd.');

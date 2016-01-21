@@ -29,7 +29,16 @@ class MainController extends Controller
         $now = Carbon::now('Europe/Brussels');
         $clients = Client::where('leavetime', '=', null)->get();
 
-        foreach($clients as $client)
+        $clientsWithTable = collect([]);
+            foreach($clients as $client)
+            {
+              if($client->table != null)
+              {
+                $clientsWithTable->push($client);
+              }
+            }
+
+        foreach($clientsWithTable as $client)
         {
             if(count($client->orders) > 0)
             {
@@ -50,7 +59,7 @@ class MainController extends Controller
 
     	return View::make('dashboard')
     					->with('today', $today)
-        				->with('clients', $clients)
+        				->with('clientsWithTable', $clientsWithTable)
                         ->with('areas', $areas)
                         ->with('locations', $locations);
 

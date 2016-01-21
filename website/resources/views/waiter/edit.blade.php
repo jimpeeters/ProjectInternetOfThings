@@ -30,7 +30,7 @@
 					
 				</div>
 
-				<button type="submit" class="btn">Toevoegen</button>
+				<button type="submit" class="btn">Aanpassen</button>
 
 			{!! Form::close() !!}
 
