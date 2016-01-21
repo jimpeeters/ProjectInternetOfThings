@@ -27,13 +27,13 @@ class OrderController extends Controller {
     //make new order
     $order = new Order;
 
-    $order->starttime = Carbon::now();
+    $order->starttime = Carbon::now('Europe/Brussels');
     $order->FK_client_id = $client->id;
 
     $order->save();
 
     $area = $table->area;
-    $waiterAreas = $area->waiter_area()->where('start_time', '<', Carbon::now())->where('end_time', '>', Carbon::now())->get();
+    $waiterAreas = $area->waiter_area()->where('start_time', '<', Carbon::now('Europe/Brussels'))->where('end_time', '>', Carbon::now('Europe/Brussels'))->get();
     $waiters = collect([]);
     //push all waiters with this waiterArea to array
     foreach($waiterAreas as $waiterArea)
@@ -61,7 +61,7 @@ class OrderController extends Controller {
     $lastOrder = $client->orders()->where('endtime', NULL)->get();
     foreach($lastOrder as $order)
     {
-      $order->endtime = Carbon::now();
+      $order->endtime = Carbon::now('Europe/Brussels');
       $order->save();
     }
     

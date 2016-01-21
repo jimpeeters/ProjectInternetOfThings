@@ -165,6 +165,7 @@ h1, h2, h3, h4, h5, h6 {
     transition:all 0.5s ease;
     -webkit-transition:all 0.5s ease;
     opacity: 1;
+    border: 1px solid #d2d6de;
 
 
     &:hover, &:focus {
@@ -203,6 +204,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 0;
     padding-bottom: 100%;
     background-color: #d2d6de;
+    border: 1px solid #333;
+
 }
 
 
@@ -220,19 +223,19 @@ h1, h2, h3, h4, h5, h6 {
 /* block achtergronden */ 
 
 .wood {
-  background: #e5a76e;
-  background-image: url("/images/wood.png");
+  background: $yellow;
 }
 
 .food {
   background: #a3b66c;
   background-image: url("/images/food.png");
+  border: 1px solid #a3b66c;
 }
 
 .wall-horizontal {
     margin-top: 30%;
     margin-bottom: 30%;
-    background-color: #37281b;
+    background-color: #333;
     padding-bottom: 40% !important; 
 }    
 
@@ -241,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .wall-horizontal {
     margin-bottom: 20%;
-    background-color: #37281b;
+    background-color: #333;
     padding-bottom: 40% !important; 
   }  
 
@@ -250,7 +253,7 @@ h1, h2, h3, h4, h5, h6 {
 .wall-vertical {
     width : 40% !important; 
     margin: 0px auto;
-    background-color: #37281b;
+    background-color: #333;
 }
 
 /* overzicht tafels  simple */
