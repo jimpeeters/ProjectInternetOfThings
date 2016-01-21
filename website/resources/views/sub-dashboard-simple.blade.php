@@ -6,7 +6,7 @@
       <div class="info-box bg-yellow">
         <span class="info-box-icon"><i class="fa fa-hourglass-o"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Tafel {{$client->table->id}}</span>
+          <span class="info-box-text">Tafel {{$client->table->number}}</span>
           <span class="info-box-number">Afwachtend</span>
           <span class="progress-description">
             wachttijd : {{$client->wait_time}} min <!-- time left plugin doen -->
@@ -17,7 +17,7 @@
       <div class="info-box bg-green">
         <span class="info-box-icon"><i class="fa fa-thumbs-o-up"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Tafel {{$client->table->id}}</span>
+          <span class="info-box-text">Tafel {{$client->table->number}}</span>
           <span class="info-box-number">Bediend</span>
           <span class="progress-description">
           </span>
