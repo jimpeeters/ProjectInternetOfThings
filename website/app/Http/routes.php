@@ -10,7 +10,6 @@ Route::group(['middleware' => ['api']], function() {
 Route::group(['middleware' => ['web']], function () {
     // Add your routes here
 
-
 Route::get('/gebieden', function()
 {
 	return View::make('areas');
@@ -33,7 +32,6 @@ Route::get('/klanten', function()
 
 Route::get('/statistieken/{date?}', ['as' => 'statistics', 'uses' => 'MainController@statistics']);
 
-
 /* Overview */ 
 
 Route::get('/overzicht', array('as' => 'overview','uses' => 'OverviewController@index'));
@@ -41,7 +39,6 @@ Route::get('/overzicht', array('as' => 'overview','uses' => 'OverviewController@
 /* Home */ 
 
 Route::get('/', array('as' => 'dashboard','uses' => 'MainController@dashboard'));
-
 
 /* Order functies (poppetje) */
 
@@ -52,11 +49,17 @@ Route::get('/order/close/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderContro
 
 Route::get('/table/delete/{id}', 'TableController@destroy');
 
+/* Decoratie verwijderen */
+
+Route::get('/decoration/delete/{id}', 'DecorationController@destroy');
+
 /* Decoration */
 
 Route::resource('decoration', 'DecorationController');
 
+/* Klanten aan tafel toevoegen in dashboard */
 
+Route::post('klanten/add',  array('as' => 'addClients','uses' => 'ClientController@addClients'));
 
 
 

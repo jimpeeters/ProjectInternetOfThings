@@ -79,7 +79,40 @@ class ClientController extends Controller {
     $client->enterTime = Carbon::now();
 
     $client->save();
-    return redirect()->back()->withSuccess('klant toegevoegd');
+    return redirect()->back()->withSuccess('Klant succesvol toegevoegd.');
+  }
+
+
+  public function addClients(Request $request)
+  {
+      $validator = Validator::make($request->all(),
+      [
+        'amount' => 'required|numeric'
+      ]);
+
+    if($validator->fails())
+    {
+      return redirect()->back()->withInput($request->all())->withErrors($validator);
+    }
+    //add new client
+    $client = new Client;
+
+    //afwachtend
+    $client->FK_client_status_id = '1'; 
+
+    $input = $request->all(); //alle input requesten
+
+    //aantal klanten
+    $client->amount = $input['amount'];
+
+    //FK uit input field
+    $client->FK_table_id = $input['FK_table_id'];
+
+    //entertime = nu
+    $client->enterTime = Carbon::now();
+
+    $client->save();
+    return redirect()->back()->withSuccess('Klant succesvol toegevoegd.');
   }
 
   /**

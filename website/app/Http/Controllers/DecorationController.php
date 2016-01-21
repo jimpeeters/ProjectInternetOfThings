@@ -19,8 +19,17 @@ class DecorationController extends Controller
 
 	    $decoration->save();
 
-	    return redirect()->back()->withSuccess('decoratie toegevoegd');
+	    return redirect()->back()->withSuccess('Decoratie succesvol toegevoegd.');
 
+	}
+
+	public function destroy($id)
+	{
+		$decoration = Decoration::find($id);
+
+	    $decoration->delete();
+
+	    return redirect()->back()->withSuccess('Decoratie succesvol verwijderd.');
 	}
 
 }

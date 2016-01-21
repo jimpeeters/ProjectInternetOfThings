@@ -118,13 +118,21 @@
 
 
     $('#new-piece-modal').on('show.bs.modal', function(event) {
+
+        //input field invullen locaties
         $("#location-table, #location-decoration").val($(event.relatedTarget).data('id'));
+
+        //locatie nummer vanboven
         $("#locationText").text('( Locatie : ' + $(event.relatedTarget).data('id') + ' )');
     });
 
     $('#add-client-modal').on('show.bs.modal', function(event) {
-        $("#location-table, #location-decoration").val($(event.relatedTarget).data('id'));
-        $("#locationText").text('( Locatie : ' + $(event.relatedTarget).data('id') + ' )');
+
+        //FK_table_id invulllen
+        $("#FK_table_id").val($(event.relatedTarget).data('tableid'));
+
+        //locatie nummer vanboven
+        $("#tableNumber").text('( Tafel : ' + $(event.relatedTarget).data('tablenumber') + ' )');
     });
 
 

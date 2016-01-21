@@ -55,7 +55,7 @@ class TableController extends Controller {
 
     $table->save();
 
-    return redirect()->back()->withSuccess('tafel toegevoegd');
+    return redirect()->back()->withSuccess('Tafel succesvol toegevoegd.');
   }
 
   /**
@@ -106,7 +106,7 @@ class TableController extends Controller {
 
     $table->delete();
 
-    return redirect()->back()->withSuccess('Tafel verwijderd');
+    return redirect()->back()->withSuccess('Tafel succesvol verwijderd.');
   }
   
 }

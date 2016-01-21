@@ -5,13 +5,18 @@
 	@if($location->table != null)
 		<div class="col-md-1 nopadding pointer">
 			<a class="delete-button" href="/table/delete/{{$location->table->id}}"><i class="fa fa-times"></i></a>
-			<div class="filled-block-advanced table-block-advanced wood" data-tableid="{{$location->table->id}}" data-toggle="modal" data-target="#add-client-modal" data-id="{{$location->id}}">
+			@if(count($location->table->clients) > 0)
+				<div class="filled-block-advanced table-block-advanced wood">
+			@else
+				<div class="filled-block-advanced table-block-advanced wood" data-tableid="{{$location->table->id}}" data-toggle="modal" data-target="#add-client-modal" data-tablenumber="{{$location->table->number}}">
+			@endif
 			</div>
 		</div>
 	@elseif($location->decoration != null)
 		@if($location->decoration->name == 'buffet')
 
 			 <div class="col-md-1 nopadding pointer">
+			 	<a class="delete-button" href="/decoration/delete/{{$location->decoration->id}}"><i class="fa fa-times"></i></a>
 				<div class="filled-block-advanced food">
 				</div>
 			</div>
@@ -19,6 +24,7 @@
 		@elseif($location->decoration->name == 'wallv')
 
 			<div class="col-md-1 nopadding pointer">
+				<a class="delete-button" href="/decoration/delete/{{$location->decoration->id}}"><i class="fa fa-times"></i></a>
 				<div class="filled-block-advanced wall-vertical">
 				</div>
 			</div>
@@ -26,6 +32,7 @@
 		@elseif($location->decoration->name == 'wallh')
 
 		<div class="col-md-1 nopadding pointer">
+			<a class="delete-button" href="/decoration/delete/{{$location->decoration->id}}"><i class="fa fa-times"></i></a>
 			<div class="filled-block-advanced wall-horizontal">
 			</div>
 		</div>
@@ -114,9 +121,20 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Klant toevoegen <span id="locationText"></span></h4>
+        <h4 class="modal-title">Klant toevoegen <span id="tableNumber"></span></h4>
       </div>
       <div class="modal-body">
+
+			{!! Form::open(array('route' => 'addClients', 'method' => 'POST')) !!}
+				<div class="form-group">
+					<input type="text" name="amount" class="form-control" id="amount" placeholder="Aantal klanten" value="{{ old('amount') }}" required> 
+				</div>
+
+				<input id="FK_table_id" name="FK_table_id" type="hidden"></input>    
+
+				<button type="submit" class="btn custom-button">Toevoegen</button>
+
+			{!! Form::close() !!}
 
       </div>
     </div>
