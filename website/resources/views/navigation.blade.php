@@ -4,32 +4,32 @@
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
     <li class="header">Restaurant Colmar</li>
-    <li>
+    <li class="{{ Request::is('dashboard*') ? 'active' : null }}">
       <a href="{{ route('dashboard') }}">
         <i class="fa fa-tachometer"></i> <span>Dashboard</span>
       </a>
     </li>
-    <li>
+    <li class="{{ Request::is('gebieden*') ? 'active' : null }}">
       <a href="/gebieden">
         <i class="fa fa-cutlery"></i> <span>Gebieden</span>
       </a>
     </li>
-    <li>
+    <li class="{{ Request::is('tafels*') ? 'active' : null }}">
       <a href="/tafels">
         <i class="fa fa-object-group"></i> <span>Tafels</span>
       </a>
     </li>
-    <li>
+    <li class="{{ Request::is('ober*') ? 'active' : null }}">
       <a href="{{ route('ober.index') }}">
         <i class="fa fa-glass"></i> <span>Obers</span>
       </a>
     </li>
-    <li>
+    <li class="{{ Request::is('klanten*') ? 'active' : null }}">
       <a href="{{ route('klanten.index') }}">
         <i class="fa fa-male"></i> <span>Klanten</span>
       </a>
     </li>
-    <li class="treeview">
+    <li class="treeview {{ Request::is('statistieken*') ? 'active' : null }}">
       <a href="#">
         <i class="fa fa-bar-chart"></i> <span>Statistieken</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
