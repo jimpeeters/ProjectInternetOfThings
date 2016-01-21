@@ -15,11 +15,6 @@
       </a>
     </li>
     <li>
-      <a href="/tafels">
-        <i class="fa fa-object-group"></i> <span>Tafels</span>
-      </a>
-    </li>
-    <li>
       <a href="{{ route('ober.index') }}">
         <i class="fa fa-glass"></i> <span>Obers</span>
       </a>

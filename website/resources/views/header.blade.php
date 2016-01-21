@@ -1,7 +1,7 @@
 <header class="main-header">
 
-        <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <!-- Logo:-->
+        <a href="/" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><img id="small-logo" src="/images/small-logo.png" alt="logo"></span>
           <!-- logo for regular state and mobile devices -->

@@ -22,12 +22,6 @@ class ClientsTableSeeder extends Seeder
 				'entertime' => Carbon::now(),
 				'leavetime' => null,
 			),
-		array(
-				'FK_client_status_id' => '1',
-				'FK_table_id' => '2',
-				'entertime' => Carbon::now(),
-				'leavetime' => null,
-			)
 
 		);
 

@@ -22,16 +22,6 @@ class TablesTableSeeder extends Seeder
 
 			),
 
-		array(
-				'number' => '2',
-				'FK_area_id' => '1',
-				'FK_location_id' => '13'
-
-
-			),
-
-
-
 
 		);
 

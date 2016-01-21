@@ -15,11 +15,6 @@ Route::get('/gebieden', function()
 	return View::make('areas');
 });
 
-Route::get('/tafels', function()
-{
-	return View::make('tables');
-});
-
 Route::get('/obers/create', function()
 {
 	return View::make('waiters');
