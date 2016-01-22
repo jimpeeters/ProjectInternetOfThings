@@ -1,1 +1,1 @@
-tafel {{ $table->number }}
+{{ $table->area->name }}

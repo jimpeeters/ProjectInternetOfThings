@@ -214,7 +214,7 @@ h1, h2, h3, h4, h5, h6 {
 /* block achtergronden */
 /* line 225, ../sass/style.scss */
 .wood {
-  background: #ffe33b;
+  background-image: url("/images/wood.png");
 }
 
 /* line 229, ../sass/style.scss */
