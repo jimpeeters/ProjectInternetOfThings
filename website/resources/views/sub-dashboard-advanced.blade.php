@@ -1,17 +1,21 @@
 @include('messages.success-log')
 @include('messages.error-log')
 
+
 @foreach($locations as $location)
 	@if($location->table != null)
-		<div class="col-md-1 nopadding pointer">
+
+		<div class="col-md-1 nopadding pointer" data-table-id="{{ $location->table->id }}">
 			<a class="delete-button" href="/table/delete/{{$location->table->id}}"><i class="fa fa-times"></i></a>
-			@if(count($location->table->clients) > 0)
-				<div class="filled-block-advanced table-block-advanced wood">
+			@if(count($location->table->clients()->where('leavetime', null)->get()) > 0)
+				<div class="filled-block-advanced table-block-advanced wood" data-tableid="{{$location->table->id}}" data-tablenumber="{{$location->table->number}}" id="table-{{ $location->table->id }}">
 			@else
-				<div class="filled-block-advanced table-block-advanced wood" data-tableid="{{$location->table->id}}" data-toggle="modal" data-target="#add-client-modal" data-tablenumber="{{$location->table->number}}">
+				<div class="filled-block-advanced table-block-advanced wood " data-tableid="{{$location->table->id}}" data-toggle="modal" data-target="#add-client-modal" data-tablenumber="{{$location->table->number}}">
 			@endif
 			</div>
 		</div>
+
+
 	@elseif($location->decoration != null)
 		@if($location->decoration->name == 'buffet')
 

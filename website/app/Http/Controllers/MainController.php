@@ -201,4 +201,41 @@ class MainController extends Controller
         return $clientsHour;
 
     }
+
+    public function getTableStatus()
+    {
+        // echo '<pre>';
+        $tables = Table::all();
+        foreach($tables as $table)
+        {
+            if(count($table->clients()->where('leavetime', null)->get()))
+            {
+                $table->hasClient = true;
+                $client = $table->clients()->where('leavetime', null)->first();
+                // var_dump($client);
+                if(count($client->orders) > 0)
+                {
+                    $order = $client->orders()
+                                    ->where('endtime', '=', null)
+                                    ->first();
+                    if( $order )
+                    {
+                        $table->waiting = true;
+                    } else
+                    {
+                        $table->waiting = false;
+                    }
+                    
+                }else
+                {
+                    $table->waiting = false;
+                }
+            } else
+            {
+                $table->hasClient = false;
+            }
+            // var_dump('');
+        }
+        return $tables->toJson();
+    }
 }

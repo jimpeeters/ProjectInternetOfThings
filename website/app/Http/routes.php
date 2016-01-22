@@ -5,6 +5,8 @@ Route::group(['middleware' => ['api']], function() {
 	Route::get('/order/open/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@newOrder']);
 	Route::get('/order/close/{tableId}', ['as' => 'newOrder', 'uses' => 'OrderController@closeOrder']);
 
+	Route::get('/dashboard/tableStatus', 'MainController@getTableStatus');
+
 });
 
 Route::group(['middleware' => ['web']], function () {

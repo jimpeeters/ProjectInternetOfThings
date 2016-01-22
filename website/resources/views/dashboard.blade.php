@@ -4,14 +4,21 @@
 
 @section('content')
 
-
+<style type="text/css">
+  .green{
+    background-color: green;
+  }
+  .red{
+    background-color: red;
+  }
+</style>
 
 <!-- alle tafels -->
 <div id="ground-plan" class="row" style="margin-top: 15px;">
 	<div class="col-md-12 title">
 		<h2>Overzicht van de tafels 
 
-    <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Layout verbergen )</a></span>
+    <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Layout <span class="showHide">verbergen</span> )</a></span>
 
     <div style="float:right;">
 
@@ -62,6 +69,7 @@
 
         $( ".dashboard-advanced" ).fadeToggle();
         $( ".dashboard-simple" ).fadeToggle();
+
 
       });
 
@@ -115,7 +123,58 @@
         $( "#ground-plan" ).toggleClass( "full-screen" );
       });
 
+      var noRefresh = true;
+      refresh();
+      function refresh(){
+        // current = 1;
+        // table = $(".dashboard-advanced [data-table-id='" + current + "'] .wood");
+        // console.log(table);
+        // table.addClass('green');
+        // // tableChild = eval(table[0].children['table-' + current]);
+        // // console.log(tableChild.className());
+        // // tableChild.addClass('green');
+        // current = 2;
+        // table = $(".dashboard-advanced [data-table-id='" + current + "'] .wood");
+        // console.log(table);
+        // table.addClass('red');
 
+      }
+
+      check();
+      function check(){
+        // console.log('before');
+        $.getJSON('/dashboard/tableStatus', function(data){
+          // console.log(data);
+          $.each(data, function(index){
+            // console.log(data[index]);
+            current = data[index].id;
+            table = $(".dashboard-advanced [data-table-id='" + current + "'] .wood");
+            if(data[index].hasClient)
+            {
+              console.log(current + ' yes');
+              if(data[index].waiting)
+              {
+                table.removeClass('green');
+                table.addClass('red');
+              } else
+              {
+                table.removeClass('red');
+                table.addClass('green');
+              }
+            } else {
+              table.removeClass('red').removeClass('green');
+              console.log(current + ' no');
+            }
+          });
+          
+          // data.forEach(function(obj){
+          //   console.log(obj.id);
+          // });
+        }).done(function(){ console.log('done'); })
+          .fail(function(){ console.log('failed'); });
+        
+        setTimeout(check, 5000);
+      }
 
 
     });
