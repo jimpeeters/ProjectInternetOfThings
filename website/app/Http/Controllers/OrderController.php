@@ -46,7 +46,7 @@ class OrderController extends Controller {
       Mail::send('emails.waiting', ['user' => $waiter, 'table' => $table], function ($m) use ($waiter, $table) {
                     $m->from(env('MAIL_FROM'), env('MAIL_NAME'));
 
-                    $m->to($waiter->email, $waiter->name)->subject($table->number . ' is aan het wachten');
+                    $m->to($waiter->email, $waiter->name)->subject('Tafel ' . $table->number . ' is aan het wachten.');
                 });
     }
     return 'created';

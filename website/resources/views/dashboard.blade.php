@@ -4,23 +4,16 @@
 
 @section('content')
 
-<style type="text/css">
-  .green{
-    background-color: green;
-  }
-  .red{
-    background-color: red;
-  }
-</style>
 
 <!-- alle tafels -->
-<div class="row" style="margin-top: 15px;">
+<div id="ground-plan" class="row" style="margin-top: 15px;">
 	<div class="col-md-12 title">
 		<h2>Overzicht van de tafels 
 
     <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Layout <span class="showHide">verbergen</span> )</a></span>
 
     <div style="float:right;">
+
         <a id="toggle-dashboard" class="dashboard-simple-icon hide">
           <i class="fa fa-th-list"></i>
         </a> 
@@ -35,15 +28,15 @@
 	</div>
 
 
-<div class="dashboard-advanced">
-  <!-- als geselecteerd th -->
-  @include('sub-dashboard-advanced')
-</div>
+  <div class="dashboard-advanced">
+    <!-- als geselecteerd th -->
+    @include('sub-dashboard-advanced')
+  </div>
 
-<div class="dashboard-simple" style="display: none;">
-  <!-- als geselecteerd fa-th-list  -->
-  @include('sub-dashboard-simple')
-</div>
+  <div class="dashboard-simple" style="display: none;">
+    <!-- als geselecteerd fa-th-list  -->
+    @include('sub-dashboard-simple')
+  </div>
 
 </div>
 
@@ -118,6 +111,10 @@
         $( "#decoration-name" ).val('wallh'); //naam decoratie in inputfield steken
       });
 
+      $( ".full-screen" ).click(function() {
+        $( "#ground-plan" ).toggleClass( "full-screen" );
+      });
+
       var noRefresh = true;
       refresh();
       function refresh(){
@@ -134,7 +131,6 @@
         // table.addClass('red');
 
       }
-      
 
       check();
       function check(){
