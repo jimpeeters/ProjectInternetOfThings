@@ -14,6 +14,7 @@ use View;
 use App\Table;
 use App\Location;
 use App\Decoration;
+use App\WaiterArea;
 
 use Carbon\Carbon;
 
@@ -68,6 +69,7 @@ class MainController extends Controller
     public function statistics($dateString = null)
     {
         // echo('<pre>');
+        Carbon::setLocale('nl');
         $isRightFormat = preg_match('(^[0-9]{4}-[0-9]{2}-[0-9]{2}$)', $dateString);
         // dd($isRightFormat);
         if($dateString && $isRightFormat && Carbon::createFromFormat('Y-m-d', $dateString) !== false )
@@ -77,17 +79,19 @@ class MainController extends Controller
         {
             $date = Carbon::today('Europe/Brussels');
         }
-        $clients = Client::where('entertime', '>', $date);
+        // dd($date->copy()->addDay());
+        $clients = Client::where('entertime', '>', $date)->where('entertime', '<', $date->copy()->addDay());
 
         //get number of booked tables
         $clientSum = $clients->count();
         //get total amount of clients
         $clientAmount = $clients->sum('amount');
         //get number of orders
-        $orders = Order::where('starttime', '>', $date);
+        $orders = Order::where('starttime', '>', $date)->where('starttime', '<', $date->copy()->addDay());
         $ordersCount = $orders->count('id');
         $longestTime = $shortestTime = null;
         $ordersGet = $orders->get();
+        $staff = WaiterArea::where('start_time', '>', $date)->where('end_time', '<', $date->copy()->addDay())->groupBy('FK_waiter_id')->count();
        
         //check all orders to set longest and shortest wait time
         foreach( $ordersGet as $order)
@@ -104,6 +108,8 @@ class MainController extends Controller
             {
                 $longestTime = $shortestTime = [];
                 $longestTime['time'] = $shortestTime['time'] = $wait_time;
+                $longestTime['start'] = $shortestTime['start'] = $starttime;
+                $longestTime['end'] = $shortestTime['end'] = $endtime;
                 $longestTime['table'] = $shortestTime['table'] = $order->client->table->number;
 
             }
@@ -111,19 +117,30 @@ class MainController extends Controller
             if($wait_time > $longestTime['time'])
             {
                 $longestTime['time'] = $wait_time;
+                $longestTime['start'] = $starttime;
+                $longestTime['end'] = $endtime;
                 $longestTime['table'] = $order->client->table->number;
             }
             //if wait time is shorter than old shortest time, change shortest time
             if($wait_time < $shortestTime['time'])
             {
                 $shortestTime['time'] = $wait_time;
+                $shortestTime['start'] = $starttime;
+                $shortestTime['end'] = $endtime;
                 $shortestTime['table'] = $order->client->table->number;
             }
+        }
+        if(isset($longestTime) && isset($shortestTime))
+        {
+            $longestTime['time'] = $longestTime['end']->diffForHumans($longestTime['start'], true);
+            $shortestTime['time'] = $shortestTime['end']->diffForHumans($shortestTime['start'], true);
         }
 
         $clientsHour = [];
         //make graph
         $clientsHour = $this->dayGraph($date, $clients->get());
+        dd($clientsHour);
+
         $data = [];
         $data['date']           = $date->toDateString();
         $data['clientSum']      = $clientSum;
@@ -132,6 +149,7 @@ class MainController extends Controller
         $data['shortestTime']   = $shortestTime;
         $data['longestTime']    = $longestTime;
         $data['clientsHour']    = $clientsHour;
+        $data['staff']          = $staff;
         return View('statistic')->with($data);
     }
 
@@ -147,6 +165,7 @@ class MainController extends Controller
             {
                 if($client->entertime < $time && ($client->leavetime > $time || $client->leavetime == null))
                 {
+                    var_dump($client->amount);
                     $count += $client->amount;
                 }
             }

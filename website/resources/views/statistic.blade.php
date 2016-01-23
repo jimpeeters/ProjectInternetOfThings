@@ -27,7 +27,7 @@
 
     <div class="col-md-3">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-male"></i></span>
+        <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">tafels behandelt</span>
           <span class="info-box-number">{{ $clientSum }}</span>
@@ -36,7 +36,7 @@
     </div>
     <div class="col-md-3">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-male"></i></span>
+        <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">klanten behandelt</span>
           <span class="info-box-number">{{ $clientAmount }}</span>
@@ -58,10 +58,10 @@
 
     <div class="col-md-3">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
+        <span class="info-box-icon bg-green"><i class="fa fa-male"></i></span>
         <div class="info-box-content">
-          <span class="info-box-text">Bediende klanten</span>
-          <span class="info-box-number">3</span>
+          <span class="info-box-text">personeelsleden</span>
+          <span class="info-box-number">{{ $staff }}</span>
         </div>
       </div>
     </div>
@@ -73,7 +73,7 @@
       <div class="small-box bg-green">
         <div class="inner">
         	<h3>{{ isset($shortestTime['time']) ? $shortestTime['time'] : '/' }}</h3>
-          <p>Langste wachttijd bij tafel {{ isset($shortestTime['table']) ? $shortestTime['table'] : '/' }}</p>
+          <p>kortste wachttijd bij tafel {{ isset($shortestTime['table']) ? $shortestTime['table'] : '/' }}</p>
         </div>
         <div class="icon">
           <i class="fa fa-clock-o"></i>
