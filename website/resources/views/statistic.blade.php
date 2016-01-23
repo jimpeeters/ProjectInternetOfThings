@@ -5,16 +5,25 @@
 @section('content')
 
 <div class="row" style="margin-top: 15px;">
-
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.min.css"></link>
 	<div class="col-md-12 title">
 		<h2>Algemene info</h2>
 		<hr>
-		<ul>
-			<li><a href="{{ route('statistics') }}">vandaag</a></li>
-			<li><a href="{{ route('statistics', ['statistics' => 'week']) }}">deze week</a></li>
-			<li><a href="{{ route('statistics', ['statistics' => 'month']) }}">deze maand</a></li>
-		</ul>
-	</div>
+</div>
+<div class="row" style="margin-top: 15px;">
+
+
+  </div>
+    <div class="col-md-3">
+      <div class="input-group date">
+        <input type="text" class="form-control" id="datepicker" value="{{ $date }}" data-date-format="yyyy-mm-dd">
+        <div class="input-group-addon">
+          <i class="fa fa-calendar"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="row" style="margin-top: 15px;">
 
     <div class="col-md-3">
       <div class="info-box">
@@ -98,9 +107,22 @@
 @stop
 
 @section('script')
+  <script src="/js/bootstrap-datepicker.js"></script>
+  <script>
+  </script>
   <script src="/js/jquery.jqplot.js"></script>
   <script>
-  // console.log('test');
+
+  $('#datepicker').datepicker();
+  $('#datepicker').on('change', function(){
+    date = $(this).val();
+    window.location = '/statistieken/' + date
+  })
+
+
+
+
+  console.log('test');
   var clientsHour = [];
   @foreach($clientsHour as $key => $clients)
     clientsHour.push([{{$key}},{{$clients}}]);
@@ -108,7 +130,7 @@
     console.log(clientsHour);
     var clientsArray = [];
     clientsArray.push(clientsHour);
-    // var clientsHour = <?php print_r(json_encode($clientsHour)); ?>;7
+    // var clientsHour = <?php print_r(json_encode($clientsHour)); ?>;
     // console.log(clientsHour);
     $.jqplot('chartdiv',  clientsArray,{
       seriesDefaults: {
@@ -116,11 +138,19 @@
           smooth: true
         }
       },
+      title: {
+        text: 'klanten per uur',
+        show: true
+      },
       axes: {
         xaxis: {
           // min: 0,
           // max: 25,
-          pad: 1.1
+          pad: 1.1,
+          tickOptions: {
+            mark: 'inside',
+            suffix: ':00',
+          }
         },
         yaxis: {
           min: 0
@@ -128,7 +158,12 @@
 
       },
       grid: {
-        gridLineColor: '#FFF'
+        gridLineColor: '#AAA',
+        background: '#ECF0F1',
+        borderWidth: 0.5,
+      },
+      gridDimension: {
+        width: 5,
       },
       gridPadding: {
         // bottom: 1
