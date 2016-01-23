@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/skin-black.css">
     <link rel="stylesheet" href="/css/stylesheets/style.css">
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700,500,900' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon">
 
 </head>
 <body class="hold-transition skin-black sidebar-mini">

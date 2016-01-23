@@ -83,6 +83,17 @@ h1, h2, h3, h4, h5, h6 {
         font-weight: 500;
     }
 }
+
+/* status overzicht */
+
+  .green{
+    background-image: url('/images/wood-served.png') !important;
+  }
+  .red{
+    background-image: url('/images/wood-waiting.png') !important;
+  }
+
+
 /* overzicht */
 
 .main-sidebar {
@@ -109,6 +120,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* overzicht tafels advanced */ 
+
+.client-icon {
+  margin-left: 5px;
+  margin-top: 5px;
+  
+}
 
 .nopadding {
     padding: 0 !important;
@@ -218,6 +235,11 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.nohovereffect {
+  &:hover, &:focus {
+    opacity: 1;
+  }
+}
 /* block achtergronden */ 
 
 .wood {
