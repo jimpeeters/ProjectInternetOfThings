@@ -10,7 +10,7 @@
 	<div class="col-md-4">
 		<div class="box">
 		<div class="box-header">
-			<h4>Ober toekennen</h4>
+			<h4>Ober toekennen (aanpassen)</h4>
 		</div>
 			{!! Form::model($waiterArea, array('route' => ['waiterarea.update', $waiterArea->id], 'method' => 'PUT')) !!}
 

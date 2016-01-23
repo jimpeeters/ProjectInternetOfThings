@@ -5,6 +5,13 @@
 @stop
 
 @section('content')
+<style type="text/css">
+	.footable > thead, .footable > thead > tr > th{
+		background-color: #FFE33B; 
+		background-image: none;
+	}
+</style>
+<h1>Onze obers</h1>
 <table class="footable">
 		<thead>
 			<th>naam</th>
@@ -33,6 +40,6 @@
 		$(document).ready(function(){
 			$('.footable').footable();
 
-		})
+		});
 	</script>
 @stop

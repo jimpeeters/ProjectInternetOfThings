@@ -6,7 +6,7 @@
 
 @section('content')
 
-	<h1>komende planningen</h1>
+	<h1>Komende planningen</h1>
 	@foreach($planningen as $planning)
 		<div class="row">
 			<div class="col-md-12">

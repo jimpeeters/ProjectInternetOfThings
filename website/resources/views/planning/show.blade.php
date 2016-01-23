@@ -5,8 +5,7 @@
 @stop
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.css">
-	<h1>planning {{ $planning->first_day }} - {{ $planning->last_day }}</h1>
+	<h1>Planning {{ $planning->first_day }} - {{ $planning->last_day }}</h1>
 	<table class="footable">
 		<thead>
 			<th></th>
@@ -40,7 +39,7 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title">Modal title</h4>
 	      </div>
-	      <div>
+	      <div class="modal-body">
 		      {!! Form::open(['route' => 'planning.add', 'id' => 'addToPlanning']) !!}
 
 	      		{!! Form::hidden('planning', $planning->id, ['class' => 'form-control']) !!}
@@ -48,11 +47,16 @@
 				{!! Form::hidden('id') !!}
 				<div class="form-group">
 		      		{!! Form::label('name', 'naam: ') !!}
-					{!! Form::text('name', '', ['class' => 'form-control']) !!}</br>
+					{!! Form::text('name', '', ['class' => 'form-control']) !!}
 		      	</div>
-		      	<div class="form-group">
+		      	<div class="form-group ">
 		      		{!! Form::label('date', 'datum: ') !!}
-					{!! Form::input('date', 'day') !!}</br>
+		      		<div class="input-group date">
+						{!! Form::text('day', null, ['class' => 'form-control']) !!}
+						<div class="input-group-addon">
+				          <i class="fa fa-calendar"></i>
+				        </div>
+		      		</div>
 		      	</div>
 		      	<div class="form-group">
 		      		{!! Form::label('start_hour', 'begin tijdstip') !!}

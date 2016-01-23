@@ -3,7 +3,7 @@
 <section class="sidebar">
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
-    <li class="header">Restaurant wora</li>
+    <li class="header">Restaurant W.O.R.A</li>
     <li class="{{ Request::is('dashboard*') ? 'active' : null }}">
       <a href="{{ route('dashboard') }}">
         <i class="fa fa-tachometer"></i> <span>Dashboard</span>

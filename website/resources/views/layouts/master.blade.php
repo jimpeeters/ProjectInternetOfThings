@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/css/skin-black.css">
     <link rel="stylesheet" href="/css/stylesheets/style.css">
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700,500,900' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.css">
 
 

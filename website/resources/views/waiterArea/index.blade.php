@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-	<h1>aangeduide obers</h1>
+	<h1>Aangeduide obers</h1>
 	<ul>
 		@foreach($waiterAreas as $waiterArea)
 			<li>{{ $waiterArea->area->name . ' - ' . $waiterArea->waiter->name }} <a href="{{ route('waiterarea.edit', [$waiterArea->id]) }}">edit</a></li>

@@ -8,7 +8,7 @@
 <!-- alle tafels -->
 <div id="ground-plan" class="row" style="margin-top: 15px;">
 	<div class="col-md-12 title">
-		<h2>Overzicht van de tafels 
+		<h1>Overzicht van de tafels 
 
     <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Layout <span class="showHide">verbergen</span> )</a></span>
 
@@ -22,7 +22,7 @@
         </a>
      </div>
 
-    </h2> 
+    </h1> 
 
   <hr>
 	</div>

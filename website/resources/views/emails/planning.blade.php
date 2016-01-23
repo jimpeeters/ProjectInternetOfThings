@@ -1,6 +1,6 @@
-<p>hey {{$user->name}},</br>
+<p>Hey {{$user->name}},</br>
 
-bij deze de planning voor de week.</p>
+Bij deze de planning voor de week.</p>
 
 <h1>planning {{ $planning->first_day }} - {{ $planning->last_day }}</h1>
 <table class="footable">
