@@ -212,19 +212,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* block achtergronden */
-/* line 225, ../sass/style.scss */
+/* line 223, ../sass/style.scss */
 .wood {
   background-image: url("/images/wood.png");
 }
 
-/* line 229, ../sass/style.scss */
+/* line 227, ../sass/style.scss */
 .food {
   background: #a3b66c;
   background-image: url("/images/food.png");
   border: 1px solid #a3b66c;
 }
 
-/* line 235, ../sass/style.scss */
+/* line 233, ../sass/style.scss */
 .wall-horizontal {
   margin-top: 30%;
   margin-bottom: 30%;
@@ -232,14 +232,14 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 40% !important;
 }
 
-/* line 245, ../sass/style.scss */
+/* line 243, ../sass/style.scss */
 #decorationModal .wall-horizontal {
   margin-bottom: 20%;
   background-color: #333;
   padding-bottom: 40% !important;
 }
 
-/* line 253, ../sass/style.scss */
+/* line 251, ../sass/style.scss */
 .wall-vertical {
   width: 40% !important;
   margin: 0px auto;
@@ -247,48 +247,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* overzicht tafels  simple */
-/* line 261, ../sass/style.scss */
+/* line 259, ../sass/style.scss */
 .info-box {
   margin-bottom: 13px;
 }
 
-/* line 265, ../sass/style.scss */
+/* line 263, ../sass/style.scss */
 .subtitle-overzicht {
   font-size: 14px;
   font-weight: 300;
 }
-/* line 268, ../sass/style.scss */
+/* line 266, ../sass/style.scss */
 .subtitle-overzicht:hover {
   cursor: pointer;
 }
 
-/* line 276, ../sass/style.scss */
+/* line 274, ../sass/style.scss */
 .button-plus span i {
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
   color: #747474;
 }
-/* line 283, ../sass/style.scss */
+/* line 281, ../sass/style.scss */
 .button-plus:hover span i, .button-plus:focus span i {
   color: white;
 }
 
-/* line 290, ../sass/style.scss */
+/* line 288, ../sass/style.scss */
 .info-box-empty {
   margin-top: -100px;
 }
-/* line 293, ../sass/style.scss */
+/* line 291, ../sass/style.scss */
 .info-box-empty input {
   margin-top: 9px;
 }
-/* line 297, ../sass/style.scss */
+/* line 295, ../sass/style.scss */
 .info-box-empty select {
   margin-top: 4px;
   margin-bottom: 0px;
 }
 
 /* forms */
-/* line 307, ../sass/style.scss */
+/* line 305, ../sass/style.scss */
 .box {
   background-color: white;
   border-top: 4px solid #ffe33b;
@@ -296,7 +296,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 15px 0px;
   padding-bottom: 10px;
 }
-/* line 315, ../sass/style.scss */
+/* line 313, ../sass/style.scss */
 .box .btn {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
@@ -309,51 +309,51 @@ h1, h2, h3, h4, h5, h6 {
   padding: 8px 18px 8px 18px;
   text-decoration: none;
 }
-/* line 328, ../sass/style.scss */
+/* line 326, ../sass/style.scss */
 .box .btn:hover {
   background: #333333;
   text-decoration: none;
 }
-/* line 334, ../sass/style.scss */
+/* line 332, ../sass/style.scss */
 .box .box-header {
   border-bottom: 1px solid #e0e0e0;
 }
-/* line 336, ../sass/style.scss */
+/* line 334, ../sass/style.scss */
 .box .box-header h4 {
   padding: 0px 10px;
 }
-/* line 341, ../sass/style.scss */
+/* line 339, ../sass/style.scss */
 .box form {
   margin: 20px;
 }
-/* line 345, ../sass/style.scss */
+/* line 343, ../sass/style.scss */
 .box .badge {
   background-color: #ffe33b;
   color: black;
 }
 
 /* dashboard */
-/* line 353, ../sass/style.scss */
+/* line 351, ../sass/style.scss */
 .black-bg {
   background-color: #262626;
 }
 
-/* line 357, ../sass/style.scss */
+/* line 355, ../sass/style.scss */
 .info-box i {
   color: white;
 }
 
-/* line 362, ../sass/style.scss */
+/* line 360, ../sass/style.scss */
 .title h2 {
   margin-top: 5px;
 }
-/* line 366, ../sass/style.scss */
+/* line 364, ../sass/style.scss */
 .title hr {
   border-top: 1px solid #a6a6a6;
 }
 
 /* bootstrap focus effect */
-/* line 374, ../sass/style.scss */
+/* line 372, ../sass/style.scss */
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -376,7 +376,7 @@ input[type="color"]:focus,
 }
 
 /* BUTTON */
-/* line 399, ../sass/style.scss */
+/* line 397, ../sass/style.scss */
 .custom-button {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
@@ -390,14 +390,14 @@ input[type="color"]:focus,
   text-decoration: none;
 }
 
-/* line 412, ../sass/style.scss */
+/* line 410, ../sass/style.scss */
 .custom-button:hover {
   background: #333333;
   text-decoration: none;
   color: #ffffff;
 }
 
-/* line 418, ../sass/style.scss */
+/* line 416, ../sass/style.scss */
 .alert {
   border-radius: 0px !important;
 }
