@@ -4,14 +4,6 @@
 
 @section('content')
 
-<style type="text/css">
-  .green{
-    background-color: green;
-  }
-  .red{
-    background-color: red;
-  }
-</style>
 
 <!-- alle tafels -->
 <div id="ground-plan" class="row" style="margin-top: 15px;">
