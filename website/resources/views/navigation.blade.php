@@ -14,25 +14,37 @@
         <i class="fa fa-cutlery"></i> <span>Gebieden</span>
       </a>
     </li>
-    <li class="{{ Request::is('ober*') ? 'active' : null }}">
+    <li class="treeview {{ Request::is('ober*') ? 'active' : null }}">
+      <a href="#">
+        <i class="fa fa-glass"></i> <span>Obers</span> <i class="fa fa-angle-left pull-right"></i>
+      </a>
+      <ul class="treeview-menu">
+        <li class="{{ Request::is('ober') ? 'active' : null }}"><a href="{{ route('ober.index') }}"><i class="fa fa-user"></i>overzicht</a></li>
+        <li class="{{ Request::is('ober/toekennen*') ? 'active' : null }}"><a href="{{ route('waiterarea.create') }}"><i class="fa fa-plus-square"></i>toekennen</a></li>
+        <li class="{{ Request::is('*planning*') ? 'active' : null }}"><a href="{{ route('planning.index') }}"><i class="fa fa-calendar"></i>planning</a></li>
+      </ul>
+    </li>
+    {{-- <li class="{{ Request::is('ober*') ? 'active' : null }}">
       <a href="{{ route('ober.index') }}">
         <i class="fa fa-glass"></i> <span>Obers</span>
       </a>
+    </li>
+    <li class="{{ Request::is('planning*') ? 'active' : null }}">
+      <a href="{{ route('planning.index') }}">  
+        <i class="fa fa-calendar"></i>  <span>planning</span>
+      </a> --}}
     </li>
     <li class="{{ Request::is('klanten*') ? 'active' : null }}">
       <a href="{{ route('klanten.index') }}">
         <i class="fa fa-male"></i> <span>Klanten</span>
       </a>
     </li>
-    <li class="treeview {{ Request::is('statistieken*') ? 'active' : null }}">
-      <a href="#">
-        <i class="fa fa-bar-chart"></i> <span>Statistieken</span> <i class="fa fa-angle-left pull-right"></i>
+    <li class="{{ Request::is('statistieken') ? 'active' : null }}">
+      <a href="{{ route('statistics') }}">
+        <i class="fa fa-bar-chart"></i> <span>Statistieken</span>
       </a>
-      <ul class="treeview-menu">
-        <li><a href="{{ route('statistics') }}"><i class="fa fa-circle-o"></i>Overzicht</a></li>
-        <li><a href="#"><i class="fa fa-circle-o"></i>Data</a></li>
-      </ul>
     </li>
+    
   </ul>
 
 </section>

@@ -70,16 +70,22 @@ Route::resource('clientstatus', 'ClientStatusController');
 Route::resource('area', 'AreaController');
 
 Route::resource('order', 'OrderController');
-Route::resource('waiterarea', 'WaiterAreaController');
+Route::resource('/ober/toekennen', 'WaiterAreaController',
+				['names' => ['show' => 'waiterarea.show', 'create' => 'waiterarea.create', 'store' => 'waiterarea.store']]);
 
 
-Route::resource('waiterarea', 'WaiterAreaController');
-Route::resource('planning', 'PlanningController');
-Route::get('planning/{planning_id}/index/', ['as' => 'planning.waiter.index', 'uses' => 'PlanningWaiterController@index']);
-Route::post('planning/add', ['as' => 'planning.add', 'uses' => 'PlanningWaiterController@store']);
-Route::get('planning/verwijder/{id}', ['as' => 'planning.delete', 'uses' => 'PlanningWaiterController@destroy']);
-Route::post('planning/aanpassen/{id}', ['as' => 'planning.aanpassen', 'uses' => 'PlanningWaiterController@update']);
-Route::get('planning/{id}/mail', ['as' => 'planning.mail', 'uses' => 'PlanningController@mailPlanning']);
+// Route::resource('waiterarea', 'WaiterAreaController');
+// Route::resource('ober/planning', 'PlanningController', ['names' =>
+// 		['index' => 'planning.index', 'show' => 'planning.show', 'create' => 'planning.create', 'store' => 'planning.store']	]);
+Route::get('ober/planning/index', ['as' => 'planning.index', 'uses' => 'PlanningController@index']);
+Route::get('ober/planning/show/{id}', ['as' => 'planning.show', 'uses' => 'PlanningController@show']);
+
+
+Route::get('ober/planning/{planning_id}/index/', ['as' => 'planning.waiter.index', 'uses' => 'PlanningWaiterController@index']);
+Route::post('ober/planning/add', ['as' => 'planning.add', 'uses' => 'PlanningWaiterController@store']);
+Route::get('ober/planning/verwijder/{id}', ['as' => 'planning.delete', 'uses' => 'PlanningWaiterController@destroy']);
+Route::post('ober/planning/aanpassen/{id}', ['as' => 'planning.aanpassen', 'uses' => 'PlanningWaiterController@update']);
+Route::get('ober/planning/{id}/mail', ['as' => 'planning.mail', 'uses' => 'PlanningController@mailPlanning']);
 
 
 }); 

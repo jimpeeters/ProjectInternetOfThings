@@ -44,6 +44,7 @@ class PlanningController extends Controller
 
     protected function planningWaiters($waiters, $id, $planning)
     {
+
         foreach($waiters as $waiter)
         {
             //get all planningWaiters from this planning

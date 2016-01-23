@@ -100,16 +100,16 @@
 				{
 					var planningWaiterId = e.target.dataset.planningWaiterId;
 					console.log(planningWaiterId);
-					$("#addToPlanning").attr('action', '/planning/aanpassen/' + planningWaiterId);
+					$("#addToPlanning").attr('action', '/ober/planning/aanpassen/' + planningWaiterId);
 					$('#addToPlanning select[name=start_hour]').val(e.target.dataset.start);
 					$('#addToPlanning select[name=end_hour').val(e.target.dataset.end);
 					$('#addToPlanning #delete').show();
-					$('#addToPlanning #delete').attr('href', '/planning/verwijder/' + planningWaiterId );
+					$('#addToPlanning #delete').attr('href', '/ober/planning/verwijder/' + planningWaiterId );
 
 
 				} else
 				{
-					$("#addToPlanning").attr('action', '/planning/add');
+					$("#addToPlanning").attr('action', '/ober/planning/add');
 					$('#addToPlanning select[name=start_hour]').val(11);
 					$('#addToPlanning select[name=end_hour').val(23);
 					$('#addToPlanning #delete').attr('href', '#' );
