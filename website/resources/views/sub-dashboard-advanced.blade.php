@@ -9,7 +9,7 @@
 			<a class="delete-button" href="/table/delete/{{$location->table->id}}"><i class="fa fa-times"></i></a>
 			@if(count($location->table->clients()->where('leavetime', null)->get()) > 0)
 				<div class="filled-block-advanced table-block-advanced nohovereffect wood" data-tableid="{{$location->table->id}}" data-tablenumber="{{$location->table->number}}" id="table-{{ $location->table->id }}">
-				<i class="fa fa-male client-icon"></i>
+				<img src="/images/small-logo.png" class="client-logo" alt="">
 			@else
 				<div class="filled-block-advanced table-block-advanced wood " data-tableid="{{$location->table->id}}" data-toggle="modal" data-target="#add-client-modal" data-tablenumber="{{$location->table->number}}">
 			@endif
