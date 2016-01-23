@@ -26,6 +26,11 @@
 					<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ old('email') }}" required> 
 				</div>
 
+				<div class="form-group">
+					<label for="phone">Telefoon :</label>
+					<input type="text" name="phone" class="form-control" id="email" placeholder="Telefoon" value="{{ old('email') }}" required> 
+				</div>
+
 				<button type="submit" class="btn">Toevoegen</button>
 
 			{!! Form::close() !!}

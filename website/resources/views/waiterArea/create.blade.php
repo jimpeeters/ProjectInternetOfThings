@@ -16,7 +16,7 @@
 
 				<div class="form-group">
 					<label for="waiter">ober selecteren</label></br>
-					<select name="waiter" id="waiter" class="label-selector">
+					<select name="waiter" id="waiter" class="label-selector form-control">
 						@foreach($waiters as $waiter)
 							<option value="{{ $waiter->id }}">{{ $waiter->name }}</option>
 						@endforeach

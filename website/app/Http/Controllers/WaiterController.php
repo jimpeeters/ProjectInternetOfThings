@@ -27,7 +27,8 @@ class WaiterController extends Controller {
   {
     return Validator::make($data,
         [ 'name' => 'required|min:6',
-          'email' => 'required|email' ]
+          'email' => 'required|email',
+          'phone' => 'max:20' ]
       );
   }
 
@@ -59,6 +60,7 @@ class WaiterController extends Controller {
 
     $waiter->name = $request->input('name');
     $waiter->email = $request->input('email');
+    $waiter->phone = $request->input('phone');
 
     $waiter->save();
 
@@ -110,6 +112,7 @@ class WaiterController extends Controller {
 
       $waiter->name = $request->input('name');
       $waiter->email = $request->input('email');
+      $waiter->phone = $request->input('phone');
 
     $waiter->save();
 

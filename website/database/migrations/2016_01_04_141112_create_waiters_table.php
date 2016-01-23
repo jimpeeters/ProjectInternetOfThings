@@ -12,6 +12,7 @@ class CreateWaitersTable extends Migration {
 			$table->timestamps();
 			$table->string('name', 255);
 			$table->string('email', 255);
+			$table->string('phone', 20)->nullable();
 		});
 	}
 

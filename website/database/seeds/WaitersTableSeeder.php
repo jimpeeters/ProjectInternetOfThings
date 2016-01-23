@@ -18,11 +18,13 @@ class WaitersTableSeeder extends Seeder
 		array(
 				'name' => 'Jeroen',
 				'email' => 'jeroen_vdb1@hotmail.com',
+				'phone' => '0491436631',
 			),
 
 		array(
 				'name' => 'Jim',
 				'email' => 'jempipeeters@hotmail.com',
+				'phone' => null
 			),
 
 		);
