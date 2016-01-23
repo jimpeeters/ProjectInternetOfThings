@@ -8,7 +8,12 @@
 		<div class="col-md-1 nopadding pointer" data-table-id="{{ $location->table->id }}">
 			<a class="delete-button" href="/table/delete/{{$location->table->id}}"><i class="fa fa-times"></i></a>
 			@if(count($location->table->clients()->where('leavetime', null)->get()) > 0)
-				<div class="filled-block-advanced table-block-advanced nohovereffect wood" data-tableid="{{$location->table->id}}" data-tablenumber="{{$location->table->number}}" id="table-{{ $location->table->id }}">
+				<div class="filled-block-advanced table-block-advanced nohovereffect wood" 
+					data-tableid="{{$location->table->id}}" 
+					data-tablenumber="{{$location->table->number}}"  
+					data-toggle="modal" 
+					data-target="#checkout-client-modal" 
+					id="table-{{ $location->table->id }}">
 				<img src="/images/small-logo.png" class="client-logo" alt="">
 			@else
 				<div class="filled-block-advanced table-block-advanced wood " data-tableid="{{$location->table->id}}" data-toggle="modal" data-target="#add-client-modal" data-tablenumber="{{$location->table->number}}">
@@ -140,6 +145,26 @@
 				<button type="submit" class="btn custom-button">Toevoegen</button>
 
 			{!! Form::close() !!}
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{{-- Modal client uitchecken --}}
+<div id="checkout-client-modal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Zeker dat u tafel <span id="tableNumber"></span> wil uitchecken?</h4>
+      </div>
+      <div class="modal-body">
+
+			<a href="#" class="btn btn-danger">uitchecken</a>
 
       </div>
     </div>

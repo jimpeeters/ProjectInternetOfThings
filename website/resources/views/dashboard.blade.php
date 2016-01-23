@@ -159,13 +159,11 @@
             }
           });
           
-          // data.forEach(function(obj){
-          //   console.log(obj.id);
-          // });
+          
         }).done(function(){ console.log('done'); })
           .fail(function(){ console.log('failed'); });
         
-        setTimeout(check, 5000);
+        // setTimeout(check, 10000);
       }
 
 
@@ -189,6 +187,12 @@
         //locatie nummer vanboven
         $("#tableNumber").text('( Tafel : ' + $(event.relatedTarget).data('tablenumber') + ' )');
     });
+
+    $('#checkout-client-modal').on('show.bs.modal', function(e){
+      console.log($(e.relatedTarget).data('tablenumber'));
+      tablenumber = $(e.relatedTarget).data('tableid');
+      $('#checkout-client-modal a').attr('href', '/klanten/checkout/' + tablenumber);
+    })
 
 
   </script>

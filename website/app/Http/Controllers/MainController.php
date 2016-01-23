@@ -70,8 +70,9 @@ class MainController extends Controller
     {
         // echo('<pre>');
         Carbon::setLocale('nl');
+
+        //check if valid date
         $isRightFormat = preg_match('(^[0-9]{4}-[0-9]{2}-[0-9]{2}$)', $dateString);
-        // dd($isRightFormat);
         if($dateString && $isRightFormat && Carbon::createFromFormat('Y-m-d', $dateString) !== false )
         {
             $date = Carbon::createFromFormat('Y-m-d h:i:s', $dateString . ' 00:00:00', 'Europe/Brussels');
@@ -79,7 +80,6 @@ class MainController extends Controller
         {
             $date = Carbon::today('Europe/Brussels');
         }
-        // dd($date->copy()->addDay());
         $clients = Client::where('entertime', '>', $date)->where('entertime', '<', $date->copy()->addDay());
 
         //get number of booked tables
@@ -130,6 +130,7 @@ class MainController extends Controller
                 $shortestTime['table'] = $order->client->table->number;
             }
         }
+        //set times readable for humans
         if(isset($longestTime) && isset($shortestTime))
         {
             $longestTime['time'] = $longestTime['end']->diffForHumans($longestTime['start'], true);
@@ -139,7 +140,6 @@ class MainController extends Controller
         $clientsHour = [];
         //make graph
         $clientsHour = $this->dayGraph($date, $clients->get());
-        dd($clientsHour);
 
         $data = [];
         $data['date']           = $date->toDateString();
@@ -165,13 +165,11 @@ class MainController extends Controller
             {
                 if($client->entertime < $time && ($client->leavetime > $time || $client->leavetime == null))
                 {
-                    var_dump($client->amount);
                     $count += $client->amount;
                 }
             }
             $clientsHour[$i] = $count;
         }
-        // dd($clientsHour);
         return $clientsHour;
     }
 

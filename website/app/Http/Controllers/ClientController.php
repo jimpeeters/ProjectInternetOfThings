@@ -115,6 +115,17 @@ class ClientController extends Controller {
     return redirect()->back()->withSuccess('Klant succesvol toegevoegd.');
   }
 
+  public function checkout($tableId)
+  {
+    $table = Table::findOrFail($tableId);
+
+    $client = $table->clients()->where('leavetime', null)->first();
+    $client->leavetime = Carbon::now();
+    $client->save();
+
+    return redirect()->back()->withSuccess('klant uitgecheckt.');
+  }
+
   /**
    * Display the specified resource.
    *

@@ -57,6 +57,7 @@ Route::resource('decoration', 'DecorationController');
 /* Klanten aan tafel toevoegen in dashboard */
 
 Route::post('klanten/add',  array('as' => 'addClients','uses' => 'ClientController@addClients'));
+Route::get('/klanten/checkout/{tableId}', array('as' => 'checkoutClient', 'uses' => 'ClientController@checkout'));
 
 
 
