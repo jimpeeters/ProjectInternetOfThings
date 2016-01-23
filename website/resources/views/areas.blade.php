@@ -5,17 +5,8 @@
 @section('content')
 
 
-<div class="row">
-	@if (isset($errors) && count($errors) > 0)
-	    <div class="alert alert-danger">
-	        <ul>
-	            @foreach ($errors->all() as $error)
-	                <li>{{ $error }}</li>
-	            @endforeach
-	        </ul>
-	    </div>
-	@endif
-</div>
+@include('messages.success-log')
+@include('messages.error-log')
 
 <div class="row">
 
