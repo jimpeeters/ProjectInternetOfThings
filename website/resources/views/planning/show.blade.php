@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title')
+@section('title')
 	planning {{ $planning->first_day }} - {{ $planning->last_day }}
 @stop
 

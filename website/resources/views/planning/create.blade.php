@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('page-title')
-
+@section('title')
+	planning maken
 @stop
 
 @section('content')
 {{-- <link rel="stylesheet" href=""> --}}
-	<h1>alle planningen</h1>
+	<h1>Alle planningen</h1>
 	<table>
 		<thead>
 			<th></th>

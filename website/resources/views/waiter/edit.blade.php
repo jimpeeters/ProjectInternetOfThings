@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title')
+@section('title')
 	aanpassen {{ $waiter->name }}
 @stop
 
