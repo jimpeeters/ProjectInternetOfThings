@@ -22,9 +22,12 @@
 				<tr>
 					<th>{{ $waiter->name }}</th>
 					@for($i = 0; $i < 7; $i++)
-						<td data-waiter-id="{{ $waiter->id }}" data-waiter-name="{{ $waiter->name }}" data-date="{{ date('Y-m-d', strtotime($planning->first_day . ' + '.$i. ' days' )) }}" data-edit={{ (isset($waiter->planning[$i])) ? 'true data-start=' . $waiter->planning[$i]->start_hour . ' data-end=' . $waiter->planning[$i]->end_hour . ' data-planning-waiter-id=' . $waiter->planning[$i]->id  : 'false'}}>
+						<td data-waiter-id="{{ $waiter->id }}" 
+							data-waiter-name="{{ $waiter->name }}" 
+							data-date="{{ date('Y-m-d', strtotime($planning->first_day . ' + '.$i. ' days' )) }}" 
+							data-edit={{ (isset($waiter->planning[$i])) ? 'true data-start=' . $waiter->planning[$i]->start_hour . ' data-end=' . $waiter->planning[$i]->end_hour . ' data-planning-waiter-id=' . $waiter->planning[$i]->id  : 'false'}}>
 							@if(isset($waiter->planning[$i]))
-								{{ $waiter->planning[$i]->start_hour . ' - ' . $waiter->planning[$i]->end_hour }}
+								{{ substr($waiter->planning[$i]->start_hour, 0, 5) . ' - ' . substr($waiter->planning[$i]->end_hour,0,5) }}
 							@endif
 						</td>
 					@endfor
@@ -32,6 +35,8 @@
 			@endforeach
 		</tbody>
 	</table>
+
+	<a href="{{ route('planning.mail', ['id' => $planning->id]) }}" class="btn btn-primary">mail sturen</a>
 	<div class="modal fade" id="planningModal" >
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -47,35 +52,38 @@
 				{!! Form::hidden('id') !!}
 				<div class="form-group">
 		      		{!! Form::label('name', 'naam: ') !!}
-					{!! Form::text('name', '', ['class' => 'form-control']) !!}
+					{!! Form::text('name', '', ['class' => 'form-control', 'readonly']) !!}
 		      	</div>
 		      	<div class="form-group ">
 		      		{!! Form::label('date', 'datum: ') !!}
 		      		<div class="input-group date">
-						{!! Form::text('day', null, ['class' => 'form-control']) !!}
+						{!! Form::text('day', null, ['class' => 'form-control', 'readonly']) !!}
 						<div class="input-group-addon">
 				          <i class="fa fa-calendar"></i>
 				        </div>
 		      		</div>
 		      	</div>
 		      	<div class="form-group">
-		      		{!! Form::label('start_hour', 'begin tijdstip') !!}
-					<select name="start_hour" id="start_hour">
-						@for($i = 0; $i<24; $i++)
-							<option value="{{ $i }}">{{ $i }}</option>
-						@endfor
-					</select></br>
-		      	</div>
-		      	<div class="form-group">
-		      		{!! Form::label('end_hour', 'eind tijdstip') !!}
-					<select name="end_hour" id="end_hour">
-						@for($i = 0; $i<24; $i++)
-							<option value="{{ $i }}">{{ $i }}</option>
-						@endfor
-					</select></br>
-		      	</div>
+			    	
+			        <div class="row">
+			            <div class="col-md-6">
+			            	<div class="col-md-offset-2">
+				            	<h4>begin tijdstip</h4>
+			            	</div>
+			                <div id="datetimepickerStart"></div>
+			            </div>
+			            <div class="col-md-6">
+							<div class="col-md-offset-2">
+			            		<h4>eind tijdstip</h4>
+							</div>
+			                <div id="datetimepickerStop"></div>
+			            </div>
+			        </div>
+			    </div>
+				{{Form::hidden('start_hour',date('Y-m-d H:i'))}}
+				{{Form::hidden('end_hour',date('Y-m-d H:i'))}}
 				<a href="#" class="btn btn-danger" id="delete">verwijderen</a>
-		        {!! Form::submit('opslaan', ['class' => 'btn btn-primary']) !!}
+		        {!! Form::submit('opslaan', ['class' => 'btn']) !!}
 		        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
 		      {!! Form::close() !!}
 	      </div>
@@ -97,9 +105,12 @@
 
 			$('table td').on('dblclick', function(e){
 				console.log(e);
-				$("#addToPlanning input[name=name]").val(e.target.dataset.waiterName);
-				$("#addToPlanning input[name=id]").val(e.target.dataset.waiterId);
-				$("#addToPlanning input[name=day]").val(e.target.dataset.date);
+				console.log(e.target.dataset.waiterName);
+				if(e.target.dataset.waiterName)
+				{
+					$("#addToPlanning input[name=name]").val(e.target.dataset.waiterName);
+					$("#addToPlanning input[name=id]").val(e.target.dataset.waiterId);
+					$("#addToPlanning input[name=day]").val(e.target.dataset.date);
 				if(e.target.dataset.edit == "true")
 				{
 					var planningWaiterId = e.target.dataset.planningWaiterId;
@@ -107,6 +118,8 @@
 					$("#addToPlanning").attr('action', '/ober/planning/aanpassen/' + planningWaiterId);
 					$('#addToPlanning select[name=start_hour]').val(e.target.dataset.start);
 					$('#addToPlanning select[name=end_hour').val(e.target.dataset.end);
+					$('#datetimepickerStart').data('DateTimePicker').date(e.target.dataset.start);
+					$('#datetimepickerStop').data('DateTimePicker').date(e.target.dataset.end);
 					$('#addToPlanning #delete').show();
 					$('#addToPlanning #delete').attr('href', '/ober/planning/verwijder/' + planningWaiterId );
 
@@ -118,10 +131,38 @@
 					$('#addToPlanning select[name=end_hour').val(23);
 					$('#addToPlanning #delete').attr('href', '#' );
 					$('#addToPlanning #delete').hide();
+					$('#datetimepickerStart').data('DateTimePicker').date('11:00:00');
+					$('#datetimepickerStop').data('DateTimePicker').date('23:00:00');
+
 
 
 				}
 				$('#planningModal').modal('show');
+				}
+			});
+
+			$('#datetimepickerStart').datetimepicker({
+			    inline: true,
+			    locale: 'nl',
+			    sideBySide: false,
+			    format: 'HH:mm',
+			    stepping: 15,
+			    defaultDate: moment().format(),
+			});
+			$('#datetimepickerStop').datetimepicker({
+			    inline: true,
+			    locale: 'nl',
+			    sideBySide: false,
+			    format: 'HH:mm',
+			    stepping: 15,
+			    defaultDate: moment().format(),
+			});
+			$('#datetimepickerStart').on("dp.change", function (e) {
+			    $('#datetimepickerStop').data("DateTimePicker").minDate(e.date);
+			    $( "input[name='start_hour']").val(e.date.format("HH:mm"));
+			});
+			$('#datetimepickerStop').on("dp.change", function (e) {
+			    $( "input[name='end_hour']").val(e.date.format("HH:mm"));
 			});
 		});
 

@@ -30,14 +30,15 @@ class planningWaiterController extends Controller
 	    	'id' 			=> 'required|exists:waiters,id',
 	    	'planning' 		=> 'required|exists:planning,id',
 	    	'day' 			=> 'required|date',
-	    	'start_hour' 	=> 'required|numeric|between:0,23',
-	    	'end_hour' 		=> 'required|numeric|between:0,23'
+	    	'start_hour' 	=> 'required',
+	    	'end_hour' 		=> 'required'
 	        ]
 	      );
 	}
 
     public function store(Request $request)
     {
+        // dd($request->all());
     	$validator = $this->validator($request->all());
     	if($validator->fails())
     	{

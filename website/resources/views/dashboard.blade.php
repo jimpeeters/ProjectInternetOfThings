@@ -161,9 +161,9 @@
           
           
         }).done(function(){ console.log('done'); })
-          .fail(function(){ console.log('failed'); });
+          .fail(function(e){ console.log(e); });
         
-        // setTimeout(check, 10000);
+        setTimeout(check, 10000);
       }
 
 

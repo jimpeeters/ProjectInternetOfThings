@@ -14,7 +14,7 @@
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,700,500,900' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="/images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/0.1.0/css/footable.css">
-
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css">
 
 </head>
 <body class="hold-transition skin-black sidebar-mini">
@@ -34,6 +34,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/moment.min.js"></script>
+<script src="/js/locale-nl.js"></script>
+<script src="/js/bootstrap-datetimepicker.min.js"></script>
+{!! Html::script("https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js") !!}
+
 <script src="/js/app.js"></script>
 
     <!-- date-range-picker -->

@@ -21,7 +21,7 @@ Bij deze de planning voor de week.</p>
 				@for($i = 0; $i < 7; $i++)
 					<td data-waiter-id="{{ $waiter->id }}" data-waiter-name="{{ $waiter->name }}" data-date="{{ date('Y-m-d', strtotime($planning->first_day . ' + '.$i. ' days' )) }}" data-edit={{ (isset($waiter->planning[$i])) ? 'true data-start=' . $waiter->planning[$i]->start_hour . ' data-end=' . $waiter->planning[$i]->end_hour . ' data-planning-waiter-id=' . $waiter->planning[$i]->id  : 'false'}}>
 						@if(isset($waiter->planning[$i]))
-							{{ $waiter->planning[$i]->start_hour . ' - ' . $waiter->planning[$i]->end_hour }}
+								{{ substr($waiter->planning[$i]->start_hour, 0, 5) . ' - ' . substr($waiter->planning[$i]->end_hour,0,5) }}
 						@endif
 					</td>
 				@endfor

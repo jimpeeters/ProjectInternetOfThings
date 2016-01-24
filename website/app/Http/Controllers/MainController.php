@@ -206,15 +206,15 @@ class MainController extends Controller
 
     public function getTableStatus()
     {
-        // echo '<pre>';
         $tables = Table::all();
         foreach($tables as $table)
         {
+            //check if table has clients
             if(count($table->clients()->where('leavetime', null)->get()))
             {
                 $table->hasClient = true;
                 $client = $table->clients()->where('leavetime', null)->first();
-                // var_dump($client);
+                //check if client is waiting
                 if(count($client->orders) > 0)
                 {
                     $order = $client->orders()
@@ -236,7 +236,6 @@ class MainController extends Controller
             {
                 $table->hasClient = false;
             }
-            // var_dump('');
         }
         return $tables->toJson();
     }

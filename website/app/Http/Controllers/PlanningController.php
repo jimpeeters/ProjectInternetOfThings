@@ -99,5 +99,7 @@ class PlanningController extends Controller
                     $m->to($waiter->email, $waiter->name)->subject('Your Reminder!');
                 });
         }
+
+        return redirect()->back();
     }
 }

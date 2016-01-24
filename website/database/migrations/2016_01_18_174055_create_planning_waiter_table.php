@@ -22,8 +22,8 @@ class CreatePlanningWaiterTable extends Migration
             $table->foreign('FK_waiter_id')->references('id')->on('waiters');
             
             $table->datetime('day');
-            $table->integer('start_hour');
-            $table->integer('end_hour');
+            $table->time('start_hour');
+            $table->time('end_hour');
             $table->softDeletes();
         });
     }
