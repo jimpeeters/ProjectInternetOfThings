@@ -80,8 +80,8 @@
 			            </div>
 			        </div>
 			    </div>
-				{{Form::hidden('start_hour',date('Y-m-d H:i'))}}
-				{{Form::hidden('end_hour',date('Y-m-d H:i'))}}
+				{{Form::hidden('start_hour',date('H:i'))}}
+				{{Form::hidden('end_hour',date('H:i'))}}
 				<a href="#" class="btn btn-danger" id="delete">verwijderen</a>
 		        {!! Form::submit('opslaan', ['class' => 'btn']) !!}
 		        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}

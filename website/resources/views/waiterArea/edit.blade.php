@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title')
+@section('title')
 	obers toekennen
 @stop
 @section('content')
@@ -28,14 +28,33 @@
 						<label><input type="radio" name="area" value="{{ $area->id }}" {{ $area->id == $waiterArea->FK_area_id ? 'checked' : '' }}> {{ $area->name }}</label><br />
 					@endforeach
 				</div>
-				<div class="form-goup">
+				<div class="form-group">
+			    	
+			        <div class="row">
+			            <div class="col-md-6">
+			            	<div class="col-md-offset-2">
+				            	<h4>begin tijdstip</h4>
+			            	</div>
+			                <div id="datetimepickerStart"></div>
+			            </div>
+			            <div class="col-md-6">
+							<div class="col-md-offset-2">
+			            		<h4>eind tijdstip</h4>
+							</div>
+			                <div id="datetimepickerStop"></div>
+			            </div>
+			        </div>
+			    </div>
+				{{Form::hidden('start_time', substr($waiterArea->start_time,11) )}}
+				{{Form::hidden('end_time', substr($waiterArea->end_time,11) )}}
+				{{-- <div class="form-goup">
 					<label for="start_time">begin tijdstip</label>
 					{!! Form::text('start_time', null, ['class' => 'form-control']) !!}
 				</div>
 				<div class="form-group">
 					<label for="end_time">eind tijdstip</label>
 					{!! Form::text('end_time', null, ['class' => 'form-control']) !!}
-				</div>
+				</div> --}}
 				
 
 				<button type="submit" class="btn">Toevoegen</button>
@@ -52,7 +71,39 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/js/select2.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('.label-selector').select2();	
+			$('.label-selector').select2();
+
+
+
+
+			$('#datetimepickerStart').datetimepicker({
+			    inline: true,
+			    locale: 'nl',
+			    sideBySide: false,
+			    format: 'HH:mm',
+			    stepping: 15,
+			    defaultDate: moment().format(),
+			});
+			$('#datetimepickerStop').datetimepicker({
+			    inline: true,
+			    locale: 'nl',
+			    sideBySide: false,
+			    format: 'HH:mm',
+			    stepping: 15,
+			    defaultDate: moment().format(),
+			});
+
+			$('#datetimepickerStart').data('DateTimePicker').date('{{ substr($waiterArea->start_time,11) }}');
+			$('#datetimepickerStop').data('DateTimePicker').date('{{ substr($waiterArea->end_time,11) }}');
+
+
+			$('#datetimepickerStart').on("dp.change", function (e) {
+			    $('#datetimepickerStop').data("DateTimePicker").minDate(e.date);
+			    $( "input[name='start_time']").val(e.date.format("HH:mm"));
+			});
+			$('#datetimepickerStop').on("dp.change", function (e) {
+			    $( "input[name='end_time']").val(e.date.format("HH:mm"));
+			});
 		});
 	</script>
 @stop

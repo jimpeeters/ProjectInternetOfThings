@@ -146,15 +146,24 @@ class WaiterAreaController extends Controller {
       return redirect()->back()->withErrors($validator);
     }
 
+    $start_time = Carbon::today();
+    $end_time = Carbon::today();
+    $start_time->hour = substr($request->input('start_time'), 0, 2);
+    $start_time->minute = substr($request->input('start_time'), 3, 2);
+    $end_time->hour = substr($request->input('end_time'), 0, 2);
+    $end_time->minute = substr($request->input('end_time'), 3, 2);
+
     $waiterArea = WaiterArea::findorfail($id);
 
     $waiterArea->FK_area_id = $request->input('area');
-    $waiterArea->start_time = $request->input('start_time');
-    $waiterArea->end_time = $request->input('end_time');
+
+
+    $waiterArea->start_time = $start_time;
+    $waiterArea->end_time = $end_time;
 
     $waiterArea->save();
 
-    return redirect()->route('waiterarea.index');
+    return redirect()->back();
 
 
   }

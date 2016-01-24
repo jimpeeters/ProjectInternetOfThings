@@ -72,7 +72,7 @@ Route::resource('area', 'AreaController');
 
 Route::resource('order', 'OrderController');
 Route::resource('/ober/toekennen', 'WaiterAreaController',
-				['names' => ['show' => 'waiterarea.show', 'create' => 'waiterarea.create', 'store' => 'waiterarea.store']]);
+				['names' => ['show' => 'waiterarea.show', 'create' => 'waiterarea.create', 'store' => 'waiterarea.store', 'update' => 'waiterarea.update']]);
 
 
 // Route::resource('waiterarea', 'WaiterAreaController');
