@@ -65,6 +65,14 @@
 		</div>
 
 	</div>	
+	<div class="col-md-4">
+		<h2>reeds ingepland:</h2>
+		<p>
+		@foreach($waiterAreas as $waiterarea)
+			{{ $waiterarea->waiter->name }} - {{ $waiterarea->area->name }} <br>
+		@endforeach
+		</p>
+	</div>
 </div>
 @stop
 
