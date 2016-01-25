@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
 @section('title')
+
 	planning {{ $planning->first_day }} tot {{ $planning->last_day }}
+
 @stop
 
 @section('content')
