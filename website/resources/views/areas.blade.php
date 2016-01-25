@@ -9,6 +9,11 @@
 @include('messages.error-log')
 
 <div class="row">
+	
+	<div class="col-md-12 title">
+		<h1>Gebieden</h1>
+		<hr>
+	</div>
 
 	<div class="col-md-4">
 
@@ -25,7 +30,7 @@
 					<input type="text" name="name" class="form-control" id="number" placeholder="Naam" value="{{ old('name') }}" required> 
 				</div>
 
-				<button type="submit" class="btn">Toevoegen</button>
+				<button type="submit" class="btn custom-button">Toevoegen</button>
 
 			{!! Form::close() !!}
 

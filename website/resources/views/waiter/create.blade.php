@@ -5,6 +5,8 @@
 @section('content')
 
 <div class="row">
+	@include('messages.success-log')
+	@include('messages.error-log')
 
 	<div class="col-md-4">
 
@@ -31,7 +33,7 @@
 					<input type="text" name="phone" class="form-control" id="email" placeholder="Telefoon" value="{{ old('email') }}" required> 
 				</div>
 
-				<button type="submit" class="btn">Toevoegen</button>
+				<button type="submit" class="btn custom-button">Toevoegen</button>
 
 			{!! Form::close() !!}
 

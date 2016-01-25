@@ -1,11 +1,19 @@
 @extends('layouts.master')
 
-@section('page-title')
-	planning {{ $planning->first_day }} - {{ $planning->last_day }}
+@section('title')
+	planning {{ $planning->first_day }} tot {{ $planning->last_day }}
 @stop
 
 @section('content')
-	<h1>Planning {{ $planning->first_day }} - {{ $planning->last_day }}</h1>
+<div class="row">
+<div class="col-md-12 title">
+	<h1>Planning <span style="font-size:14px;">{{ $planning->first_day }} tot {{ $planning->last_day }}</span></h1>
+	<hr>
+</div>
+	@include('messages.success-log')
+	@include('messages.error-log')
+	
+<div class="col-md-12">
 	<table class="footable">
 		<thead>
 			<th></th>
@@ -20,9 +28,9 @@
 		<tbody>
 			@foreach($waiters as $waiter)
 				<tr>
-					<th>{{ $waiter->name }}</th>
+					<th style="background-color: white; padding-left: 10px;">{{ $waiter->name }}</th>
 					@for($i = 0; $i < 7; $i++)
-						<td data-waiter-id="{{ $waiter->id }}" 
+						<td class="table-planning-cell" data-waiter-id="{{ $waiter->id }}" 
 							data-waiter-name="{{ $waiter->name }}" 
 							data-date="{{ date('Y-m-d', strtotime($planning->first_day . ' + '.$i. ' days' )) }}" 
 							data-edit={{ (isset($waiter->planning[$i])) ? 'true data-start=' . $waiter->planning[$i]->start_hour . ' data-end=' . $waiter->planning[$i]->end_hour . ' data-planning-waiter-id=' . $waiter->planning[$i]->id  : 'false'}}>
@@ -35,8 +43,9 @@
 			@endforeach
 		</tbody>
 	</table>
-
-	<a href="{{ route('planning.mail', ['id' => $planning->id]) }}" class="btn btn-primary">mail sturen</a>
+	
+	<a href="{{ route('planning.mail', ['id' => $planning->id]) }}" class="btn custom-button" style="margin-top: 30px;"><i class="fa fa-envelope-o"></i> Mail sturen</a>
+</div>
 	<div class="modal fade" id="planningModal" >
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -83,16 +92,16 @@
 				{{Form::hidden('start_hour',date('H:i'))}}
 				{{Form::hidden('end_hour',date('H:i'))}}
 				<a href="#" class="btn btn-danger" id="delete">verwijderen</a>
-		        {!! Form::submit('opslaan', ['class' => 'btn']) !!}
-		        {{-- <button type="button" class="btn btn-primary">Save changes</button> --}}
+		        {!! Form::submit('opslaan', ['class' => 'btn custom-button']) !!}
+		        {{-- <button type="button" class="btn custom-button">Save changes</button> --}}
 		      {!! Form::close() !!}
 	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">sluiten</button>
-	      </div>
+	      
 	    </div><!-- /.modal-content -->
 	  </div><!--  /.modal-dialog -->
 	</div><!-- /.modal -->
+	
+</div>
 @stop
 
 @section('script')
@@ -104,8 +113,7 @@
 			$('.footable').footable();
 
 			$('table td').on('dblclick', function(e){
-				console.log(e);
-				console.log(e.target.dataset.waiterName);
+				
 				if(e.target.dataset.waiterName)
 				{
 					$("#addToPlanning input[name=name]").val(e.target.dataset.waiterName);
@@ -114,7 +122,7 @@
 				if(e.target.dataset.edit == "true")
 				{
 					var planningWaiterId = e.target.dataset.planningWaiterId;
-					console.log(planningWaiterId);
+					
 					$("#addToPlanning").attr('action', '/ober/planning/aanpassen/' + planningWaiterId);
 					$('#addToPlanning select[name=start_hour]').val(e.target.dataset.start);
 					$('#addToPlanning select[name=end_hour').val(e.target.dataset.end);

@@ -11,7 +11,12 @@ class Waiter extends Model {
 
 	public function planningWaiter()
 	{
-		return $this->hasMany('App\planningWaiter', 'FK_waiter_id', 'id');
+		return $this->hasMany('App\PlanningWaiter', 'FK_waiter_id', 'id');
+	}
+	
+	public function areas()
+	{
+		return $this->hasMany('App\WaiterArea', 'FK_waiter_id', 'id');
 	}
 
 }

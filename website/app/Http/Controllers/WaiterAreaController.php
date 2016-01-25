@@ -44,14 +44,41 @@ class WaiterAreaController extends Controller {
   {
     $waiters = Waiter::all();
     $areas = Area::all();
-    $today = Carbon::today();
+    $today = Carbon::today('Europe/Brussels');
     $endDay = $today->copy()->addDay();
-    $waiterAreas = WaiterArea::where('start_time', '>', $today)->where('end_time', '<', $endDay)->orderBy('FK_waiter_id')->get();
+    $waiterAreas = WaiterArea::where('start_time', '>', $today)->where('end_time', '<', $endDay);
+    $waiterAreasToday = $waiterAreas->get();
+    //dd($waiterAreas->get());
+    $workingAreas = $waiterAreas->groupBy('FK_waiter_id')->get();
+    $workingWaiters = collect([]);
+    foreach($workingAreas as $waiterarea)
+    {
+      //var_dump($waiterarea->waiter);
+      $workingWaiters->push($waiterarea->waiter);
+      
+    }
+    foreach($workingWaiters as $waiter)
+    {
+      $waiter->workingAreas = collect([]);
+      foreach($waiterAreasToday as $waiterarea)
+      {
+        if($waiter->id == $waiterarea->FK_waiter_id)
+        {
+          $waiter->workingAreas->push($waiterarea);
+        }
+      }
+    }
+   
+    
+    
+    
+    
 
     $data = [];
     $data['waiters'] = $waiters;
     $data['areas'] = $areas;
     $data['waiterAreas'] = $waiterAreas;
+    $data['workingWaiters'] = $workingWaiters;
     return View('waiterArea.create')->with($data);
   }
 

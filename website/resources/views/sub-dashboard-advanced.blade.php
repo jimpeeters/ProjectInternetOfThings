@@ -160,7 +160,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Zeker dat u tafel <span id="tableNumber"></span> wil uitchecken?</h4>
+        <h4 class="modal-title">Zeker dat u tafel <span id="tableNumberClose"></span> wil uitchecken?</h4>
       </div>
       <div class="modal-body">
 

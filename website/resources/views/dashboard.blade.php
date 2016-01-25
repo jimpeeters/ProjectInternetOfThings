@@ -10,7 +10,7 @@
 	<div class="col-md-12 title">
 		<h1>Overzicht van de tafels 
 
-    <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Layout <span class="showHide">verbergen</span> )</a></span>
+    <span class="subtitle-overzicht"><a id="toggle-tables">( <i class="fa fa-eye"></i> Layout <span id="showHide">verbergen</span> )</a></span>
 
     <div style="float:right;">
 
@@ -50,6 +50,13 @@
       $( "#toggle-tables" ).click(function() {
         $( ".empty-box" ).toggleClass( "invisible" );
         $( ".delete-button" ).toggleClass( "invisible" );
+        
+        if($('#showHide').text() == 'verbergen')
+        {
+          $('#showHide').text('tonen');
+        } else {
+          $('#showHide').text('verbergen');
+        }
       });
 
 
@@ -115,35 +122,15 @@
         $( "#ground-plan" ).toggleClass( "full-screen" );
       });
 
-      var noRefresh = true;
-      refresh();
-      function refresh(){
-        // current = 1;
-        // table = $(".dashboard-advanced [data-table-id='" + current + "'] .wood");
-        // console.log(table);
-        // table.addClass('green');
-        // // tableChild = eval(table[0].children['table-' + current]);
-        // // console.log(tableChild.className());
-        // // tableChild.addClass('green');
-        // current = 2;
-        // table = $(".dashboard-advanced [data-table-id='" + current + "'] .wood");
-        // console.log(table);
-        // table.addClass('red');
-
-      }
 
       check();
       function check(){
-        // console.log('before');
         $.getJSON('/dashboard/tableStatus', function(data){
-          // console.log(data);
           $.each(data, function(index){
-            // console.log(data[index]);
             current = data[index].id;
             table = $(".dashboard-advanced [data-table-id='" + current + "'] .wood");
             if(data[index].hasClient)
-            {
-              console.log(current + ' yes');
+            { 
               if(data[index].waiting)
               {
                 table.removeClass('green');
@@ -155,13 +142,12 @@
               }
             } else {
               table.removeClass('red').removeClass('green');
-              console.log(current + ' no');
             }
           });
           
           
-        }).done(function(){ console.log('done'); })
-          .fail(function(e){ console.log(e); });
+        }).done(function(){  })
+          .fail(function(e){  });
         
         setTimeout(check, 10000);
       }
@@ -189,9 +175,10 @@
     });
 
     $('#checkout-client-modal').on('show.bs.modal', function(e){
-      console.log($(e.relatedTarget).data('tablenumber'));
-      tablenumber = $(e.relatedTarget).data('tableid');
-      $('#checkout-client-modal a').attr('href', '/klanten/checkout/' + tablenumber);
+      tableid = $(e.relatedTarget).data('tableid');
+      $('#checkout-client-modal a').attr('href', '/klanten/checkout/' + tableid);
+      tablenumber = $(e.relatedTarget).data('tablenumber');
+      $('#tableNumberClose').text(tablenumber);
     })
 
 

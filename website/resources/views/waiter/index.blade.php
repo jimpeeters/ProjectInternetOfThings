@@ -1,23 +1,24 @@
 @extends('layouts.master')
 
-@section('page-title')
+@section('title')
 	obers
 @stop
 
 @section('content')
-<style type="text/css">
-	.footable > thead, .footable > thead > tr > th{
-		background-color: #FFE33B; 
-		background-image: none;
-	}
-</style>
-<h1>Onze obers</h1>
+<div class="col-md-12 title">
+	<h1>Onze obers
+	<div style="float:right">
+		<a href="{{ route('ober.create') }}" class='h4'><i class="fa fa-plus"></i> ober toevoegen</a>
+	</div>
+	</h1>
+	<hr>
+</div>
 <table class="footable">
 		<thead>
 			<th>naam</th>
 			<th>email</th>
 			<th>telefoonnummer</th>
-			<th><a href="{{ route('ober.create') }}"><i class="fa fa-plus"></i> nieuw</a></th>
+			<th></th>
 		</thead>
 		<tbody>
 			@foreach($waiters as $waiter)

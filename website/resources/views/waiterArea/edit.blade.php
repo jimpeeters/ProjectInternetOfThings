@@ -5,8 +5,14 @@
 @stop
 @section('content')
 	<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.1/css/select2.min.css" rel="stylesheet" />
+	
+	
 
 <div class="row">
+	
+	@include('messages.success-log')
+	@include('messages.error-log')
+
 	<div class="col-md-4">
 		<div class="box">
 		<div class="box-header">
@@ -57,7 +63,7 @@
 				</div> --}}
 				
 
-				<button type="submit" class="btn">Toevoegen</button>
+				<button type="submit" class="btn custom-button">Toevoegen</button>
 
 			{!! Form::close() !!}
 

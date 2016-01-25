@@ -8,8 +8,14 @@
 
 	@include('messages.success-log')
 	@include('messages.error-log')
+	
+	<div class="col-md-12 title">
+		<h1>Klanten</h1>
+		<hr>
+	</div>
+	
 
-	<div class="col-md-6">
+	<div class="col-md-4">
 
 		<div class="box">
 
@@ -31,7 +37,7 @@
 					@endforeach
 				</select>
 
-				<button type="submit" class="btn">Toevoegen</button>
+				<button type="submit" class="btn custom-button">Toevoegen</button>
 
 			{!! Form::close() !!}
 

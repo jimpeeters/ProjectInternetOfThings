@@ -1,13 +1,13 @@
 @extends('layouts.master')
 
-@section('title', 'Statistic')
+@section('title', 'statistieken')
 
 @section('content')
 
 <div class="row" style="margin-top: 15px;">
   <link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.min.css"></link>
 	<div class="col-md-12 title">
-		<h2>Algemene info</h2>
+		<h2>Statistieken</h2>
 		<hr>
 </div>
 <div class="row" style="margin-top: 15px;">
@@ -27,7 +27,7 @@
 
     <div class="col-md-3">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-users"></i></span>
+        <span class="info-box-icon bg-blue"><i class="fa fa-users"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">tafels behandelt</span>
           <span class="info-box-number">{{ $clientSum }}</span>
@@ -36,7 +36,7 @@
     </div>
     <div class="col-md-3">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-user"></i></span>
+        <span class="info-box-icon bg-blue"><i class="fa fa-user"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">klanten behandelt</span>
           <span class="info-box-number">{{ $clientAmount }}</span>
@@ -58,7 +58,7 @@
 
     <div class="col-md-3">
       <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-male"></i></span>
+        <span class="info-box-icon bg-blue"><i class="fa fa-male"></i></span>
         <div class="info-box-content">
           <span class="info-box-text">personeelsleden</span>
           <span class="info-box-number">{{ $staff }}</span>
@@ -99,8 +99,10 @@
     </div>
 </div>
 <div class="row">
-  <div id="chartdiv">
-    
+  <div class="col-md-12">
+    <div id="chartdiv">
+      
+    </div>
   </div>
 </div>
 
@@ -122,12 +124,12 @@
 
 
 
-  console.log('test');
+  //console.log('test');
   var clientsHour = [];
   @foreach($clientsHour as $key => $clients)
     clientsHour.push([{{$key}},{{$clients}}]);
   @endforeach
-    console.log(clientsHour);
+    //console.log(clientsHour);
     var clientsArray = [];
     clientsArray.push(clientsHour);
     // var clientsHour = <?php print_r(json_encode($clientsHour)); ?>;

@@ -5,6 +5,8 @@
 @stop
 
 @section('content')
+
+
 	<h1>Aangeduide obers</h1>
 	<ul>
 		@foreach($waiterAreas as $waiterArea)

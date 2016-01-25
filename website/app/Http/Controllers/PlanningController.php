@@ -48,7 +48,7 @@ class PlanningController extends Controller
         foreach($waiters as $waiter)
         {
             //get all planningWaiters from this planning
-            $planningWaiter = $waiter->planningWaiter()->where('FK_planning_id', $id);
+            $planningWaiter = $waiter->PlanningWaiter()->where('FK_planning_id', $id);
             $startDate = Carbon::createFromFormat('Y-m-d h:i:s', $planning->first_day . ' 00:00:00');
             $waiter->planning = collect([]);
             for($i = 0; $i < 7; $i++)

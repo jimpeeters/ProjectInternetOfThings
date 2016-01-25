@@ -95,12 +95,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* overzicht */
-/* line 99, ../sass/style.scss */
+/* line 98, ../sass/style.scss */
+.bg-yellowdark {
+  background-color: #FFAB08;
+}
+
+/* line 102, ../sass/style.scss */
 .main-sidebar {
   min-height: 135%;
 }
 
-/* line 103, ../sass/style.scss */
+/* line 106, ../sass/style.scss */
 .delete-button {
   position: absolute;
   top: 0;
@@ -111,44 +116,44 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
 }
-/* line 113, ../sass/style.scss */
+/* line 116, ../sass/style.scss */
 .delete-button:hover, .delete-button:focus {
   color: red;
 }
-/* line 117, ../sass/style.scss */
+/* line 120, ../sass/style.scss */
 .delete-button i {
   font-size: 16px;
 }
 
 /* overzicht tafels advanced */
-/* line 124, ../sass/style.scss */
+/* line 127, ../sass/style.scss */
 .client-logo {
   margin-left: 5px;
   margin-top: 5px;
   width: 15px;
 }
 
-/* line 131, ../sass/style.scss */
+/* line 134, ../sass/style.scss */
 .nopadding {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* line 136, ../sass/style.scss */
+/* line 139, ../sass/style.scss */
 #locationText {
   font-size: 0.8em;
 }
 
-/* line 142, ../sass/style.scss */
+/* line 145, ../sass/style.scss */
 .modal .modal-footer-table {
   padding-top: 15px;
 }
-/* line 145, ../sass/style.scss */
+/* line 148, ../sass/style.scss */
 .modal .modal-footer-table input, .modal .modal-footer-table select {
   margin-bottom: 15px;
   width: 50%;
 }
-/* line 153, ../sass/style.scss */
+/* line 156, ../sass/style.scss */
 .modal .choiseWindow .choise-block {
   position: relative;
   width: 80%;
@@ -156,22 +161,22 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 80%;
   border-radius: 5px;
 }
-/* line 161, ../sass/style.scss */
+/* line 164, ../sass/style.scss */
 .modal .choiseWindow .block-text {
   margin-bottom: 15px;
 }
 
-/* line 169, ../sass/style.scss */
+/* line 172, ../sass/style.scss */
 .dashboard-advanced {
   margin: 0px 15px 0px 15px;
 }
 
-/* line 173, ../sass/style.scss */
+/* line 176, ../sass/style.scss */
 .pointer {
   cursor: pointer !important;
 }
 
-/* line 176, ../sass/style.scss */
+/* line 179, ../sass/style.scss */
 .empty-block-advanced {
   position: relative;
   width: 100%;
@@ -183,16 +188,16 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 1;
   border: 1px solid #d2d6de;
 }
-/* line 189, ../sass/style.scss */
+/* line 192, ../sass/style.scss */
 .empty-block-advanced:hover, .empty-block-advanced:focus {
   opacity: 0.5;
   cursor: pointer;
 }
-/* line 193, ../sass/style.scss */
+/* line 196, ../sass/style.scss */
 .empty-block-advanced:hover .button-clean i, .empty-block-advanced:focus .button-clean i {
   color: white;
 }
-/* line 200, ../sass/style.scss */
+/* line 203, ../sass/style.scss */
 .empty-block-advanced .button-clean i {
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
@@ -209,7 +214,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 45px;
 }
 
-/* line 218, ../sass/style.scss */
+/* line 221, ../sass/style.scss */
 .filled-block-advanced {
   position: relative;
   width: 100%;
@@ -219,35 +224,35 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #333;
 }
 
-/* line 230, ../sass/style.scss */
+/* line 233, ../sass/style.scss */
 .table-block-advanced {
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
 }
-/* line 234, ../sass/style.scss */
+/* line 237, ../sass/style.scss */
 .table-block-advanced:hover, .table-block-advanced:focus {
   opacity: 0.8;
 }
 
-/* line 240, ../sass/style.scss */
+/* line 243, ../sass/style.scss */
 .nohovereffect:hover, .nohovereffect:focus {
   opacity: 1;
 }
 
 /* block achtergronden */
-/* line 246, ../sass/style.scss */
+/* line 249, ../sass/style.scss */
 .wood {
   background-image: url("/images/wood.png");
 }
 
-/* line 250, ../sass/style.scss */
+/* line 253, ../sass/style.scss */
 .food {
-  background: #a3b66c;
-  background-image: url("/images/food.png");
-  border: 1px solid #a3b66c;
+  background-color: white;
+  background-image: linear-gradient(90deg, rgba(200, 0, 0, 0.5) 50%, transparent 50%), linear-gradient(rgba(200, 0, 0, 0.5) 50%, transparent 50%);
+  background-size: 20px 20px;
 }
 
-/* line 256, ../sass/style.scss */
+/* line 261, ../sass/style.scss */
 .wall-horizontal {
   margin-top: 30%;
   margin-bottom: 30%;
@@ -255,14 +260,14 @@ h1, h2, h3, h4, h5, h6 {
   padding-bottom: 40% !important;
 }
 
-/* line 266, ../sass/style.scss */
+/* line 271, ../sass/style.scss */
 #decorationModal .wall-horizontal {
   margin-bottom: 20%;
   background-color: #333;
   padding-bottom: 40% !important;
 }
 
-/* line 274, ../sass/style.scss */
+/* line 279, ../sass/style.scss */
 .wall-vertical {
   width: 40% !important;
   margin: 0px auto;
@@ -270,48 +275,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* overzicht tafels  simple */
-/* line 282, ../sass/style.scss */
+/* line 287, ../sass/style.scss */
+.info-box-icon-btn {
+  background: #d2d6de;
+}
+
+/* line 291, ../sass/style.scss */
 .info-box {
   margin-bottom: 13px;
 }
 
-/* line 286, ../sass/style.scss */
+/* line 295, ../sass/style.scss */
 .subtitle-overzicht {
   font-size: 14px;
   font-weight: 300;
 }
-/* line 289, ../sass/style.scss */
+/* line 298, ../sass/style.scss */
 .subtitle-overzicht:hover {
   cursor: pointer;
 }
 
-/* line 297, ../sass/style.scss */
+/* line 306, ../sass/style.scss */
 .button-plus span i {
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
   color: #747474;
 }
-/* line 304, ../sass/style.scss */
+/* line 313, ../sass/style.scss */
 .button-plus:hover span i, .button-plus:focus span i {
   color: white;
 }
 
-/* line 311, ../sass/style.scss */
+/* line 320, ../sass/style.scss */
 .info-box-empty {
   margin-top: -100px;
 }
-/* line 314, ../sass/style.scss */
+/* line 323, ../sass/style.scss */
 .info-box-empty input {
   margin-top: 9px;
 }
-/* line 318, ../sass/style.scss */
+/* line 327, ../sass/style.scss */
 .info-box-empty select {
   margin-top: 4px;
   margin-bottom: 0px;
 }
 
 /* forms */
-/* line 328, ../sass/style.scss */
+/* line 337, ../sass/style.scss */
 .box {
   background-color: white;
   border-top: 4px solid #ffe33b;
@@ -319,64 +329,46 @@ h1, h2, h3, h4, h5, h6 {
   margin: 15px 0px;
   padding-bottom: 10px;
 }
-/* line 336, ../sass/style.scss */
-.box .btn {
-  -webkit-border-radius: 5;
-  -moz-border-radius: 5;
-  border-radius: 5px;
-  font-family: 'Work Sans', sans-serif;
-  font-weight: 400;
-  color: #ffffff;
-  font-size: 14px;
-  background: #262626;
-  padding: 8px 18px 8px 18px;
-  text-decoration: none;
-}
-/* line 349, ../sass/style.scss */
-.box .btn:hover {
-  background: #333333;
-  text-decoration: none;
-}
-/* line 355, ../sass/style.scss */
+/* line 346, ../sass/style.scss */
 .box .box-header {
   border-bottom: 1px solid #e0e0e0;
 }
-/* line 357, ../sass/style.scss */
+/* line 348, ../sass/style.scss */
 .box .box-header h4 {
   padding: 0px 10px;
 }
-/* line 362, ../sass/style.scss */
+/* line 353, ../sass/style.scss */
 .box form {
   margin: 20px;
 }
-/* line 366, ../sass/style.scss */
+/* line 357, ../sass/style.scss */
 .box .badge {
   background-color: #ffe33b;
   color: black;
 }
 
 /* dashboard */
-/* line 374, ../sass/style.scss */
+/* line 365, ../sass/style.scss */
 .black-bg {
   background-color: #262626;
 }
 
-/* line 378, ../sass/style.scss */
+/* line 369, ../sass/style.scss */
 .info-box i {
   color: white;
 }
 
-/* line 383, ../sass/style.scss */
+/* line 374, ../sass/style.scss */
 .title h2 {
   margin-top: 5px;
 }
-/* line 387, ../sass/style.scss */
+/* line 378, ../sass/style.scss */
 .title hr {
   border-top: 1px solid #a6a6a6;
 }
 
 /* bootstrap focus effect */
-/* line 395, ../sass/style.scss */
+/* line 386, ../sass/style.scss */
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -398,8 +390,8 @@ input[type="color"]:focus,
   outline: 0 none;
 }
 
-/* BUTTON */
-/* line 420, ../sass/style.scss */
+/* BUTTONS */
+/* line 412, ../sass/style.scss */
 .custom-button {
   -webkit-border-radius: 5;
   -moz-border-radius: 5;
@@ -413,14 +405,54 @@ input[type="color"]:focus,
   text-decoration: none;
 }
 
-/* line 433, ../sass/style.scss */
+/* line 425, ../sass/style.scss */
 .custom-button:hover {
   background: #333333;
   text-decoration: none;
   color: #ffffff;
 }
 
-/* line 439, ../sass/style.scss */
+/* line 431, ../sass/style.scss */
 .alert {
   border-radius: 0px !important;
+}
+
+/* footable */
+/* line 441, ../sass/style.scss */
+.table-planning-cell:hover {
+  background-color: #f2f2f2;
+  cursor: pointer;
+}
+
+/* line 447, ../sass/style.scss */
+.footable > thead, .footable > thead > tr > th {
+  background-color: #FFE33B;
+  background-image: none;
+}
+
+/* line 453, ../sass/style.scss */
+.footable {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-family: 'Work Sans', sans-serif;
+}
+/* line 458, ../sass/style.scss */
+.footable td {
+  background-color: white;
+}
+/* line 462, ../sass/style.scss */
+.footable tbody {
+  border-right: 1px solid #ccc;
+}
+
+/* line 467, ../sass/style.scss */
+.footable > thead > tr > th {
+  border-left: none;
+  font-size: 16px;
+  text-shadow: none;
+}
+
+/* line 473, ../sass/style.scss */
+.select2-container .select2-selection--single {
+  height: 35px !important;
 }

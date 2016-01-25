@@ -91,8 +91,8 @@ class MainController extends Controller
         $ordersCount = $orders->count('id');
         $longestTime = $shortestTime = null;
         $ordersGet = $orders->get();
-        $staff = WaiterArea::where('start_time', '>', $date)->where('end_time', '<', $date->copy()->addDay())->groupBy('FK_waiter_id')->count();
-       
+        //get total number of staff members working today
+        $staff = WaiterArea::groupBy('FK_waiter_id')->where('start_time', '>', $date)->where('end_time', '<', $date->copy()->addDay())->get()->count();
         //check all orders to set longest and shortest wait time
         foreach( $ordersGet as $order)
         {

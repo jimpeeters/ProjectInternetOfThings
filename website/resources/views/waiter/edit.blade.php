@@ -1,19 +1,22 @@
 @extends('layouts.master')
 
-@section('page-title')
+@section('title')
 	aanpassen {{ $waiter->name }}
 @stop
 
 @section('content')
 
 <div class="row">
+	
+	@include('messages.success-log')
+	@include('messages.error-log')
 
 	<div class="col-md-4">
 
 		<div class="box">
 
 		<div class="box-header">
-			<h4>Ober aanpassen:</br> {{ $waiter->name }}</h4>
+			<h4>{{ $waiter->name }}</h4>
 		</div>
 
 			{!! Form::model($waiter, array('route' => ['ober.update', $waiter->id], 'method' => 'PUT')) !!}
@@ -36,7 +39,7 @@
 					
 				</div>
 
-				<button type="submit" class="btn">Aanpassen</button>
+				<button type="submit" class="btn custom-button">Aanpassen</button>
 
 			{!! Form::close() !!}
 

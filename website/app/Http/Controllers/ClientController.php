@@ -24,7 +24,7 @@ class ClientController extends Controller {
     $tableNoClients = collect([]);
     foreach($tables as $table)
     {
-      if(!count($table->clients))
+      if(!count($table->clients()->whereNull('leavetime')->get()))
       {
         $tableNoClients->push($table);
       }
